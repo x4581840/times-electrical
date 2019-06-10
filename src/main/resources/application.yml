@@ -3,3 +3,5 @@ spring:
     active: dev
   thymeleaf:
     cache: false #配置thymeleaf不做任何缓存
+
+

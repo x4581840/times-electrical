@@ -1,26 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js">
+    </script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.js">
+    </script>
+    <script th:src="@{/static/js/bootstrap-treeview.js}"></script>
+
+    <link th:href="@{/static/css/bootstrap-treeview.css}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
     <base target="_self">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache,must-ridate">
     <meta http-equiv="expires" content="0">
     <title>
-        tab页切换
+        逆向查询页面
     </title>
-    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
-    />
-    <style type="text/css">
-    </style>
+
+    <script>
+        var defaultData = [
+            {
+                text: 'Parent 1',
+                href: '#parent1',
+                tags: ['4'],
+                nodes: [
+                    {
+                        text: 'Child 1',
+                        href: '#child1',
+                        tags: ['2'],
+                        nodes: [
+                            {
+                                text: 'Grandchild 1',
+                                href: '#grandchild1',
+                                tags: ['0']
+                            },
+                            {
+                                text: 'Grandchild 2',
+                                href: '#grandchild2',
+                                tags: ['0']
+                            }
+                        ]
+                    },
+                    {
+                        text: 'Child 2',
+                        href: '#child2',
+                        tags: ['0']
+                    }
+                ]
+            },
+            {
+                text: 'Parent 2',
+                href: '#parent2',
+                tags: ['0']
+            },
+        ];
+        console.log("treeView1"+$("treeview1").text());
+        console.log(defaultData);
+        // debugger
+        $(function() {
+            $('#treeview1').treeview({
+                data: defaultData
+            });
+        })
+
+    </script>
 </head>
 
 <body>
-<p style="display:none;">
-    1.参考网站：http://www.runoob.com/bootstrap/bootstrap-tab-plugin.html 2..fade增加淡入淡出效果；添加
-    .fade 到每个 .tab-pane 后面; 3.第一个标签页必须添加 .in 类，以便淡入显示初始内容;
-</p>
+
+<div id="treeview1">
+
+</div>
+
 <!-- tab标签 -->
 <ul id="myTab" class="nav nav-tabs">
     <li class="active">
@@ -47,12 +101,7 @@
         </p>
     </div>
 </div>
-<script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js">
-</script>
-<script type="text/javascript" src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.js">
-</script>
-<script type="text/javascript">
-</script>
+
 </body>
 
 </html>
