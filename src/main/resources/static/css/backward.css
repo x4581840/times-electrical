@@ -1,0 +1,37 @@
+.grade {
+    background-color: #699BD0;
+    color: #ffffff;
+}
+
+.confirm {
+    margin-top: 10px;
+    margin-right: 10px;
+    background-color: #699BD0;
+    color: #ffffff;
+}
+
+.tab1_query {
+    margin-bottom: 10px;
+    margin-right: 10px;
+    background-color: #699BD0;
+    color: #ffffff;
+}
+
+.tab2_query {
+    margin-bottom: 10px;
+    margin-right: 10px;
+    background-color: #699BD0;
+    color: #ffffff;
+}
+
+.tab3_query {
+    margin-bottom: 10px;
+    margin-right: 10px;
+    background-color: #699BD0;
+    color: #ffffff;
+}
+
+.total {
+    width: 600px;
+    border:1px solid #ddd;
+}

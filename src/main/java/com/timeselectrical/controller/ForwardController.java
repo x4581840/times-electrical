@@ -6,8 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.http.HttpServletRequest;
-
 @Controller
 @RequestMapping(value = "/forward")
 public class ForwardController {
@@ -28,7 +26,7 @@ public class ForwardController {
 
     @RequestMapping("/tab")
     public String tab() {
-        return "tab";
+        return "backward";
     }
 
 }

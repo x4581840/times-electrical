@@ -11,6 +11,14 @@ public class Student {
 
     private String scoreAvg;
 
+    public Student(Integer id, Integer age, String name, String scoreSum, String scoreAvg) {
+        this.id = id;
+        this.age = age;
+        this.name = name;
+        this.scoreSum = scoreSum;
+        this.scoreAvg = scoreAvg;
+    }
+
     public Integer getId() {
         return id;
     }
