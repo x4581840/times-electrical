@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 
 <head>
     <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js">
@@ -21,55 +21,44 @@
     </title>
 
     <script>
-        var defaultData = [
-            {
-                text: 'Parent 1',
-                href: '#parent1',
-                tags: ['4'],
-                nodes: [
-                    {
-                        text: 'Child 1',
-                        href: '#child1',
-                        tags: ['2'],
-                        nodes: [
-                            {
-                                text: 'Grandchild 1',
-                                href: '#grandchild1',
-                                tags: ['0']
-                            },
-                            {
-                                text: 'Grandchild 2',
-                                href: '#grandchild2',
-                                tags: ['0']
-                            }
-                        ]
-                    },
-                    {
-                        text: 'Child 2',
-                        href: '#child2',
-                        tags: ['0']
-                    }
-                ]
-            },
-            {
-                text: 'Parent 2',
-                href: '#parent2',
-                tags: ['0']
-            },
-        ];
-        console.log("treeView1"+$("treeview1").text());
-        console.log(defaultData);
-        // debugger
+        var defaultData;
         $(function() {
-            $('#treeview1').treeview({
-                data: defaultData
+            $.ajax({
+                type: "post",
+                url: "http://localhost:8081/backward/getTreeList",
+                dataType: "json",
+                success: function (result) {
+                    defaultData=result;
+                    console.log("defaultData:"+defaultData);
+                    $('#treeview1').treeview({
+                        data: defaultData,
+                        showCheckbox: true,
+                        onNodeSelected:function(event, data) {
+                            // 事件代码...
+                            console.log("被选中");
+                        },
+                        onNodeChecked: function(event, data) {
+                            console.log("被勾选checked");
+                        }
+                    });
+
+                },
+                error: function () {
+                    alert("按层级加载失败")
+                }
             });
+
         })
 
     </script>
 </head>
 
 <body>
+
+<div>
+    请输入序列号：<input th:type="text" th:name="seq">
+    <input th:type="button" th:value="按层级展开">
+</div>
 
 <div id="treeview1">
 
@@ -78,26 +67,36 @@
 <!-- tab标签 -->
 <ul id="myTab" class="nav nav-tabs">
     <li class="active">
-        <a href="#home" data-toggle="tab">
-            Microsoft
+        <a href="#tab1" data-toggle="tab">
+            装车配置
         </a>
     </li>
     <li>
-        <a href="#ios" data-toggle="tab">
-            NET CORE
+        <a href="#tab2" data-toggle="tab">
+            生产缺陷记录
+        </a>
+    </li>
+    <li>
+        <a href="#tab3" data-toggle="tab">
+            现场故障标签
         </a>
     </li>
 </ul>
 <!-- 每个tab页对应的内容 -->
 <div id="myTabContent" class="tab-content">
-    <div class="tab-pane fade in active" id="home">
+    <div class="tab-pane fade in active" id="tab1">
         <p>
-            微软，是一家美国跨国科技公司，也是世界PC（Personal Computer，个人计算机）软件开发的先导，由比尔·盖茨与保罗·艾伦创办于1975年，公司总部设立在华盛顿州的雷德蒙德（Redmond，邻近西雅图）。以研发、制造、授权和提供广泛的电脑软件服务业务为主。
+
         </p>
     </div>
-    <div class="tab-pane fade" id="ios">
+    <div class="tab-pane fade" id="tab2">
         <p>
-            NET CORE 是一个由微软公司开发和发布的跨平台框架。
+
+        </p>
+    </div>
+    <div class="tab-pane fade" id="tab3">
+        <p>
+            sdf
         </p>
     </div>
 </div>
