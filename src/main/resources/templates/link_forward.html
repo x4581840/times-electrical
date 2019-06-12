@@ -1,10 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
+
     <script src="webjars/jquery/3.1.1/jquery.min.js"></script>
     <script src="webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="webjars/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+     <script src="../jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+    <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
     <meta charset="UTF-8">
+    <script>$('#myModal1').modal(show)</script>
     <title>正向查询页面</title>
 </head>
 <body>
@@ -12,36 +20,47 @@
         <h1>正向查询页面</h1>
     </div>
     <div class="form-group"style="border:1.5px solid">
-        <form class="bs-example bs-example-form" role="form" style="margin-top:13px">
-            <div class="input-group input-group-lg">
-                <span style="display:inline-block;margin-right: 15px"  >物料编码</span>
-                <input type="text" class="form-control" placeholder="Twitterhandle">
-                <button type="submit" style="margin-left: 10px;background: cornflowerblue">查询</button>
-                <button type="button" style="margin-left: 10px;background: cornflowerblue">确认</button>
-            </div>
-        </form>
+        <div  class="row head" style="margin-top: 13px">
 
-        <div style="border-top:1.5px solid;margin-top: 20px;">
+            <div class="col-lg-10">
+                <label class="col-md-1 control-label" style="margin-top: 5px">物料编码</label>
+                <div class="input-group" style="display: inline-block;float: left">
+
+                    <input type="text" class="form-control" placeholder="请获得值" transparent autofocus x-webkit-speech style="width: 150px;height:30px;"readonly= "true " id="serach">
+                    <span class="input-group-addon btn btn-default"style="width: 20px;" data-toggle="modal" data-target="#myModal">
+                                 <span class="glyphicon glyphicon-search"></span>
+                            </span>
+
+                </div>
+                <div style="display: inline-block;margin-left: 20px;float: left;"> <button type="button" style="background: cornflowerblue;height: 30px">确认</button></div>
+                <div style="display: inline-block;margin-left: 20px;float: left;"> <button type="button" style="background: cornflowerblue;height: 30px">重置</button></div>
+            </div>
+
+        </div>
+
+
+        <div style="border-top:1.5px solid;margin-top: 20px;margin-left: 15px;">
             <table class="table table-condensed">
 
                 <thead>
                 <tr>
-                    <td>物料编码</td>
+                    <td style="width: 150px">物料编码</td>
                     <td>物料描述</td>
                 </tr>
                 </thead>
                 <tbody>
-                <form action="/forward/go2" method="post">
+              <form id="abc">
                 <tr>
-                   <td style="width: 150px"><label class="checkbox-inline">
-                        <input type="checkbox" name="inlineCheckbox1" value="option1">1231
+                   <td><label class="checkbox-inline">
+                        <input type="checkbox" name="inlineCheckbox1" value="option1" >123
                     </label>
                    </td>
 
                     <td>Bangalore</td>
                 </tr>
+
                 <tr>
-                    <td style=" width: 150px"><label class="checkbox-inline">
+                    <td><label class="checkbox-inline">
                         <input type="checkbox" name="inlineCheckbox1" value="option2"> 选项2
                     </label></td>
 
@@ -51,16 +70,275 @@
                     <td><label class="checkbox-inline">
                         <input type="checkbox" name="inlineCheckbox1" value="option3"> 选项3
                     </label></td>
-
                     <td>Pune</td>
-
                 </tr>
-                </form>
+              </form>
                 </tbody>
             </table>
         </div>
+      <div>
+      </div>
+    </div>
+
+
+
+    <!-- 模态框（Modal） -->
+
+    <div class="modal fade"  id="myModal" aria-hidden="true" >
+
+        <div class="modal-dialog" style="width: 600px;">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <button type="button" class="close" data-dismiss="modal"
+
+                            aria-hidden="true">×
+
+                    </button>
+
+                    <div  style="border-top:1px solid;margin-top: 20px;margin-left: 15px;">
+                        <form   style="margin-top:13px">
+                            <div class="input-group">
+                                <span style="display:inline-block;margin-right: 15px;font-weight: 900;">物料编码</span>
+                                <input type="text"  placeholder="Twitterhandle" value="1" id="test">
+                                <button type="button" style="margin-left: 10px;background: cornflowerblue" onclick="person()">查询</button>
+                                <button type="button" style="margin-left: 10px;background: cornflowerblue" data-dismiss="modal" onclick="getValue1()">确认</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div style="border-top:1.5px solid;margin-top: 20px;margin-left: 15px;display: none;" id="aa">
+                        <table class="table table-condensed" id="table">
+
+                            <thead>
+                            <tr>
+                                <td>物料编码</td>
+                                <td>物料描述</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr>
+                                    <td style="width: 150px">
+                                        <input type="checkbox" name="inlineCheckbox1" value="option1"><span>选项一</span>
+
+                                    </td>
+
+                                    <td><span>Bangalore</span></td>
+                                </tr>
+                                <tr>
+                                    <td style=" width: 150px">
+                                        <input type="checkbox" name="inlineCheckbox1" value="option2"> 选项2
+                                    </td>
+
+                                    <td>Mumbai</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" name="inlineCheckbox1" value="option3"> 选项3
+                                    </td>
+
+                                    <td>Pune</td>
+
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-default"
+
+                            data-dismiss="modal">关闭
+
+                    </button>
+
+                </div>
+
+            </div><!-- /.modal-content -->
+
+        </div><!-- /.modal-dialog -->
+
+    </div><!-- /.modal -->
 
     </div>
 
+    <label for="from">从</label>
+    <input type="text" id="from" name="from">
+    <label for="to">到</label>
+    <input type="text" id="to" name="to">
 </body>
+<script type="text/javascript">
+
+    function person(){
+        var gg = $("#test").val();
+
+        $.ajax({
+            url:"/forward/getMaterialcode",
+            method: "post",
+            datatype:"json",
+            data: {
+                id:gg
+            },
+            success: function (jsonStr) {
+
+                //状态判断
+                if (jsonStr !=null) {
+
+                    $('#table tr:gt(0)').remove();
+                    var s="";
+                    for (var i in jsonStr) {
+                        s += "<tr><td style=\"width: 150px\"><label class=\"checkbox-inline\"><input type='checkbox' name='inlineCheckbox1' value='" +i+ "'onClick='chooseOne(this)'>" +i+ "</label></td>\n<td>" +i+ "</td></tr>"
+                        ;
+                        $('#table').append(s);
+                    }
+
+                    document.getElementById('aa').style.display = 'block';
+
+                }else{
+                    alert("修改失败");
+                    window.location.reload();
+                }
+            }
+        });
+
+
+
+    }
+    function getValue1(obj) {
+
+        var gg =document.getElementsByName("inlineCheckbox1");
+
+        for(var i=0;i<gg.length;i++){
+            if(gg[i].checked){
+                $("#serach").val(gg[i].value);
+
+            }
+        }
+
+    }
+  function chooseOne(obj){
+
+      var gg= document.getElementsByName("inlineCheckbox1");
+      for(var i=0;i<gg.length;i++){
+          if(gg[i]!=obj) {
+
+              gg[i].checked = false;
+          }
+      else gg[i].checked = true;
+
+      }
+  }
+    jQuery(document).ready(function() {
+        alert(111);
+        jQuery("#ccc input[type='checkbox']").click(function() {
+            if (jQuery(this).attr("checked") == true) {
+                jQuery("#ccc input[type='checkbox']").attr("checked", false);
+                jQuery(this).attr("checked", true);
+            }
+        });
+    });
+    $(function() {
+
+        /* $( "#from" ).datepicker({
+             defaultDate: "+1w",
+             changeMonth: true,
+             numberOfMonths: 1,
+             onClose: function( selectedDate ) {
+                 $( "#to" ).datepicker( "option", "minDate", selectedDate );
+             }
+         });*/
+        $("#from").datepicker({//添加日期选择功能
+            numberOfMonths:1,//显示几个月
+            showButtonPanel:true,//是否显示按钮面板
+            dateFormat: 'yy-mm-dd',//日期格式
+            clearText:"清除",//清除日期的按钮名称
+            closeText:"关闭",//关闭选择框的按钮名称
+            yearSuffix: '年', //年的后缀
+            currentText: '今天',
+            changeYear:true,//通过select选择年
+            //changeMonth:true,
+            showMonthAfterYear:true,//是否把月放在年的后面
+            // defaultDate:'2011-03-10',//默认日期
+            //minDate:'2011-03-05',//最小日期
+            // maxDate:'2011-03-20',//最大日期
+            monthNames: ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'],
+            dayNames: ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'],
+            dayNamesShort: ['周日','周一','周二','周三','周四','周五','周六'],
+            dayNamesMin: ['日','一','二','三','四','五','六'],
+            // onSelect: function(selectedDate) {//选择日期后执行的操作
+            //    alert(selectedDate);
+            // }
+            onSelect: function( startDate ) {
+                var $startDate = $( "#from" );
+                var $endDate = $('#to');
+                var endDate = $endDate.datepicker( 'getDate' );
+                if(endDate < startDate){
+                    $endDate.datepicker('setDate', startDate - 3600*1000*24);
+                }
+                $endDate.datepicker( "option", "minDate", startDate );
+            }
+        });
+        $( "#to" ).datepicker({
+            /*defaultDate: "+1w",
+            changeMonth: true,
+            numberOfMonths:1,
+            onClose: function( selectedDate ) {
+                $( "#from" ).datepicker( "option", "maxDate", selectedDate );
+            }*/
+            numberOfMonths:1,//显示几个月
+            showButtonPanel:true,//是否显示按钮面板
+            dateFormat: 'yy-mm-dd',//日期格式
+            clearText:"清除",//清除日期的按钮名称
+            closeText:"关闭",//关闭选择框的按钮名称
+            yearSuffix: '年', //年的后缀
+            currentText: '今天',
+            changeYear:true,//通过select选择年
+            showMonthAfterYear:true,//是否把月放在年的后面
+            // defaultDate:'2011-03-10',//默认日期
+            //minDate:'2011-03-05',//最小日期
+            //maxDate:'2011-03-20',//最大日期
+            monthNames: ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'],
+            dayNames: ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'],
+            dayNamesShort: ['周日','周一','周二','周三','周四','周五','周六'],
+            dayNamesMin: ['日','一','二','三','四','五','六'],
+            //onSelect: function(selectedDate) {//选择日期后执行的操作
+            //    alert(selectedDate);
+            // }
+            onSelect: function( endDate ) {
+                var $startDate = $( "#from" );
+                var $endDate = $('#to');
+                var startDate = $startDate.datepicker( "getDate" );
+                if(endDate < startDate){
+                    $startDate.datepicker('setDate', startDate + 3600*1000*24);
+                }
+                $startDate.datepicker( "option", "maxDate", endDate );
+            }
+        });
+        //点击今日  自动输入日期
+        $.datepicker._gotoToday = function (id) {
+            var target = $(id);
+            var inst = this._getInst(target[0]);
+            if (this._get(inst, 'gotoCurrent') && inst.currentDay) {
+                inst.selectedDay = inst.currentDay;
+                inst.drawMonth = inst.selectedMonth = inst.currentMonth;
+                inst.drawYear = inst.selectedYear = inst.currentYear;
+            }
+            else {
+                var date = new Date();
+                inst.selectedDay = date.getDate();
+                inst.drawMonth = inst.selectedMonth = date.getMonth();
+                inst.drawYear = inst.selectedYear = date.getFullYear();
+                this._setDateDatepicker(target, date);
+                this._selectDate(id, this._getDateDatepicker(target));
+            }
+            this._notifyChange(inst);
+            this._adjustDate(target);
+        }
+    });
+</script>
 </html>
