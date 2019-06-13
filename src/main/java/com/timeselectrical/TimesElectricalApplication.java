@@ -8,7 +8,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @MapperScan("com.timeselectrical.mapper")
-@EnableScheduling
+//@EnableScheduling
 public class TimesElectricalApplication {
 
     public static void main(String[] args) {

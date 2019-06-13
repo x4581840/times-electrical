@@ -12,6 +12,9 @@
     <artifactId>times-electrical</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
+    <!-- 打成jar -->
+    <packaging>jar</packaging>
+
     <name>times-electrical</name>
     <description>Demo project for Spring Boot</description>
 

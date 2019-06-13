@@ -35,29 +35,94 @@ function InitTable1 () {
                 rows: params.limit,                         //页面大小
                 page: (params.offset / params.limit) + 1,   //页码
                 sort: params.sort,      //排序列名
-                sortOrder: params.order //排位命令（desc，asc）
+                sortOrder: params.order, //排位命令（desc，asc）
+                flag: 1
             };
             console.log("test=="+$("#dependOn").val());
             return temp;
         },
-        columns: [{field: 'id', title: 'ID', sortable: true, halign: 'center'},
-            {field: 'age', title: '年龄', sortable: true, halign: 'center'},
-            {field: 'name', title: '真实姓名', sortable: true, halign: 'center'},
-            {field: 'scoreSum', title: '总成绩', sortable: true, halign: 'center'},
-            {field: 'scoreAvg', title: '平均成绩', sortable: true, halign: 'center'},],
+        columns: [{field: 'id', title: '产品序列号', sortable: true, halign: 'center'},
+            {field: 'age', title: '父项位置号', sortable: true, halign: 'center'},
+            {field: 'name', title: '组件产品序列号', sortable: true, halign: 'center'},
+            {field: 'scoreSum', title: '组件物料编码', sortable: true, halign: 'center'},
+            {field: 'scoreAvg', title: '组件位置描述', sortable: true, halign: 'center'},
+            {field: 'scoreAvg', title: '组件位置号', sortable: true, halign: 'center'},
+            {field: 'scoreAvg', title: '车型编号', sortable: true, halign: 'center'},
+            {field: 'scoreAvg', title: '车号', sortable: true, halign: 'center'},
+            {field: 'scoreAvg', title: '车厢号', sortable: true, halign: 'center'},
+            {field: 'scoreAvg', title: '配属用户', sortable: true, halign: 'center'},
+            {field: 'scoreAvg', title: '修程修次', sortable: true, halign: 'center'},
+            {field: 'scoreAvg', title: '制造企业', sortable: true, halign: 'center'},
+            {field: 'birthDate', title: '上线日期', sortable: true, halign: 'center',formatter: function (value, row, index) {
+                    return changeDateFormat(value);
+                }},
+            {field: 'birthDate', title: '出厂日期', sortable: true, halign: 'center',formatter: function (value, row, index) {
+                    return changeDateFormat(value);
+                }},
+            {field: 'birthDate', title: '检修日期', sortable: true, halign: 'center',formatter: function (value, row, index) {
+                    return changeDateFormat(value);
+                }},
+            {field: 'scoreAvg', title: '生产故障次数', sortable: true, halign: 'center',formatter: function (value, row, index) {
+                    return '<a href="#">'+value+'</a>';
+                }}, //超链接
+            {field: 'scoreAvg', title: '现场故障记录', sortable: true, halign: 'center',formatter: function (value, row, index) {
+                    return '<a href="#">'+value+'</a>';
+                }}, //超链接
+        ],
         onLoadSuccess: function () {
 
         },
         onLoadError: function () {
-            showTips("数据加载失败！");
+            // showTips("数据加载失败！");
+            console.log("数据加载失败！");
         }
     });
 };
+
 
 // $(function(){
 //     InitMainTable();
 // });
 
 function tab1_query_button() {
+    //再次点击查询时把table对象信息销毁
+    $("#table1").bootstrapTable('destroy');
     InitTable1();
 }
+
+$(function () {
+    $("#componentLocSelect").select2({
+        ajax:{
+            url: '/backward/getSelectData',
+            dataType: 'json',  //比较重要，没有的话返回json数据会无法识别，搜索失败
+            data: function(param){
+                console.log("======");
+                return {
+                    keyword: param.term,
+                    searchType: 'public',
+                    //page: param.page || 1
+                }
+            },
+            processResults: function (data, params) {
+                console.log("data==="+data);
+                //params.page = params.page || 1;
+
+                return {
+                    results: data.results,
+                    // pagination: {
+                    //     more: (params.page * 10) < data.total_count
+                    // }
+                };
+            },
+            cache: true
+        },
+        language: 'zh-CN',
+        width: '20%',
+        placeholder: '请输入选择',
+        minimumInputLength: 1, //至少要输入一个字符才能去查询
+        maximumSelectionLength: 10,  //最多能够选择的个数
+        allowClear: true,
+        // tags: true
+    });
+})
+

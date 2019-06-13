@@ -35,25 +35,49 @@ function InitTable2 () {
                 rows: params.limit,                         //页面大小
                 page: (params.offset / params.limit) + 1,   //页码
                 sort: params.sort,      //排序列名
-                sortOrder: params.order //排位命令（desc，asc）
+                sortOrder: params.order, //排位命令（desc，asc）
+                flag: 1
             };
             console.log("test=="+$("#dependOn").val());
             return temp;
         },
-        columns: [{field: 'id', title: 'ID', sortable: true, halign: 'center'},
-            {field: 'age', title: '年龄', sortable: true, halign: 'center'},
-            {field: 'name', title: '真实姓名', sortable: true, halign: 'center'},
-            {field: 'scoreSum', title: '总成绩', sortable: true, halign: 'center'},
-            {field: 'scoreAvg', title: '平均成绩', sortable: true, halign: 'center'},],
+        columns: [{field: 'id', title: '产品序列号', sortable: true, halign: 'center'},
+            {field: 'age', title: '订单号', sortable: true, halign: 'center'},
+            {field: 'name', title: '工序', sortable: true, halign: 'center'},
+            {field: 'scoreSum', title: '缺陷类型', sortable: true, halign: 'center'},
+            {field: 'scoreAvg', title: '缺陷代码', sortable: true, halign: 'center'},
+            {field: 'scoreAvg', title: '现象描述', sortable: true, halign: 'center'},
+            {field: 'scoreAvg', title: '缺陷物料编号', sortable: true, halign: 'center'},
+            {field: 'scoreAvg', title: '缺陷物料位置', sortable: true, halign: 'center'},
+            {field: 'scoreAvg', title: '缺陷物料分类组', sortable: true, halign: 'center'},
+            {field: 'scoreAvg', title: '缺陷物料序列号', sortable: true, halign: 'center'},
+            {field: 'scoreAvg', title: '缺陷物料数量', sortable: true, halign: 'center'},
+            {field: 'scoreAvg', title: '供应商序列号', sortable: true, halign: 'center'},
+            {field: 'scoreAvg', title: '供应商代码', sortable: true, halign: 'center'},
+            {field: 'scoreAvg', title: '物料凭证编号', sortable: true, halign: 'center'},
+            {field: 'scoreAvg', title: '是否筛选', sortable: true, halign: 'center'},
+            {field: 'scoreAvg', title: '筛选单位', sortable: true, halign: 'center'},
+            {field: 'birthDate', title: '筛选日期', sortable: true, halign: 'center',formatter: function (value, row, index) {
+                    return changeDateFormat(value)
+                }},
+            {field: 'birthDate', title: '筛选时间', sortable: true, halign: 'center',formatter: function (value, row, index) {
+                    return changeDateFormat(value)
+                }},
+            {field: 'scoreAvg', title: '采用筛选方案版本', sortable: true, halign: 'center'},
+            {field: 'scoreAvg', title: '筛选结果', sortable: true, halign: 'center'},
+        ],
         onLoadSuccess: function () {
 
         },
         onLoadError: function () {
-            showTips("数据加载失败！");
+            //showTips("数据加载失败！");
+            console.log("数据加载失败！");
         }
     });
 };
 
 function tab2_query_button() {
+    //再次点击查询时把table对象信息销毁
+    $("#table1").bootstrapTable('destroy');
     InitTable2();
 }

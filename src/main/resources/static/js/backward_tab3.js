@@ -35,21 +35,38 @@ function InitTable3 () {
                 rows: params.limit,                         //页面大小
                 page: (params.offset / params.limit) + 1,   //页码
                 sort: params.sort,      //排序列名
-                sortOrder: params.order //排位命令（desc，asc）
+                sortOrder: params.order, //排位命令（desc，asc）
+                flag: 1
             };
             console.log("test=="+$("#dependOn").val());
             return temp;
         },
-        columns: [{field: 'id', title: 'ID', sortable: true, halign: 'center'},
-            {field: 'age', title: '年龄', sortable: true, halign: 'center'},
-            {field: 'name', title: '真实姓名', sortable: true, halign: 'center'},
-            {field: 'scoreSum', title: '总成绩', sortable: true, halign: 'center'},
-            {field: 'scoreAvg', title: '平均成绩', sortable: true, halign: 'center'},],
+        columns: [{field: 'id', title: '表单编号', sortable: true, halign: 'center'},
+            {field: 'age', title: '故障品图号', sortable: true, halign: 'center',formatter: function (value, row, index) {
+                    return '<a href="#">'+value+'</a>';
+                }},
+            {field: 'name', title: '故障品名称', sortable: true, halign: 'center'},
+            {field: 'scoreSum', title: '车型大类', sortable: true, halign: 'center'},
+            {field: 'scoreAvg', title: '车型', sortable: true, halign: 'center'},
+            {field: 'scoreAvg', title: '责任单位', sortable: true, halign: 'center'},
+            {field: 'scoreAvg', title: '项目名称', sortable: true, halign: 'center'},
+            {field: 'scoreAvg', title: '项目号', sortable: true, halign: 'center'},
+            {field: 'scoreAvg', title: '所属一级零部件', sortable: true, halign: 'center'},
+            {field: 'scoreAvg', title: '生产单位', sortable: true, halign: 'center'},
+            {field: 'scoreAvg', title: '故障名称', sortable: true, halign: 'center'},
+            {field: 'scoreAvg', title: '故障代码', sortable: true, halign: 'center'},
+            {field: 'scoreAvg', title: '故障后果', sortable: true, halign: 'center'},
+            {field: 'scoreAvg', title: '故障等级', sortable: true, halign: 'center'},
+            {field: 'birthDate', title: '故障发生时间', sortable: true, halign: 'center',formatter: function (value, row, index) {
+                    return changeDateFormat(value)
+                }},
+        ],
         onLoadSuccess: function () {
 
         },
         onLoadError: function () {
-            showTips("数据加载失败！");
+            //showTips("数据加载失败！");
+            console.log("数据加载失败！");
         }
     });
 };
@@ -59,5 +76,7 @@ function InitTable3 () {
 // });
 
 function tab3_query_button() {
+    //再次点击查询时把table对象信息销毁
+    $("#table1").bootstrapTable('destroy');
     InitTable3();
 }

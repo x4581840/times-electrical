@@ -11,9 +11,10 @@ function initTreeView() {
     $("#inputSeqNo").css("color", "#333");
     var defaultData;
     var nodeId_temp = null;
+    var flag = $("#seqNo").val();
     $.ajax({
         type: "post",
-        url: "/backward/getTreeList",
+        url: "/backward/getTreeList?rnd=" + Math.random() + "&flag=" + flag,
         contentType: 'text/json,charset=utf-8',
         dataType: "json",
         success: function (result) {
@@ -46,7 +47,13 @@ function initTreeView() {
             $("#treeViewDiv").css("display", "block");
         },
         error: function () {
-            alert("按层级加载失败")
+            $("#treeViewDiv").css("display", "none");
+            spop({
+                template: '没有数据!',
+                position  : 'top-center',
+                style: 'error',
+                autoclose: 3000
+            });
         }
     });
 }
@@ -57,4 +64,17 @@ function confirm() {
     $("#seqNo").val($("#hiddenSeqNo").val());
     //隐藏treeview控件
     $("#treeViewDiv").css("display", "none");
+}
+
+//修改——转换日期格式(时间戳转换为datetime格式)
+function changeDateFormat(cellval) {
+    if (cellval != null) {
+        var date = new Date(parseInt(cellval));
+        var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+        var currentDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+        var hh24 = date.getHours();
+        var mi = date.getMinutes();
+        var ss = date.getSeconds();
+        return date.getFullYear() + "-" + month + "-" + currentDate + "-" + hh24 + "-" + mi + "-" + ss ;
+    }
 }

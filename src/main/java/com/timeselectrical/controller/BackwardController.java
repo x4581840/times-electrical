@@ -1,18 +1,21 @@
 package com.timeselectrical.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.timeselectrical.dto.ComponentLocationDTO;
+import com.timeselectrical.dto.ComponentLocationDTO.*;
 import com.timeselectrical.model.Student;
+import com.timeselectrical.model.StudentImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.swing.text.html.parser.Entity;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @Description
@@ -25,13 +28,16 @@ import java.util.Map;
 @RequestMapping(value = "/backward")
 public class BackwardController {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(BackwardController.class);
+
     @RequestMapping("/backwardTab")
     public String tab() {
         return "backward";
     }
 
+    @ResponseBody
     @RequestMapping(value = "/getTreeList")
-    public ResponseEntity getTreeList() {
+    public String getTreeList(@RequestParam(name = "flag") String flag) {
         List<Map<String, Object>> list = new ArrayList<>();
         Map<String, Object> map1 = new HashMap<>();
         map1.put("id", 1);
@@ -74,51 +80,91 @@ public class BackwardController {
         System.out.println("=========");
         String result = JSON.toJSONString(list);
         System.out.println("==="+result);
-        return ResponseEntity.ok(result);
+        if("1".equals(flag)) {
+            return result;
+        }
+        return null;
     }
 
     @RequestMapping("/getName")
     @ResponseBody
     public Student getName() {
-        return new Student(1,1, "1", "1", "1");
+        return new StudentImpl(1,1, "1", "1", "1", new Date().getTime());
     }
 
     @ResponseBody
     @RequestMapping("/getList")
-    public List<Student> getList() {
+    public List<Student> getList(@RequestParam(name = "flag") String flag) {
+        LOGGER.info("flag:::"+flag);
         List<Student> result = new ArrayList<>();
-        Student student = new Student(1, 1, "A", "1", "1");
+        Student student = new StudentImpl(1, 1, "A多发点阿兰德斯开发第三方；阿克苏地方啊； 啊结算代理发来了阿里考多少分", "1", "1", new Date().getTime());
         result.add(student);
 
-        student = new Student(2, 2, "B", "2", "2");
+        student = new StudentImpl(2, 2, "B", "2", "2", new Date().getTime());
         result.add(student);
 
-        student = new Student(3, 3, "C", "3", "3");
+        student = new StudentImpl(3, 3, "C", "3", "3", new Date().getTime());
         result.add(student);
 
-        student = new Student(4, 4, "D", "4", "4");
+        student = new StudentImpl(4, 4, "D", "4", "4", new Date().getTime());
         result.add(student);
 
-        student = new Student(5, 5, "E", "5", "5");
+        student = new StudentImpl(5, 5, "E", "5", "5", new Date().getTime());
         result.add(student);
 
-        student = new Student(6, 6, "F", "6", "6");
+        student = new StudentImpl(6, 6, "F", "6", "6", new Date().getTime());
         result.add(student);
 
-        student = new Student(7, 7, "G", "7", "7");
+        student = new StudentImpl(7, 7, "G", "7", "7", new Date().getTime());
         result.add(student);
 
-        student = new Student(8, 8, "H", "8", "8");
+        student = new StudentImpl(8, 8, "H", "8", "8", new Date().getTime());
         result.add(student);
 
-        student = new Student(9, 9, "I", "9", "9");
+        student = new StudentImpl(9, 9, "I", "9", "9", new Date().getTime());
         result.add(student);
 
-        student = new Student(10, 10, "J", "10", "11");
+        student = new StudentImpl(10, 10, "J", "10", "10", new Date().getTime());
         result.add(student);
 
-        student = new Student(11, 11, "K", "11", "11");
+        student = new StudentImpl(11, 11, "K", "11", "11", new Date().getTime());
         result.add(student);
-        return result;
+        if("1".equals(flag)) {
+            return result;
+        }
+        return null;
+    }
+
+    @ResponseBody
+    @RequestMapping("/getSelectData")
+    public ComponentLocationDTO getSelectData() {
+        LOGGER.info("进来了======");
+        ComponentLocationDTO clDto = new ComponentLocationDTO();
+        List<ComonentLocation> results = new ArrayList<>();
+        ComonentLocation cl1 = clDto.new ComonentLocation("1", "位置号11");
+        ComonentLocation cl2 = clDto.new ComonentLocation("2", "位置号22");
+        ComonentLocation cl3 = clDto.new ComonentLocation("3", "位置号33");
+        ComonentLocation cl4 = clDto.new ComonentLocation("4", "位置号44");
+        ComonentLocation cl5 = clDto.new ComonentLocation("5", "位置号55");
+        ComonentLocation cl6 = clDto.new ComonentLocation("6", "位置号66");
+        ComonentLocation cl7 = clDto.new ComonentLocation("7", "位置号77");
+        ComonentLocation cl8 = clDto.new ComonentLocation("8", "位置号88");
+        ComonentLocation cl9 = clDto.new ComonentLocation("9", "位置号99");
+        ComonentLocation cl10 = clDto.new ComonentLocation("10", "位置号10");
+        results.add(cl1);
+        results.add(cl2);
+        results.add(cl3);
+        results.add(cl4);
+        results.add(cl5);
+        results.add(cl6);
+        results.add(cl7);
+        results.add(cl8);
+        results.add(cl9);
+        results.add(cl10);
+        clDto.setResults(results);
+        //Pagination p = clDto.new Pagination();
+        //p.setMore(true);
+        //clDto.setPagination(p);
+        return clDto;
     }
 }
