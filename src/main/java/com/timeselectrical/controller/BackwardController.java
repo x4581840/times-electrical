@@ -1,6 +1,7 @@
 package com.timeselectrical.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.timeselectrical.component.PageWrapper;
 import com.timeselectrical.dto.ComponentLocationDTO;
 import com.timeselectrical.dto.ComponentLocationDTO.*;
 import com.timeselectrical.model.Student;
@@ -92,9 +93,8 @@ public class BackwardController {
         return new StudentImpl(1,1, "1", "1", "1", new Date().getTime());
     }
 
-    @ResponseBody
     @RequestMapping("/getList")
-    public List<Student> getList(@RequestParam(name = "flag") String flag) {
+    public ResponseEntity getList(@RequestParam(name = "flag") String flag) {
         LOGGER.info("flag:::"+flag);
         List<Student> result = new ArrayList<>();
         Student student = new StudentImpl(1, 1, "A多发点阿兰德斯开发第三方；阿克苏地方啊； 啊结算代理发来了阿里考多少分", "1", "1", new Date().getTime());
@@ -130,7 +130,7 @@ public class BackwardController {
         student = new StudentImpl(11, 11, "K", "11", "11", new Date().getTime());
         result.add(student);
         if("1".equals(flag)) {
-            return result;
+            return ResponseEntity.ok(new PageWrapper<>(result));
         }
         return null;
     }
