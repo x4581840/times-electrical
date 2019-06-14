@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.timeselectrical.mapper.ProductionDefectRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.timeselectrical.model.ProductionDefectRecord" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="seq" property="seq" jdbcType="VARCHAR" />
+    <result column="bom_mat_id" property="bomMatId" jdbcType="VARCHAR" />
+    <result column="sublot_id" property="sublotId" jdbcType="VARCHAR" />
+    <result column="lot_id" property="lotId" jdbcType="VARCHAR" />
+    <result column="defect_type" property="defectType" jdbcType="VARCHAR" />
+    <result column="defect_code" property="defectCode" jdbcType="VARCHAR" />
+    <result column="defect_comment" property="defectComment" jdbcType="VARCHAR" />
+    <result column="mat_cmf_1" property="matCmf1" jdbcType="VARCHAR" />
+    <result column="location_num" property="locationNum" jdbcType="VARCHAR" />
+    <result column="def_cmf_2" property="defCmf2" jdbcType="VARCHAR" />
+    <result column="zgys" property="zgys" jdbcType="VARCHAR" />
+    <result column="lifnr" property="lifnr" jdbcType="VARCHAR" />
+    <result column="mblnr" property="mblnr" jdbcType="VARCHAR" />
+    <result column="zsfsx" property="zsfsx" jdbcType="VARCHAR" />
+    <result column="zsxdw" property="zsxdw" jdbcType="VARCHAR" />
+    <result column="zsxrq" property="zsxrq" jdbcType="TIMESTAMP" />
+    <result column="zsxsj" property="zsxsj" jdbcType="TIMESTAMP" />
+    <result column="zsxbb" property="zsxbb" jdbcType="VARCHAR" />
+    <result column="zsxjg" property="zsxjg" jdbcType="VARCHAR" />
+    <result column="count" property="count" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, seq, bom_mat_id, sublot_id, lot_id, defect_type, defect_code, defect_comment, 
+    mat_cmf_1, location_num, def_cmf_2, zgys, lifnr, mblnr, zsfsx, zsxdw, zsxrq, zsxsj, 
+    zsxbb, zsxjg, count
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.timeselectrical.model.ProductionDefectRecordExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from production_defect_record
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from production_defect_record
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from production_defect_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.timeselectrical.model.ProductionDefectRecordExample" >
+    delete from production_defect_record
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.timeselectrical.model.ProductionDefectRecord" >
+    insert into production_defect_record (id, seq, bom_mat_id, 
+      sublot_id, lot_id, defect_type, 
+      defect_code, defect_comment, mat_cmf_1, 
+      location_num, def_cmf_2, zgys, 
+      lifnr, mblnr, zsfsx, 
+      zsxdw, zsxrq, zsxsj, 
+      zsxbb, zsxjg, count
+      )
+    values (#{id,jdbcType=INTEGER}, #{seq,jdbcType=VARCHAR}, #{bomMatId,jdbcType=VARCHAR}, 
+      #{sublotId,jdbcType=VARCHAR}, #{lotId,jdbcType=VARCHAR}, #{defectType,jdbcType=VARCHAR}, 
+      #{defectCode,jdbcType=VARCHAR}, #{defectComment,jdbcType=VARCHAR}, #{matCmf1,jdbcType=VARCHAR}, 
+      #{locationNum,jdbcType=VARCHAR}, #{defCmf2,jdbcType=VARCHAR}, #{zgys,jdbcType=VARCHAR}, 
+      #{lifnr,jdbcType=VARCHAR}, #{mblnr,jdbcType=VARCHAR}, #{zsfsx,jdbcType=VARCHAR}, 
+      #{zsxdw,jdbcType=VARCHAR}, #{zsxrq,jdbcType=TIMESTAMP}, #{zsxsj,jdbcType=TIMESTAMP}, 
+      #{zsxbb,jdbcType=VARCHAR}, #{zsxjg,jdbcType=VARCHAR}, #{count,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.timeselectrical.model.ProductionDefectRecord" >
+    insert into production_defect_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="seq != null" >
+        seq,
+      </if>
+      <if test="bomMatId != null" >
+        bom_mat_id,
+      </if>
+      <if test="sublotId != null" >
+        sublot_id,
+      </if>
+      <if test="lotId != null" >
+        lot_id,
+      </if>
+      <if test="defectType != null" >
+        defect_type,
+      </if>
+      <if test="defectCode != null" >
+        defect_code,
+      </if>
+      <if test="defectComment != null" >
+        defect_comment,
+      </if>
+      <if test="matCmf1 != null" >
+        mat_cmf_1,
+      </if>
+      <if test="locationNum != null" >
+        location_num,
+      </if>
+      <if test="defCmf2 != null" >
+        def_cmf_2,
+      </if>
+      <if test="zgys != null" >
+        zgys,
+      </if>
+      <if test="lifnr != null" >
+        lifnr,
+      </if>
+      <if test="mblnr != null" >
+        mblnr,
+      </if>
+      <if test="zsfsx != null" >
+        zsfsx,
+      </if>
+      <if test="zsxdw != null" >
+        zsxdw,
+      </if>
+      <if test="zsxrq != null" >
+        zsxrq,
+      </if>
+      <if test="zsxsj != null" >
+        zsxsj,
+      </if>
+      <if test="zsxbb != null" >
+        zsxbb,
+      </if>
+      <if test="zsxjg != null" >
+        zsxjg,
+      </if>
+      <if test="count != null" >
+        count,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="seq != null" >
+        #{seq,jdbcType=VARCHAR},
+      </if>
+      <if test="bomMatId != null" >
+        #{bomMatId,jdbcType=VARCHAR},
+      </if>
+      <if test="sublotId != null" >
+        #{sublotId,jdbcType=VARCHAR},
+      </if>
+      <if test="lotId != null" >
+        #{lotId,jdbcType=VARCHAR},
+      </if>
+      <if test="defectType != null" >
+        #{defectType,jdbcType=VARCHAR},
+      </if>
+      <if test="defectCode != null" >
+        #{defectCode,jdbcType=VARCHAR},
+      </if>
+      <if test="defectComment != null" >
+        #{defectComment,jdbcType=VARCHAR},
+      </if>
+      <if test="matCmf1 != null" >
+        #{matCmf1,jdbcType=VARCHAR},
+      </if>
+      <if test="locationNum != null" >
+        #{locationNum,jdbcType=VARCHAR},
+      </if>
+      <if test="defCmf2 != null" >
+        #{defCmf2,jdbcType=VARCHAR},
+      </if>
+      <if test="zgys != null" >
+        #{zgys,jdbcType=VARCHAR},
+      </if>
+      <if test="lifnr != null" >
+        #{lifnr,jdbcType=VARCHAR},
+      </if>
+      <if test="mblnr != null" >
+        #{mblnr,jdbcType=VARCHAR},
+      </if>
+      <if test="zsfsx != null" >
+        #{zsfsx,jdbcType=VARCHAR},
+      </if>
+      <if test="zsxdw != null" >
+        #{zsxdw,jdbcType=VARCHAR},
+      </if>
+      <if test="zsxrq != null" >
+        #{zsxrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="zsxsj != null" >
+        #{zsxsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="zsxbb != null" >
+        #{zsxbb,jdbcType=VARCHAR},
+      </if>
+      <if test="zsxjg != null" >
+        #{zsxjg,jdbcType=VARCHAR},
+      </if>
+      <if test="count != null" >
+        #{count,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.timeselectrical.model.ProductionDefectRecordExample" resultType="java.lang.Integer" >
+    select count(*) from production_defect_record
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update production_defect_record
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.seq != null" >
+        seq = #{record.seq,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bomMatId != null" >
+        bom_mat_id = #{record.bomMatId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sublotId != null" >
+        sublot_id = #{record.sublotId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lotId != null" >
+        lot_id = #{record.lotId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.defectType != null" >
+        defect_type = #{record.defectType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.defectCode != null" >
+        defect_code = #{record.defectCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.defectComment != null" >
+        defect_comment = #{record.defectComment,jdbcType=VARCHAR},
+      </if>
+      <if test="record.matCmf1 != null" >
+        mat_cmf_1 = #{record.matCmf1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.locationNum != null" >
+        location_num = #{record.locationNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.defCmf2 != null" >
+        def_cmf_2 = #{record.defCmf2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zgys != null" >
+        zgys = #{record.zgys,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lifnr != null" >
+        lifnr = #{record.lifnr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mblnr != null" >
+        mblnr = #{record.mblnr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zsfsx != null" >
+        zsfsx = #{record.zsfsx,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zsxdw != null" >
+        zsxdw = #{record.zsxdw,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zsxrq != null" >
+        zsxrq = #{record.zsxrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.zsxsj != null" >
+        zsxsj = #{record.zsxsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.zsxbb != null" >
+        zsxbb = #{record.zsxbb,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zsxjg != null" >
+        zsxjg = #{record.zsxjg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.count != null" >
+        count = #{record.count,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update production_defect_record
+    set id = #{record.id,jdbcType=INTEGER},
+      seq = #{record.seq,jdbcType=VARCHAR},
+      bom_mat_id = #{record.bomMatId,jdbcType=VARCHAR},
+      sublot_id = #{record.sublotId,jdbcType=VARCHAR},
+      lot_id = #{record.lotId,jdbcType=VARCHAR},
+      defect_type = #{record.defectType,jdbcType=VARCHAR},
+      defect_code = #{record.defectCode,jdbcType=VARCHAR},
+      defect_comment = #{record.defectComment,jdbcType=VARCHAR},
+      mat_cmf_1 = #{record.matCmf1,jdbcType=VARCHAR},
+      location_num = #{record.locationNum,jdbcType=VARCHAR},
+      def_cmf_2 = #{record.defCmf2,jdbcType=VARCHAR},
+      zgys = #{record.zgys,jdbcType=VARCHAR},
+      lifnr = #{record.lifnr,jdbcType=VARCHAR},
+      mblnr = #{record.mblnr,jdbcType=VARCHAR},
+      zsfsx = #{record.zsfsx,jdbcType=VARCHAR},
+      zsxdw = #{record.zsxdw,jdbcType=VARCHAR},
+      zsxrq = #{record.zsxrq,jdbcType=TIMESTAMP},
+      zsxsj = #{record.zsxsj,jdbcType=TIMESTAMP},
+      zsxbb = #{record.zsxbb,jdbcType=VARCHAR},
+      zsxjg = #{record.zsxjg,jdbcType=VARCHAR},
+      count = #{record.count,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.timeselectrical.model.ProductionDefectRecord" >
+    update production_defect_record
+    <set >
+      <if test="seq != null" >
+        seq = #{seq,jdbcType=VARCHAR},
+      </if>
+      <if test="bomMatId != null" >
+        bom_mat_id = #{bomMatId,jdbcType=VARCHAR},
+      </if>
+      <if test="sublotId != null" >
+        sublot_id = #{sublotId,jdbcType=VARCHAR},
+      </if>
+      <if test="lotId != null" >
+        lot_id = #{lotId,jdbcType=VARCHAR},
+      </if>
+      <if test="defectType != null" >
+        defect_type = #{defectType,jdbcType=VARCHAR},
+      </if>
+      <if test="defectCode != null" >
+        defect_code = #{defectCode,jdbcType=VARCHAR},
+      </if>
+      <if test="defectComment != null" >
+        defect_comment = #{defectComment,jdbcType=VARCHAR},
+      </if>
+      <if test="matCmf1 != null" >
+        mat_cmf_1 = #{matCmf1,jdbcType=VARCHAR},
+      </if>
+      <if test="locationNum != null" >
+        location_num = #{locationNum,jdbcType=VARCHAR},
+      </if>
+      <if test="defCmf2 != null" >
+        def_cmf_2 = #{defCmf2,jdbcType=VARCHAR},
+      </if>
+      <if test="zgys != null" >
+        zgys = #{zgys,jdbcType=VARCHAR},
+      </if>
+      <if test="lifnr != null" >
+        lifnr = #{lifnr,jdbcType=VARCHAR},
+      </if>
+      <if test="mblnr != null" >
+        mblnr = #{mblnr,jdbcType=VARCHAR},
+      </if>
+      <if test="zsfsx != null" >
+        zsfsx = #{zsfsx,jdbcType=VARCHAR},
+      </if>
+      <if test="zsxdw != null" >
+        zsxdw = #{zsxdw,jdbcType=VARCHAR},
+      </if>
+      <if test="zsxrq != null" >
+        zsxrq = #{zsxrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="zsxsj != null" >
+        zsxsj = #{zsxsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="zsxbb != null" >
+        zsxbb = #{zsxbb,jdbcType=VARCHAR},
+      </if>
+      <if test="zsxjg != null" >
+        zsxjg = #{zsxjg,jdbcType=VARCHAR},
+      </if>
+      <if test="count != null" >
+        count = #{count,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.timeselectrical.model.ProductionDefectRecord" >
+    update production_defect_record
+    set seq = #{seq,jdbcType=VARCHAR},
+      bom_mat_id = #{bomMatId,jdbcType=VARCHAR},
+      sublot_id = #{sublotId,jdbcType=VARCHAR},
+      lot_id = #{lotId,jdbcType=VARCHAR},
+      defect_type = #{defectType,jdbcType=VARCHAR},
+      defect_code = #{defectCode,jdbcType=VARCHAR},
+      defect_comment = #{defectComment,jdbcType=VARCHAR},
+      mat_cmf_1 = #{matCmf1,jdbcType=VARCHAR},
+      location_num = #{locationNum,jdbcType=VARCHAR},
+      def_cmf_2 = #{defCmf2,jdbcType=VARCHAR},
+      zgys = #{zgys,jdbcType=VARCHAR},
+      lifnr = #{lifnr,jdbcType=VARCHAR},
+      mblnr = #{mblnr,jdbcType=VARCHAR},
+      zsfsx = #{zsfsx,jdbcType=VARCHAR},
+      zsxdw = #{zsxdw,jdbcType=VARCHAR},
+      zsxrq = #{zsxrq,jdbcType=TIMESTAMP},
+      zsxsj = #{zsxsj,jdbcType=TIMESTAMP},
+      zsxbb = #{zsxbb,jdbcType=VARCHAR},
+      zsxjg = #{zsxjg,jdbcType=VARCHAR},
+      count = #{count,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

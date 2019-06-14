@@ -36,9 +36,14 @@ public class BackwardController {
         return "backward";
     }
 
-    @ResponseBody
-    @RequestMapping(value = "/getTreeList")
-    public String getTreeList(@RequestParam(name = "flag") String flag) {
+    /**
+     *
+     * @param sqn 产品序列号,对应到装车配置表（ASSET）中的字段父项产品序列号（SQN）
+     * @return
+     */
+    @RequestMapping(value = "/getTreeData")
+    public ResponseEntity getTreeData(@RequestParam(name = "sqn") String sqn) {
+
         List<Map<String, Object>> list = new ArrayList<>();
         Map<String, Object> map1 = new HashMap<>();
         map1.put("id", 1);
@@ -81,9 +86,6 @@ public class BackwardController {
         System.out.println("=========");
         String result = JSON.toJSONString(list);
         System.out.println("==="+result);
-        if("1".equals(flag)) {
-            return result;
-        }
         return null;
     }
 
@@ -94,7 +96,9 @@ public class BackwardController {
     }
 
     @RequestMapping("/getList")
-    public ResponseEntity getList(@RequestParam(name = "flag") String flag) {
+    public ResponseEntity getList(@RequestParam(defaultValue = "1", required = false) Integer pageNo,
+                                  @RequestParam(defaultValue = "10", required = false) Integer pageSize,
+                                  @RequestParam(name = "flag") String flag) {
         LOGGER.info("flag:::"+flag);
         List<Student> result = new ArrayList<>();
         Student student = new StudentImpl(1, 1, "A多发点阿兰德斯开发第三方；阿克苏地方啊； 啊结算代理发来了阿里考多少分", "1", "1", new Date().getTime());

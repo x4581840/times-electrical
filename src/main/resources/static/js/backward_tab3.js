@@ -43,7 +43,9 @@ function InitTable3 () {
         },
         columns: [{field: 'id', title: '表单编号', sortable: true, halign: 'center'},
             {field: 'age', title: '故障品图号', sortable: true, halign: 'center',formatter: function (value, row, index) {
-                    return '<a href="#">'+value+'</a>';
+                var seqNo = $("#hiddenSeqNo").val();
+                console.log("seqNo===");
+                    return '<a href="/forward/getLinkForwardPage?seqNo="'+seqNo+'>'+value+'</a>';
                 }},
             {field: 'name', title: '故障品名称', sortable: true, halign: 'center'},
             {field: 'scoreSum', title: '车型大类', sortable: true, halign: 'center'},
@@ -77,6 +79,6 @@ function InitTable3 () {
 
 function tab3_query_button() {
     //再次点击查询时把table对象信息销毁
-    $("#table1").bootstrapTable('destroy');
+    $("#table3").bootstrapTable('destroy');
     InitTable3();
 }

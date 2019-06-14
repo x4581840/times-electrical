@@ -3,7 +3,7 @@ var $table2;
 //初始化bootstrap-table的内容
 function InitTable2 () {
     //记录页面bootstrap-table全局变量$table，方便应用
-    var queryUrl = '/backward/getList?rnd=' + Math.random();
+    var queryUrl = '/test/getTreeDate?rnd=' + Math.random();
     $table2 = $('#table2').bootstrapTable({
         url: queryUrl,                      //请求后台的URL（*）
         method: 'GET',                      //请求方式（*）
@@ -78,6 +78,6 @@ function InitTable2 () {
 
 function tab2_query_button() {
     //再次点击查询时把table对象信息销毁
-    $("#table1").bootstrapTable('destroy');
+    $("#table2").bootstrapTable('destroy');
     InitTable2();
 }

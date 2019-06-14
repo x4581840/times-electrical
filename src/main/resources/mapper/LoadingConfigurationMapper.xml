@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.timeselectrical.mapper.LoadingConfigurationMapper" >
+  <resultMap id="BaseResultMap" type="com.timeselectrical.model.LoadingConfiguration" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="sqn" property="sqn" jdbcType="VARCHAR" />
+    <result column="loc" property="loc" jdbcType="VARCHAR" />
+    <result column="itemnum" property="itemnum" jdbcType="VARCHAR" />
+    <result column="locdesc" property="locdesc" jdbcType="VARCHAR" />
+    <result column="cmodel" property="cmodel" jdbcType="VARCHAR" />
+    <result column="carno" property="carno" jdbcType="VARCHAR" />
+    <result column="carriagenum" property="carriagenum" jdbcType="VARCHAR" />
+    <result column="ownercustomer" property="ownercustomer" jdbcType="VARCHAR" />
+    <result column="repairprocess" property="repairprocess" jdbcType="VARCHAR" />
+    <result column="maker" property="maker" jdbcType="VARCHAR" />
+    <result column="onlinetime" property="onlinetime" jdbcType="TIMESTAMP" />
+    <result column="releasedate" property="releasedate" jdbcType="TIMESTAMP" />
+    <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="ancestor" property="ancestor" jdbcType="VARCHAR" />
+    <result column="assetlevel" property="assetlevel" jdbcType="VARCHAR" />
+    <result column="parent" property="parent" jdbcType="VARCHAR" />
+    <result column="assetnum" property="assetnum" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="f_gzpxh" property="fGzpxh" jdbcType="VARCHAR" />
+    <result column="f_gzfssj" property="fGzfssj" jdbcType="TIMESTAMP" />
+    <result column="count_scgz" property="countScgz" jdbcType="INTEGER" />
+    <result column="count_xcgz" property="countXcgz" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, sqn, loc, itemnum, locdesc, cmodel, carno, carriagenum, ownercustomer, repairprocess, 
+    maker, onlinetime, releasedate, updatetime, ancestor, assetlevel, parent, assetnum, 
+    type, f_gzpxh, f_gzfssj, count_scgz, count_xcgz
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.timeselectrical.model.LoadingConfigurationExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from loading_configuration
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from loading_configuration
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from loading_configuration
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.timeselectrical.model.LoadingConfigurationExample" >
+    delete from loading_configuration
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.timeselectrical.model.LoadingConfiguration" >
+    insert into loading_configuration (id, sqn, loc, 
+      itemnum, locdesc, cmodel, 
+      carno, carriagenum, ownercustomer, 
+      repairprocess, maker, onlinetime, 
+      releasedate, updatetime, ancestor, 
+      assetlevel, parent, assetnum, 
+      type, f_gzpxh, f_gzfssj, 
+      count_scgz, count_xcgz)
+    values (#{id,jdbcType=INTEGER}, #{sqn,jdbcType=VARCHAR}, #{loc,jdbcType=VARCHAR}, 
+      #{itemnum,jdbcType=VARCHAR}, #{locdesc,jdbcType=VARCHAR}, #{cmodel,jdbcType=VARCHAR}, 
+      #{carno,jdbcType=VARCHAR}, #{carriagenum,jdbcType=VARCHAR}, #{ownercustomer,jdbcType=VARCHAR}, 
+      #{repairprocess,jdbcType=VARCHAR}, #{maker,jdbcType=VARCHAR}, #{onlinetime,jdbcType=TIMESTAMP}, 
+      #{releasedate,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, #{ancestor,jdbcType=VARCHAR}, 
+      #{assetlevel,jdbcType=VARCHAR}, #{parent,jdbcType=VARCHAR}, #{assetnum,jdbcType=VARCHAR}, 
+      #{type,jdbcType=VARCHAR}, #{fGzpxh,jdbcType=VARCHAR}, #{fGzfssj,jdbcType=TIMESTAMP}, 
+      #{countScgz,jdbcType=INTEGER}, #{countXcgz,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.timeselectrical.model.LoadingConfiguration" >
+    insert into loading_configuration
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="sqn != null" >
+        sqn,
+      </if>
+      <if test="loc != null" >
+        loc,
+      </if>
+      <if test="itemnum != null" >
+        itemnum,
+      </if>
+      <if test="locdesc != null" >
+        locdesc,
+      </if>
+      <if test="cmodel != null" >
+        cmodel,
+      </if>
+      <if test="carno != null" >
+        carno,
+      </if>
+      <if test="carriagenum != null" >
+        carriagenum,
+      </if>
+      <if test="ownercustomer != null" >
+        ownercustomer,
+      </if>
+      <if test="repairprocess != null" >
+        repairprocess,
+      </if>
+      <if test="maker != null" >
+        maker,
+      </if>
+      <if test="onlinetime != null" >
+        onlinetime,
+      </if>
+      <if test="releasedate != null" >
+        releasedate,
+      </if>
+      <if test="updatetime != null" >
+        updatetime,
+      </if>
+      <if test="ancestor != null" >
+        ancestor,
+      </if>
+      <if test="assetlevel != null" >
+        assetlevel,
+      </if>
+      <if test="parent != null" >
+        parent,
+      </if>
+      <if test="assetnum != null" >
+        assetnum,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="fGzpxh != null" >
+        f_gzpxh,
+      </if>
+      <if test="fGzfssj != null" >
+        f_gzfssj,
+      </if>
+      <if test="countScgz != null" >
+        count_scgz,
+      </if>
+      <if test="countXcgz != null" >
+        count_xcgz,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="sqn != null" >
+        #{sqn,jdbcType=VARCHAR},
+      </if>
+      <if test="loc != null" >
+        #{loc,jdbcType=VARCHAR},
+      </if>
+      <if test="itemnum != null" >
+        #{itemnum,jdbcType=VARCHAR},
+      </if>
+      <if test="locdesc != null" >
+        #{locdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="cmodel != null" >
+        #{cmodel,jdbcType=VARCHAR},
+      </if>
+      <if test="carno != null" >
+        #{carno,jdbcType=VARCHAR},
+      </if>
+      <if test="carriagenum != null" >
+        #{carriagenum,jdbcType=VARCHAR},
+      </if>
+      <if test="ownercustomer != null" >
+        #{ownercustomer,jdbcType=VARCHAR},
+      </if>
+      <if test="repairprocess != null" >
+        #{repairprocess,jdbcType=VARCHAR},
+      </if>
+      <if test="maker != null" >
+        #{maker,jdbcType=VARCHAR},
+      </if>
+      <if test="onlinetime != null" >
+        #{onlinetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="releasedate != null" >
+        #{releasedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ancestor != null" >
+        #{ancestor,jdbcType=VARCHAR},
+      </if>
+      <if test="assetlevel != null" >
+        #{assetlevel,jdbcType=VARCHAR},
+      </if>
+      <if test="parent != null" >
+        #{parent,jdbcType=VARCHAR},
+      </if>
+      <if test="assetnum != null" >
+        #{assetnum,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="fGzpxh != null" >
+        #{fGzpxh,jdbcType=VARCHAR},
+      </if>
+      <if test="fGzfssj != null" >
+        #{fGzfssj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="countScgz != null" >
+        #{countScgz,jdbcType=INTEGER},
+      </if>
+      <if test="countXcgz != null" >
+        #{countXcgz,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.timeselectrical.model.LoadingConfigurationExample" resultType="java.lang.Integer" >
+    select count(*) from loading_configuration
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update loading_configuration
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.sqn != null" >
+        sqn = #{record.sqn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.loc != null" >
+        loc = #{record.loc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itemnum != null" >
+        itemnum = #{record.itemnum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.locdesc != null" >
+        locdesc = #{record.locdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cmodel != null" >
+        cmodel = #{record.cmodel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.carno != null" >
+        carno = #{record.carno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.carriagenum != null" >
+        carriagenum = #{record.carriagenum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ownercustomer != null" >
+        ownercustomer = #{record.ownercustomer,jdbcType=VARCHAR},
+      </if>
+      <if test="record.repairprocess != null" >
+        repairprocess = #{record.repairprocess,jdbcType=VARCHAR},
+      </if>
+      <if test="record.maker != null" >
+        maker = #{record.maker,jdbcType=VARCHAR},
+      </if>
+      <if test="record.onlinetime != null" >
+        onlinetime = #{record.onlinetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.releasedate != null" >
+        releasedate = #{record.releasedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatetime != null" >
+        updatetime = #{record.updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ancestor != null" >
+        ancestor = #{record.ancestor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.assetlevel != null" >
+        assetlevel = #{record.assetlevel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parent != null" >
+        parent = #{record.parent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.assetnum != null" >
+        assetnum = #{record.assetnum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fGzpxh != null" >
+        f_gzpxh = #{record.fGzpxh,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fGzfssj != null" >
+        f_gzfssj = #{record.fGzfssj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.countScgz != null" >
+        count_scgz = #{record.countScgz,jdbcType=INTEGER},
+      </if>
+      <if test="record.countXcgz != null" >
+        count_xcgz = #{record.countXcgz,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update loading_configuration
+    set id = #{record.id,jdbcType=INTEGER},
+      sqn = #{record.sqn,jdbcType=VARCHAR},
+      loc = #{record.loc,jdbcType=VARCHAR},
+      itemnum = #{record.itemnum,jdbcType=VARCHAR},
+      locdesc = #{record.locdesc,jdbcType=VARCHAR},
+      cmodel = #{record.cmodel,jdbcType=VARCHAR},
+      carno = #{record.carno,jdbcType=VARCHAR},
+      carriagenum = #{record.carriagenum,jdbcType=VARCHAR},
+      ownercustomer = #{record.ownercustomer,jdbcType=VARCHAR},
+      repairprocess = #{record.repairprocess,jdbcType=VARCHAR},
+      maker = #{record.maker,jdbcType=VARCHAR},
+      onlinetime = #{record.onlinetime,jdbcType=TIMESTAMP},
+      releasedate = #{record.releasedate,jdbcType=TIMESTAMP},
+      updatetime = #{record.updatetime,jdbcType=TIMESTAMP},
+      ancestor = #{record.ancestor,jdbcType=VARCHAR},
+      assetlevel = #{record.assetlevel,jdbcType=VARCHAR},
+      parent = #{record.parent,jdbcType=VARCHAR},
+      assetnum = #{record.assetnum,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=VARCHAR},
+      f_gzpxh = #{record.fGzpxh,jdbcType=VARCHAR},
+      f_gzfssj = #{record.fGzfssj,jdbcType=TIMESTAMP},
+      count_scgz = #{record.countScgz,jdbcType=INTEGER},
+      count_xcgz = #{record.countXcgz,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.timeselectrical.model.LoadingConfiguration" >
+    update loading_configuration
+    <set >
+      <if test="sqn != null" >
+        sqn = #{sqn,jdbcType=VARCHAR},
+      </if>
+      <if test="loc != null" >
+        loc = #{loc,jdbcType=VARCHAR},
+      </if>
+      <if test="itemnum != null" >
+        itemnum = #{itemnum,jdbcType=VARCHAR},
+      </if>
+      <if test="locdesc != null" >
+        locdesc = #{locdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="cmodel != null" >
+        cmodel = #{cmodel,jdbcType=VARCHAR},
+      </if>
+      <if test="carno != null" >
+        carno = #{carno,jdbcType=VARCHAR},
+      </if>
+      <if test="carriagenum != null" >
+        carriagenum = #{carriagenum,jdbcType=VARCHAR},
+      </if>
+      <if test="ownercustomer != null" >
+        ownercustomer = #{ownercustomer,jdbcType=VARCHAR},
+      </if>
+      <if test="repairprocess != null" >
+        repairprocess = #{repairprocess,jdbcType=VARCHAR},
+      </if>
+      <if test="maker != null" >
+        maker = #{maker,jdbcType=VARCHAR},
+      </if>
+      <if test="onlinetime != null" >
+        onlinetime = #{onlinetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="releasedate != null" >
+        releasedate = #{releasedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ancestor != null" >
+        ancestor = #{ancestor,jdbcType=VARCHAR},
+      </if>
+      <if test="assetlevel != null" >
+        assetlevel = #{assetlevel,jdbcType=VARCHAR},
+      </if>
+      <if test="parent != null" >
+        parent = #{parent,jdbcType=VARCHAR},
+      </if>
+      <if test="assetnum != null" >
+        assetnum = #{assetnum,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="fGzpxh != null" >
+        f_gzpxh = #{fGzpxh,jdbcType=VARCHAR},
+      </if>
+      <if test="fGzfssj != null" >
+        f_gzfssj = #{fGzfssj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="countScgz != null" >
+        count_scgz = #{countScgz,jdbcType=INTEGER},
+      </if>
+      <if test="countXcgz != null" >
+        count_xcgz = #{countXcgz,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.timeselectrical.model.LoadingConfiguration" >
+    update loading_configuration
+    set sqn = #{sqn,jdbcType=VARCHAR},
+      loc = #{loc,jdbcType=VARCHAR},
+      itemnum = #{itemnum,jdbcType=VARCHAR},
+      locdesc = #{locdesc,jdbcType=VARCHAR},
+      cmodel = #{cmodel,jdbcType=VARCHAR},
+      carno = #{carno,jdbcType=VARCHAR},
+      carriagenum = #{carriagenum,jdbcType=VARCHAR},
+      ownercustomer = #{ownercustomer,jdbcType=VARCHAR},
+      repairprocess = #{repairprocess,jdbcType=VARCHAR},
+      maker = #{maker,jdbcType=VARCHAR},
+      onlinetime = #{onlinetime,jdbcType=TIMESTAMP},
+      releasedate = #{releasedate,jdbcType=TIMESTAMP},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      ancestor = #{ancestor,jdbcType=VARCHAR},
+      assetlevel = #{assetlevel,jdbcType=VARCHAR},
+      parent = #{parent,jdbcType=VARCHAR},
+      assetnum = #{assetnum,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      f_gzpxh = #{fGzpxh,jdbcType=VARCHAR},
+      f_gzfssj = #{fGzfssj,jdbcType=TIMESTAMP},
+      count_scgz = #{countScgz,jdbcType=INTEGER},
+      count_xcgz = #{countXcgz,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

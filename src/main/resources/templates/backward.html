@@ -2,10 +2,39 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 
 <head>
-    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js">
+   <!-- <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js">
     </script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <script type="text/javascript" src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.js">
     </script>
+   -->
+
+    <!-- bootstrap table -->
+    <!-- Latest compiled and minified CSS -->
+    <!--<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.css">
+    &lt;!&ndash; Latest compiled and minified JavaScript &ndash;&gt;
+    <script src="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.js"></script>
+    &lt;!&ndash; Latest compiled and minified Locales &ndash;&gt;
+    <script src="https://unpkg.com/bootstrap-table@1.14.2/dist/locale/bootstrap-table-zh-CN.min.js"></script>
+
+    &lt;!&ndash; select2 &ndash;&gt;
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>-->
+
+    <script th:src="@{/static/js/jquery-2.2.4.js}"></script>
+    <link th:href="@{/static/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
+    <script th:src="@{/static/js/bootstrap.js}"></script>
+
+    <!-- bootstrap table -->
+    <link th:href="@{/static/css/bootstrap-table.min.css}" rel="stylesheet" type="text/css">
+    <script th:src="@{/static/js/bootstrap-table.min.js}"></script>
+    <script th:src="@{/static/js/bootstrap-table-zh-CN.min.js}"></script>
+
+    <!-- select2 -->
+    <link th:href="@{/static/css/select2.min.css}" rel="stylesheet" type="text/css">
+    <script th:src="@{/static/js/select2.min.js}"></script>
+
+
     <script th:src="@{/static/js/bootstrap-treeview.js}"></script>
     <script th:src="@{/static/js/backward_common.js}"></script>
     <script th:src="@{/static/js/backward_tab1.js}"></script>
@@ -16,19 +45,7 @@
     <link th:href="@{/static/css/spop.css}" rel="stylesheet" type="text/css">
     <link th:href="@{/static/css/backward.css}" rel="stylesheet" type="text/css">
     <link th:href="@{/static/css/bootstrap-treeview.css}" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 
-    <!-- bootstrap table -->
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.css">
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.js"></script>
-    <!-- Latest compiled and minified Locales -->
-    <script src="https://unpkg.com/bootstrap-table@1.14.2/dist/locale/bootstrap-table-zh-CN.min.js"></script>
-
-    <!-- select2 -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
 
     <base target="_self">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -44,6 +61,9 @@
 </head>
 
 <body>
+<div align="center">
+    <h1>逆向查询页面</h1>
+</div>
 <div style="margin: 20px;">
     <div>
         <label th:id="inputSeqNo">请输入序列号：</label><input th:type="text" th:name="seqName" th:id="seqNo">

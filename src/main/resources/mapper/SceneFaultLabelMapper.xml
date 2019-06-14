@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.timeselectrical.mapper.SceneFaultLabelMapper">
+  <resultMap id="BaseResultMap" type="com.timeselectrical.model.SceneFaultLabel">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="f_bdbh" jdbcType="VARCHAR" property="fBdbh" />
+    <result column="f_gzpthwzbm" jdbcType="VARCHAR" property="fGzpthwzbm" />
+    <result column="f_gzpmc" jdbcType="VARCHAR" property="fGzpmc" />
+    <result column="f_cxdl" jdbcType="VARCHAR" property="fCxdl" />
+    <result column="f_zccx" jdbcType="VARCHAR" property="fZccx" />
+    <result column="f_ssyjlbj" jdbcType="VARCHAR" property="fSsyjlbj" />
+    <result column="f_scdw" jdbcType="VARCHAR" property="fScdw" />
+    <result column="f_gzmc" jdbcType="VARCHAR" property="fGzmc" />
+    <result column="f_gzdm" jdbcType="VARCHAR" property="fGzdm" />
+    <result column="f_gzhg" jdbcType="VARCHAR" property="fGzhg" />
+    <result column="f_gzdj" jdbcType="VARCHAR" property="fGzdj" />
+    <result column="f_gzfssj" jdbcType="TIMESTAMP" property="fGzfssj" />
+    <result column="f_xmmc" jdbcType="VARCHAR" property="fXmmc" />
+    <result column="f_xmh" jdbcType="VARCHAR" property="fXmh" />
+    <result column="f_zyzrdw" jdbcType="VARCHAR" property="fZyzrdw" />
+    <result column="count" jdbcType="INTEGER" property="count" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, f_bdbh, f_gzpthwzbm, f_gzpmc, f_cxdl, f_zccx, f_ssyjlbj, f_scdw, f_gzmc, f_gzdm, 
+    f_gzhg, f_gzdj, f_gzfssj, f_xmmc, f_xmh, f_zyzrdw, count
+  </sql>
+  <select id="selectByExample" parameterType="com.timeselectrical.model.SceneFaultLabelExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from scene_fault_label
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from scene_fault_label
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from scene_fault_label
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.timeselectrical.model.SceneFaultLabelExample">
+    delete from scene_fault_label
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.timeselectrical.model.SceneFaultLabel">
+    insert into scene_fault_label (id, f_bdbh, f_gzpthwzbm, 
+      f_gzpmc, f_cxdl, f_zccx, 
+      f_ssyjlbj, f_scdw, f_gzmc, 
+      f_gzdm, f_gzhg, f_gzdj, 
+      f_gzfssj, f_xmmc, f_xmh, 
+      f_zyzrdw, count)
+    values (#{id,jdbcType=INTEGER}, #{fBdbh,jdbcType=VARCHAR}, #{fGzpthwzbm,jdbcType=VARCHAR}, 
+      #{fGzpmc,jdbcType=VARCHAR}, #{fCxdl,jdbcType=VARCHAR}, #{fZccx,jdbcType=VARCHAR}, 
+      #{fSsyjlbj,jdbcType=VARCHAR}, #{fScdw,jdbcType=VARCHAR}, #{fGzmc,jdbcType=VARCHAR}, 
+      #{fGzdm,jdbcType=VARCHAR}, #{fGzhg,jdbcType=VARCHAR}, #{fGzdj,jdbcType=VARCHAR}, 
+      #{fGzfssj,jdbcType=TIMESTAMP}, #{fXmmc,jdbcType=VARCHAR}, #{fXmh,jdbcType=VARCHAR}, 
+      #{fZyzrdw,jdbcType=VARCHAR}, #{count,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.timeselectrical.model.SceneFaultLabel">
+    insert into scene_fault_label
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="fBdbh != null">
+        f_bdbh,
+      </if>
+      <if test="fGzpthwzbm != null">
+        f_gzpthwzbm,
+      </if>
+      <if test="fGzpmc != null">
+        f_gzpmc,
+      </if>
+      <if test="fCxdl != null">
+        f_cxdl,
+      </if>
+      <if test="fZccx != null">
+        f_zccx,
+      </if>
+      <if test="fSsyjlbj != null">
+        f_ssyjlbj,
+      </if>
+      <if test="fScdw != null">
+        f_scdw,
+      </if>
+      <if test="fGzmc != null">
+        f_gzmc,
+      </if>
+      <if test="fGzdm != null">
+        f_gzdm,
+      </if>
+      <if test="fGzhg != null">
+        f_gzhg,
+      </if>
+      <if test="fGzdj != null">
+        f_gzdj,
+      </if>
+      <if test="fGzfssj != null">
+        f_gzfssj,
+      </if>
+      <if test="fXmmc != null">
+        f_xmmc,
+      </if>
+      <if test="fXmh != null">
+        f_xmh,
+      </if>
+      <if test="fZyzrdw != null">
+        f_zyzrdw,
+      </if>
+      <if test="count != null">
+        count,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="fBdbh != null">
+        #{fBdbh,jdbcType=VARCHAR},
+      </if>
+      <if test="fGzpthwzbm != null">
+        #{fGzpthwzbm,jdbcType=VARCHAR},
+      </if>
+      <if test="fGzpmc != null">
+        #{fGzpmc,jdbcType=VARCHAR},
+      </if>
+      <if test="fCxdl != null">
+        #{fCxdl,jdbcType=VARCHAR},
+      </if>
+      <if test="fZccx != null">
+        #{fZccx,jdbcType=VARCHAR},
+      </if>
+      <if test="fSsyjlbj != null">
+        #{fSsyjlbj,jdbcType=VARCHAR},
+      </if>
+      <if test="fScdw != null">
+        #{fScdw,jdbcType=VARCHAR},
+      </if>
+      <if test="fGzmc != null">
+        #{fGzmc,jdbcType=VARCHAR},
+      </if>
+      <if test="fGzdm != null">
+        #{fGzdm,jdbcType=VARCHAR},
+      </if>
+      <if test="fGzhg != null">
+        #{fGzhg,jdbcType=VARCHAR},
+      </if>
+      <if test="fGzdj != null">
+        #{fGzdj,jdbcType=VARCHAR},
+      </if>
+      <if test="fGzfssj != null">
+        #{fGzfssj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fXmmc != null">
+        #{fXmmc,jdbcType=VARCHAR},
+      </if>
+      <if test="fXmh != null">
+        #{fXmh,jdbcType=VARCHAR},
+      </if>
+      <if test="fZyzrdw != null">
+        #{fZyzrdw,jdbcType=VARCHAR},
+      </if>
+      <if test="count != null">
+        #{count,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.timeselectrical.model.SceneFaultLabelExample" resultType="java.lang.Integer">
+    select count(*) from scene_fault_label
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update scene_fault_label
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.fBdbh != null">
+        f_bdbh = #{record.fBdbh,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fGzpthwzbm != null">
+        f_gzpthwzbm = #{record.fGzpthwzbm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fGzpmc != null">
+        f_gzpmc = #{record.fGzpmc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fCxdl != null">
+        f_cxdl = #{record.fCxdl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fZccx != null">
+        f_zccx = #{record.fZccx,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fSsyjlbj != null">
+        f_ssyjlbj = #{record.fSsyjlbj,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fScdw != null">
+        f_scdw = #{record.fScdw,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fGzmc != null">
+        f_gzmc = #{record.fGzmc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fGzdm != null">
+        f_gzdm = #{record.fGzdm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fGzhg != null">
+        f_gzhg = #{record.fGzhg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fGzdj != null">
+        f_gzdj = #{record.fGzdj,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fGzfssj != null">
+        f_gzfssj = #{record.fGzfssj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.fXmmc != null">
+        f_xmmc = #{record.fXmmc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fXmh != null">
+        f_xmh = #{record.fXmh,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fZyzrdw != null">
+        f_zyzrdw = #{record.fZyzrdw,jdbcType=VARCHAR},
+      </if>
+      <if test="record.count != null">
+        count = #{record.count,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update scene_fault_label
+    set id = #{record.id,jdbcType=INTEGER},
+      f_bdbh = #{record.fBdbh,jdbcType=VARCHAR},
+      f_gzpthwzbm = #{record.fGzpthwzbm,jdbcType=VARCHAR},
+      f_gzpmc = #{record.fGzpmc,jdbcType=VARCHAR},
+      f_cxdl = #{record.fCxdl,jdbcType=VARCHAR},
+      f_zccx = #{record.fZccx,jdbcType=VARCHAR},
+      f_ssyjlbj = #{record.fSsyjlbj,jdbcType=VARCHAR},
+      f_scdw = #{record.fScdw,jdbcType=VARCHAR},
+      f_gzmc = #{record.fGzmc,jdbcType=VARCHAR},
+      f_gzdm = #{record.fGzdm,jdbcType=VARCHAR},
+      f_gzhg = #{record.fGzhg,jdbcType=VARCHAR},
+      f_gzdj = #{record.fGzdj,jdbcType=VARCHAR},
+      f_gzfssj = #{record.fGzfssj,jdbcType=TIMESTAMP},
+      f_xmmc = #{record.fXmmc,jdbcType=VARCHAR},
+      f_xmh = #{record.fXmh,jdbcType=VARCHAR},
+      f_zyzrdw = #{record.fZyzrdw,jdbcType=VARCHAR},
+      count = #{record.count,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.timeselectrical.model.SceneFaultLabel">
+    update scene_fault_label
+    <set>
+      <if test="fBdbh != null">
+        f_bdbh = #{fBdbh,jdbcType=VARCHAR},
+      </if>
+      <if test="fGzpthwzbm != null">
+        f_gzpthwzbm = #{fGzpthwzbm,jdbcType=VARCHAR},
+      </if>
+      <if test="fGzpmc != null">
+        f_gzpmc = #{fGzpmc,jdbcType=VARCHAR},
+      </if>
+      <if test="fCxdl != null">
+        f_cxdl = #{fCxdl,jdbcType=VARCHAR},
+      </if>
+      <if test="fZccx != null">
+        f_zccx = #{fZccx,jdbcType=VARCHAR},
+      </if>
+      <if test="fSsyjlbj != null">
+        f_ssyjlbj = #{fSsyjlbj,jdbcType=VARCHAR},
+      </if>
+      <if test="fScdw != null">
+        f_scdw = #{fScdw,jdbcType=VARCHAR},
+      </if>
+      <if test="fGzmc != null">
+        f_gzmc = #{fGzmc,jdbcType=VARCHAR},
+      </if>
+      <if test="fGzdm != null">
+        f_gzdm = #{fGzdm,jdbcType=VARCHAR},
+      </if>
+      <if test="fGzhg != null">
+        f_gzhg = #{fGzhg,jdbcType=VARCHAR},
+      </if>
+      <if test="fGzdj != null">
+        f_gzdj = #{fGzdj,jdbcType=VARCHAR},
+      </if>
+      <if test="fGzfssj != null">
+        f_gzfssj = #{fGzfssj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fXmmc != null">
+        f_xmmc = #{fXmmc,jdbcType=VARCHAR},
+      </if>
+      <if test="fXmh != null">
+        f_xmh = #{fXmh,jdbcType=VARCHAR},
+      </if>
+      <if test="fZyzrdw != null">
+        f_zyzrdw = #{fZyzrdw,jdbcType=VARCHAR},
+      </if>
+      <if test="count != null">
+        count = #{count,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.timeselectrical.model.SceneFaultLabel">
+    update scene_fault_label
+    set f_bdbh = #{fBdbh,jdbcType=VARCHAR},
+      f_gzpthwzbm = #{fGzpthwzbm,jdbcType=VARCHAR},
+      f_gzpmc = #{fGzpmc,jdbcType=VARCHAR},
+      f_cxdl = #{fCxdl,jdbcType=VARCHAR},
+      f_zccx = #{fZccx,jdbcType=VARCHAR},
+      f_ssyjlbj = #{fSsyjlbj,jdbcType=VARCHAR},
+      f_scdw = #{fScdw,jdbcType=VARCHAR},
+      f_gzmc = #{fGzmc,jdbcType=VARCHAR},
+      f_gzdm = #{fGzdm,jdbcType=VARCHAR},
+      f_gzhg = #{fGzhg,jdbcType=VARCHAR},
+      f_gzdj = #{fGzdj,jdbcType=VARCHAR},
+      f_gzfssj = #{fGzfssj,jdbcType=TIMESTAMP},
+      f_xmmc = #{fXmmc,jdbcType=VARCHAR},
+      f_xmh = #{fXmh,jdbcType=VARCHAR},
+      f_zyzrdw = #{fZyzrdw,jdbcType=VARCHAR},
+      count = #{count,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

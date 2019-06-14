@@ -96,6 +96,16 @@
             <version>1.2.54</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/com.sap.cloud.db.jdbc/ngdbc
+            hana数据库驱动包
+        -->
+        <dependency>
+            <groupId>com.sap.cloud.db.jdbc</groupId>
+            <artifactId>ngdbc</artifactId>
+            <version>2.3.55</version>
+        </dependency>
+
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
