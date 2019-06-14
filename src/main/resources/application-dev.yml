@@ -5,12 +5,21 @@ logging:
   config: classpath:log/logback.xml
   path: /Users/longjianyong/log
 
+## mysql
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8
     driverClassName: com.mysql.jdbc.Driver
     username: root
     password: root123456
+
+##hana
+#spring:
+#  datasource:
+#    url: jdbc:sap://172.23.1.123:39015?reconnect=true
+#    driverClassName: com.sap.db.jdbc.Driver
+#    username: root
+#    password: root123456
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml  #注意：一定要对应mapper映射xml文件的所在路径

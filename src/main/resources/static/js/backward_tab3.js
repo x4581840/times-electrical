@@ -1,9 +1,12 @@
 
 var $table3;
 //初始化bootstrap-table的内容
-function InitTable3 () {
+function InitTable3 (sqn) {
     //记录页面bootstrap-table全局变量$table，方便应用
     var queryUrl = '/backward/getList?rnd=' + Math.random();
+    if(sqn != null && sqn != undefined && sqn != "" && $.trim(sqn) != "") {
+        queryUrl = queryUrl + "&sqn=" + sqn;
+    }
     $table3 = $('#table3').bootstrapTable({
         url: queryUrl,                      //请求后台的URL（*）
         method: 'GET',                      //请求方式（*）
@@ -77,8 +80,8 @@ function InitTable3 () {
 //     InitMainTable();
 // });
 
-function tab3_query_button() {
+function tab3_query_button(sqn) {
     //再次点击查询时把table对象信息销毁
     $("#table3").bootstrapTable('destroy');
-    InitTable3();
+    InitTable3(sqn);
 }

@@ -48,7 +48,7 @@ public class ForwardController {
     }
     @RequestMapping("/getLinkForwardPage")
     public String tab2(HttpServletRequest request) {
-
+        request.setAttribute("testPn","testPn");
         return "link_forward";
     }
     @ResponseBody

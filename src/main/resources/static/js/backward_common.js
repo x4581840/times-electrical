@@ -14,7 +14,7 @@ function initTreeView() {
     var flag = $("#seqNo").val();
     $.ajax({
         type: "post",
-        url: "/backward/getTreeList?rnd=" + Math.random() + "&flag=" + flag,
+        url: "/test/getTreeData?rnd=" + Math.random() + "&flag=" + flag,
         contentType: 'text/json,charset=utf-8',
         dataType: "json",
         success: function (result) {
@@ -75,6 +75,6 @@ function changeDateFormat(cellval) {
         var hh24 = date.getHours();
         var mi = date.getMinutes();
         var ss = date.getSeconds();
-        return date.getFullYear() + "-" + month + "-" + currentDate + "-" + hh24 + "-" + mi + "-" + ss ;
+        return date.getFullYear() + "-" + month + "-" + currentDate + " " + hh24 + ":" + mi + ":" + ss ;
     }
 }

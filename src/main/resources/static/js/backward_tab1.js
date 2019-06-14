@@ -38,7 +38,8 @@ function InitTable1 () {
                 //sortOrder: params.order, //排位命令（desc，asc）
                 flag: 1
             };
-            console.log("test=="+$("#dependOn").val());
+            console.log("表格一");
+            // console.log("test=="+$("#dependOn").val());
             return temp;
         },
         columns: [{field: 'id', title: '产品序列号', sortable: true, halign: 'center'},
@@ -63,10 +64,12 @@ function InitTable1 () {
                     return changeDateFormat(value);
                 }},
             {field: 'scoreAvg', title: '生产故障次数', sortable: true, halign: 'center',formatter: function (value, row, index) {
-                    return '<a href="#">'+value+'</a>';
+                    var sqn = row.age;
+                    return '<a onclick="productDefectNumClick('+sqn+')">'+value+'</a>';
                 }}, //超链接
             {field: 'scoreAvg', title: '现场故障记录', sortable: true, halign: 'center',formatter: function (value, row, index) {
-                    return '<a href="#">'+value+'</a>';
+                    var sqn = row.age;
+                    return '<a onclick="sceneFaultNumClick('+sqn+')">'+value+'</a>';
                 }}, //超链接
         ],
         onLoadSuccess: function () {
@@ -79,6 +82,29 @@ function InitTable1 () {
     });
 };
 
+//点击"生产故障次数"字段的值 触发的函数，跳到"生产缺陷记录"的tab
+function productDefectNumClick(sqn) {
+    console.log("sqn==="+sqn);
+    // debugger;
+    $("#tab_1").removeClass("active");
+    $("#tab1").removeClass("in").removeClass("active");
+    $("#tab_2").addClass("active");
+    $("#tab2").addClass("in").addClass("active");
+
+    tab2_query_button(sqn);
+}
+
+//点击"现场故障记录"字段的值触发的函数，跳到"现场故障标签"的tab
+function sceneFaultNumClick(sqn) {
+    console.log("sqn==="+sqn);
+    // debugger;
+    $("#tab_1").removeClass("active");
+    $("#tab1").removeClass("in").removeClass("active");
+    $("#tab_3").addClass("active");
+    $("#tab3").addClass("in").addClass("active");
+
+    tab3_query_button(sqn);
+}
 
 // $(function(){
 //     InitMainTable();

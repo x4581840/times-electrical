@@ -62,7 +62,7 @@ function InitTable2() {
 //     InitMainTable();
 // });
 
-function tab2_query_button() {
+function  tab2_query_button() {
 
     var target= document.getElementById("tab1");
     var search= document.getElementById("search1");

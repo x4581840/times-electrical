@@ -23,6 +23,11 @@ public class SceneFaultLabel {
     private String fGzpthwzbm;
 
     /**
+     * 故障品序号
+     */
+    private String fGzpxh;
+
+    /**
      * 故障品名称
      */
     private String fGzpmc;
@@ -91,6 +96,14 @@ public class SceneFaultLabel {
      * 数量
      */
     private Integer count;
+
+    public String getfGzpxh() {
+        return fGzpxh;
+    }
+
+    public void setfGzpxh(String fGzpxh) {
+        this.fGzpxh = fGzpxh;
+    }
 
     public Integer getId() {
         return id;
