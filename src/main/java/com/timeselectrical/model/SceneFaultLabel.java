@@ -2,41 +2,99 @@ package com.timeselectrical.model;
 
 import java.util.Date;
 
+/**
+ * 现场故障标签 实体类
+ */
 public class SceneFaultLabel {
+
+    /**
+     * 主键
+     */
     private Integer id;
 
+    /**
+     * 表单编号
+     */
     private String fBdbh;
 
+    /**
+     * 故障品图号/物资编码
+     */
     private String fGzpthwzbm;
 
+    /**
+     * 故障品名称
+     */
     private String fGzpmc;
 
+    /**
+     * 故障品序号
+     */
     private String fGzpxh;
 
+    /**
+     * 车型大类
+     */
     private String fCxdl;
 
+    /**
+     * 车型
+     */
     private String fZccx;
 
+    /**
+     * 所属一级零部件
+     */
     private String fSsyjlbj;
 
+    /**
+     * 生产单位
+     */
     private String fScdw;
 
+    /**
+     * 故障名称
+     */
     private String fGzmc;
 
+    /**
+     * 故障代码
+     */
     private String fGzdm;
 
+    /**
+     * 故障后果
+     */
     private String fGzhg;
 
+    /**
+     * 故障等级
+     */
     private String fGzdj;
 
+    /**
+     * 故障发生时间
+     */
     private Date fGzfssj;
 
+    /**
+     * 项目名称
+     */
     private String fXmmc;
 
+    /**
+     * 项目号
+     */
     private String fXmh;
 
+    /**
+     * 主要责任单位
+     */
     private String fZyzrdw;
 
+    /**
+     * 数量
+     */
     private Integer count;
 
     public Integer getId() {

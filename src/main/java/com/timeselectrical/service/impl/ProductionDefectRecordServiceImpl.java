@@ -1,9 +1,12 @@
 package com.timeselectrical.service.impl;
 
-import com.timeselectrical.dao.IProductionDefectRecordDao;
+import com.timeselectrical.mapper.ProductionDefectRecordMapperExt;
+import com.timeselectrical.model.ProductionDefectRecord;
 import com.timeselectrical.service.IProductionDefectRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @Description
@@ -15,6 +18,11 @@ import org.springframework.stereotype.Service;
 public class ProductionDefectRecordServiceImpl implements IProductionDefectRecordService {
 
     @Autowired
-    private IProductionDefectRecordDao productionDefectRecordDao;
+    private ProductionDefectRecordMapperExt productionDefectRecordMapperExt;
 
+    @Override
+    public List<ProductionDefectRecord> getProductiondefectRecords() {
+
+        return productionDefectRecordMapperExt.getProductionDefectRecords(null);
+    }
 }

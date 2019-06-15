@@ -49,6 +49,6 @@
         </javaClientGenerator>
 
         <!-- 表 -->
-        <table tableName="scene_fault_label" domainObjectName="SceneFaultLabel"></table>
+        <table tableName="loading_configuration" domainObjectName="LoadingConfiguration"></table>
     </context>
 </generatorConfiguration>

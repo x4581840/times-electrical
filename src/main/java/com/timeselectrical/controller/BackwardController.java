@@ -3,20 +3,21 @@ package com.timeselectrical.controller;
 import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageHelper;
 import com.timeselectrical.component.PageWrapper;
-import com.timeselectrical.dto.ComponentLocationDTO;
-import com.timeselectrical.dto.ComponentLocationDTO.*;
-import com.timeselectrical.model.Student;
-import com.timeselectrical.model.StudentImpl;
+import com.timeselectrical.dto.LoadingConfigurationCondDTO;
+import com.timeselectrical.model.*;
+import com.timeselectrical.service.ILoadingConfigurationService;
+import com.timeselectrical.service.IProductionDefectRecordService;
+import com.timeselectrical.service.ISceneFaultLabelService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
-import javax.swing.text.html.parser.Entity;
 import java.util.*;
 
 /**
@@ -31,6 +32,13 @@ import java.util.*;
 public class BackwardController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(BackwardController.class);
+
+    @Autowired
+    private ILoadingConfigurationService loadingConfigurationService;
+    @Autowired
+    private IProductionDefectRecordService productionDefectRecordService;
+    @Autowired
+    private ISceneFaultLabelService sceneFaultLabelService;
 
     @RequestMapping("/backwardTab")
     public String tab() {
@@ -90,87 +98,73 @@ public class BackwardController {
         return null;
     }
 
-    @RequestMapping("/getName")
-    @ResponseBody
-    public Student getName() {
-        return new StudentImpl(1,1, "1", "1", "1", new Date().getTime());
-    }
-
-    @RequestMapping("/getList")
-    public ResponseEntity getList(@RequestParam(defaultValue = "1", required = false) Integer pageNo,
+    @RequestMapping("/getLoadConfigurationList")
+    public ResponseEntity getLigetLoadConfigurationListst(@RequestParam(defaultValue = "1", required = false) Integer pageNo,
                                   @RequestParam(defaultValue = "10", required = false) Integer pageSize,
-                                  @RequestParam(name = "flag") String flag) {
-        LOGGER.info("flag:::"+flag);
-        List<Student> result = new ArrayList<>();
-        Student student = new StudentImpl(1, 1, "A多发点阿兰德斯开发第三方；阿克苏地方啊； 啊结算代理发来了阿里考多少分", "1", "1", new Date().getTime());
-        result.add(student);
-
-        student = new StudentImpl(2, 2, "B", "2", "2", new Date().getTime());
-        result.add(student);
-
-        student = new StudentImpl(3, 3, "C", "3", "3", new Date().getTime());
-        result.add(student);
-
-        student = new StudentImpl(4, 4, "D", "4", "4", new Date().getTime());
-        result.add(student);
-
-        student = new StudentImpl(5, 5, "E", "5", "5", new Date().getTime());
-        result.add(student);
-
-        student = new StudentImpl(6, 6, "F", "6", "6", new Date().getTime());
-        result.add(student);
-
-        student = new StudentImpl(7, 7, "G", "7", "7", new Date().getTime());
-        result.add(student);
-
-        student = new StudentImpl(8, 8, "H", "8", "8", new Date().getTime());
-        result.add(student);
-
-        student = new StudentImpl(9, 9, "I", "9", "9", new Date().getTime());
-        result.add(student);
-
-        student = new StudentImpl(10, 10, "J", "10", "10", new Date().getTime());
-        result.add(student);
-
-        student = new StudentImpl(11, 11, "K", "11", "11", new Date().getTime());
-        result.add(student);
-
-        if("1".equals(flag)) {
-            return ResponseEntity.ok(new PageWrapper<>(result));
+                                  @RequestParam(name = "sqn", required = false) String sqn,
+                                  @RequestParam(name = "locList", required = false) List<String> locList) {
+        LOGGER.info("locList=="+locList);
+        LoadingConfigurationCondDTO cond = new LoadingConfigurationCondDTO();
+        cond.setSqn(sqn);
+        cond.setLocList(locList);
+        PageHelper.startPage(pageNo, pageSize, true);
+        List<LoadingConfiguration> lcList = loadingConfigurationService.getLoadingConfigurationsByCond(cond);
+        List<LoadingConfigurationExt> lcExtList = new ArrayList<>();
+        if(!CollectionUtils.isEmpty(lcList)) {
+            LoadingConfigurationExt lcExt = null;
+            for(LoadingConfiguration lc : lcList) {
+                lcExt = new LoadingConfigurationExt();
+                BeanUtils.copyProperties(lc, lcExt);
+                lcExt.setOnlinetime_long(lc.getOnlinetime() != null ? lc.getOnlinetime().getTime() : 0);
+                lcExt.setReleasedate_long(lc.getReleasedate() != null ? lc.getReleasedate().getTime() : 0);
+                lcExt.setUpdatetime_long(lc.getUpdatetime() != null ? lc.getUpdatetime().getTime() : 0);
+                lcExt.setfGzfssj_long(lc.getfGzfssj() != null ? lc.getfGzfssj().getTime() : 0);
+                lcExtList.add(lcExt);
+            }
         }
-        return null;
+        return ResponseEntity.ok(new PageWrapper<>(lcExtList));
     }
 
-    @ResponseBody
-    @RequestMapping("/getSelectData")
-    public ComponentLocationDTO getSelectData() {
-        LOGGER.info("进来了======");
-        ComponentLocationDTO clDto = new ComponentLocationDTO();
-        List<ComonentLocation> results = new ArrayList<>();
-        ComonentLocation cl1 = clDto.new ComonentLocation("1", "位置号11");
-        ComonentLocation cl2 = clDto.new ComonentLocation("2", "位置号22");
-        ComonentLocation cl3 = clDto.new ComonentLocation("3", "位置号33");
-        ComonentLocation cl4 = clDto.new ComonentLocation("4", "位置号44");
-        ComonentLocation cl5 = clDto.new ComonentLocation("5", "位置号55");
-        ComonentLocation cl6 = clDto.new ComonentLocation("6", "位置号66");
-        ComonentLocation cl7 = clDto.new ComonentLocation("7", "位置号77");
-        ComonentLocation cl8 = clDto.new ComonentLocation("8", "位置号88");
-        ComonentLocation cl9 = clDto.new ComonentLocation("9", "位置号99");
-        ComonentLocation cl10 = clDto.new ComonentLocation("10", "位置号10");
-        results.add(cl1);
-        results.add(cl2);
-        results.add(cl3);
-        results.add(cl4);
-        results.add(cl5);
-        results.add(cl6);
-        results.add(cl7);
-        results.add(cl8);
-        results.add(cl9);
-        results.add(cl10);
-        clDto.setResults(results);
-        //Pagination p = clDto.new Pagination();
-        //p.setMore(true);
-        //clDto.setPagination(p);
-        return clDto;
+    @RequestMapping("/getLocSelectData")
+    public ResponseEntity getSelectData(@RequestParam(name = "sqn", required = false) String sqn,
+                                        @RequestParam(name = "locLike", required = false) String locLike) {
+        return ResponseEntity.ok(loadingConfigurationService.getComponentLocations(sqn, locLike));
+    }
+
+    @RequestMapping("/getProductDefectRecordList")
+    public ResponseEntity getProductDefectRecordList(@RequestParam(defaultValue = "1", required = false) Integer pageNo,
+                                        @RequestParam(defaultValue = "10", required = false) Integer pageSize) {
+        PageHelper.startPage(pageNo, pageSize, true);
+        List<ProductionDefectRecord> pdrList = productionDefectRecordService.getProductiondefectRecords();
+        List<ProductionDefectRecordExt> pdrExtList = new ArrayList<>();
+        if(!CollectionUtils.isEmpty(pdrList)) {
+            ProductionDefectRecordExt pdrExt = null;
+            for(ProductionDefectRecord pdr : pdrList) {
+                pdrExt = new ProductionDefectRecordExt();
+                BeanUtils.copyProperties(pdr, pdrExt);
+                pdrExt.setZsxrq_long(pdr.getZsxrq() != null ? pdr.getZsxrq().getTime() : 0);
+                pdrExt.setZsxsj_long(pdr.getZsxsj() != null ? pdr.getZsxsj().getTime() : 0);
+                pdrExtList.add(pdrExt);
+            }
+        }
+        return ResponseEntity.ok(new PageWrapper<>(pdrExtList));
+    }
+
+    @RequestMapping("/getSceneFaultLabelList")
+    public ResponseEntity getSceneFaultLabelList(@RequestParam(defaultValue = "1", required = false) Integer pageNo,
+                                                 @RequestParam(defaultValue = "10", required = false) Integer pageSize) {
+        PageHelper.startPage(pageNo, pageSize, true);
+        List<SceneFaultLabel> sflList = sceneFaultLabelService.getSceneFaultLabels();
+        List<SceneFaultLabelExt> sflExtList = new ArrayList<>();
+        if(!CollectionUtils.isEmpty(sflList)) {
+            SceneFaultLabelExt sflExt = null;
+            for(SceneFaultLabel sfl : sflList) {
+                sflExt = new SceneFaultLabelExt();
+                BeanUtils.copyProperties(sfl, sflExt);
+                sflExt.setfGzfssj_long(sfl.getfGzfssj() != null ? sfl.getfGzfssj().getTime() : 0);
+                sflExtList.add(sflExt);
+            }
+        }
+        return ResponseEntity.ok(new PageWrapper<>(sflExtList));
     }
 }

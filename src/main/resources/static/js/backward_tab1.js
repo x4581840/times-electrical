@@ -1,9 +1,12 @@
 
 var $table1;
 //初始化bootstrap-table的内容
-function InitTable1 () {
+function InitTable1 (selectValueArray) {
     //记录页面bootstrap-table全局变量$table，方便应用
-    var queryUrl = '/backward/getList?rnd=' + Math.random();
+    var queryUrl = '/backward/getLoadConfigurationList?rnd=' + Math.random();
+    if(selectValueArray != undefined && selectValueArray != null && selectValueArray != "") {
+        queryUrl = queryUrl + "&locList=" + selectValueArray;
+    }
     $table1 = $('#table1').bootstrapTable({
         url: queryUrl,                      //请求后台的URL（*）
         method: 'GET',                      //请求方式（*）
@@ -42,32 +45,32 @@ function InitTable1 () {
             // console.log("test=="+$("#dependOn").val());
             return temp;
         },
-        columns: [{field: 'id', title: '产品序列号', sortable: true, halign: 'center'},
-            {field: 'age', title: '父项位置号', sortable: true, halign: 'center'},
-            {field: 'name', title: '组件产品序列号', sortable: true, halign: 'center'},
-            {field: 'scoreSum', title: '组件物料编码', sortable: true, halign: 'center'},
-            {field: 'scoreAvg', title: '组件位置描述', sortable: true, halign: 'center'},
-            {field: 'scoreAvg', title: '组件位置号', sortable: true, halign: 'center'},
-            {field: 'scoreAvg', title: '车型编号', sortable: true, halign: 'center'},
-            {field: 'scoreAvg', title: '车号', sortable: true, halign: 'center'},
-            {field: 'scoreAvg', title: '车厢号', sortable: true, halign: 'center'},
-            {field: 'scoreAvg', title: '配属用户', sortable: true, halign: 'center'},
-            {field: 'scoreAvg', title: '修程修次', sortable: true, halign: 'center'},
-            {field: 'scoreAvg', title: '制造企业', sortable: true, halign: 'center'},
-            {field: 'birthDate', title: '上线日期', sortable: true, halign: 'center',formatter: function (value, row, index) {
+        columns: [{field: 'sqn', title: '产品序列号', sortable: true, halign: 'center'},
+            {field: 'loc', title: '父项位置号', sortable: true, halign: 'center'},
+            {field: 'sqnChild', title: '组件产品序列号', sortable: true, halign: 'center'},
+            {field: 'itemnum', title: '组件物料编码', sortable: true, halign: 'center'},
+            {field: 'locdesc', title: '组件位置描述', sortable: true, halign: 'center'},
+            {field: 'locChild', title: '组件位置号', sortable: true, halign: 'center'},
+            {field: 'cmodel', title: '车型编号', sortable: true, halign: 'center'},
+            {field: 'carno', title: '车号', sortable: true, halign: 'center'},
+            {field: 'carriagenum', title: '车厢号', sortable: true, halign: 'center'},
+            {field: 'ownercustomer', title: '配属用户', sortable: true, halign: 'center'},
+            {field: 'repairprocess', title: '修程修次', sortable: true, halign: 'center'},
+            {field: 'maker', title: '制造企业', sortable: true, halign: 'center'},
+            {field: 'onlinetime_long', title: '上线日期', sortable: true, halign: 'center',formatter: function (value, row, index) {
                     return changeDateFormat(value);
                 }},
-            {field: 'birthDate', title: '出厂日期', sortable: true, halign: 'center',formatter: function (value, row, index) {
+            {field: 'releasedate_long', title: '出厂日期', sortable: true, halign: 'center',formatter: function (value, row, index) {
                     return changeDateFormat(value);
                 }},
-            {field: 'birthDate', title: '检修日期', sortable: true, halign: 'center',formatter: function (value, row, index) {
+            {field: 'updatetime_long', title: '检修日期', sortable: true, halign: 'center',formatter: function (value, row, index) {
                     return changeDateFormat(value);
                 }},
-            {field: 'scoreAvg', title: '生产故障次数', sortable: true, halign: 'center',formatter: function (value, row, index) {
+            {field: 'countScgz', title: '生产故障次数', sortable: true, halign: 'center',formatter: function (value, row, index) {
                     var sqn = row.age;
                     return '<a onclick="productDefectNumClick('+sqn+')">'+value+'</a>';
                 }}, //超链接
-            {field: 'scoreAvg', title: '现场故障记录', sortable: true, halign: 'center',formatter: function (value, row, index) {
+            {field: 'countXcgz', title: '现场故障记录', sortable: true, halign: 'center',formatter: function (value, row, index) {
                     var sqn = row.age;
                     return '<a onclick="sceneFaultNumClick('+sqn+')">'+value+'</a>';
                 }}, //超链接
@@ -113,19 +116,31 @@ function sceneFaultNumClick(sqn) {
 function tab1_query_button() {
     //再次点击查询时把table对象信息销毁
     $("#table1").bootstrapTable('destroy');
-    InitTable1();
+    //取 下拉框中选中的值
+    var selectValueArray = getMultiSelectVal();
+    InitTable1(selectValueArray);
+}
+
+//多选取值
+function getMultiSelectVal() {
+    var result = $.map($("#componentLocSelect").select2('data'), function(value) {
+        return value.text;
+    });//.join(",");
+    console.log("multiSelectVal:"+result);
+    return result;
 }
 
 $(function () {
     $("#componentLocSelect").select2({
         ajax:{
-            url: '/backward/getSelectData',
+            url: '/backward/getLocSelectData',
             dataType: 'json',  //比较重要，没有的话返回json数据会无法识别，搜索失败
             data: function(param){
-                console.log("======");
+                console.log("======"+$("#seqNo").val());
                 return {
-                    keyword: param.term,
-                    searchType: 'public',
+                    locLike: param.term,
+                    sqn: $("#seqNo").val()
+                    //searchType: 'public',
                     //page: param.page || 1
                 }
             },

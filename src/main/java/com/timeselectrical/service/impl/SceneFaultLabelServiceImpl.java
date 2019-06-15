@@ -1,9 +1,12 @@
 package com.timeselectrical.service.impl;
 
-import com.timeselectrical.dao.ISceneFaultLabelDao;
+import com.timeselectrical.mapper.SceneFaultLabelMapperExt;
+import com.timeselectrical.model.SceneFaultLabel;
 import com.timeselectrical.service.ISceneFaultLabelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @Description
@@ -16,6 +19,10 @@ import org.springframework.stereotype.Service;
 public class SceneFaultLabelServiceImpl implements ISceneFaultLabelService {
 
     @Autowired
-    private ISceneFaultLabelDao sceneFaultLabelDao;
+    private SceneFaultLabelMapperExt sceneFaultLabelMapperExt;
 
+    @Override
+    public List<SceneFaultLabel> getSceneFaultLabels() {
+        return sceneFaultLabelMapperExt.getSceneFaultLabels();
+    }
 }

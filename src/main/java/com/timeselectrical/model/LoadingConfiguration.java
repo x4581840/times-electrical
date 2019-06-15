@@ -3,7 +3,7 @@ package com.timeselectrical.model;
 import java.util.Date;
 
 /**
- * 装车配置
+ * 装车配置实体类
  */
 public class LoadingConfiguration {
     /**
@@ -22,9 +22,19 @@ public class LoadingConfiguration {
     private String loc;
 
     /**
+     * 组件产品序列号
+     */
+    private String sqnChild;
+
+    /**
      * 组件物料编码
      */
     private String itemnum;
+
+    /**
+     * 组件位置号
+     */
+    private String locChild;
 
     /**
      * 组件位置描述
@@ -145,12 +155,28 @@ public class LoadingConfiguration {
         this.loc = loc == null ? null : loc.trim();
     }
 
+    public String getSqnChild() {
+        return sqnChild;
+    }
+
+    public void setSqnChild(String sqnChild) {
+        this.sqnChild = sqnChild == null ? null : sqnChild.trim();
+    }
+
     public String getItemnum() {
         return itemnum;
     }
 
     public void setItemnum(String itemnum) {
         this.itemnum = itemnum == null ? null : itemnum.trim();
+    }
+
+    public String getLocChild() {
+        return locChild;
+    }
+
+    public void setLocChild(String locChild) {
+        this.locChild = locChild == null ? null : locChild.trim();
     }
 
     public String getLocdesc() {

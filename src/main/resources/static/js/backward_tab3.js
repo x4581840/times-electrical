@@ -3,7 +3,7 @@ var $table3;
 //初始化bootstrap-table的内容
 function InitTable3 (sqn) {
     //记录页面bootstrap-table全局变量$table，方便应用
-    var queryUrl = '/backward/getList?rnd=' + Math.random();
+    var queryUrl = '/backward/getSceneFaultLabelList?rnd=' + Math.random();
     if(sqn != null && sqn != undefined && sqn != "" && $.trim(sqn) != "") {
         queryUrl = queryUrl + "&sqn=" + sqn;
     }
@@ -44,25 +44,25 @@ function InitTable3 (sqn) {
             console.log("test=="+$("#dependOn").val());
             return temp;
         },
-        columns: [{field: 'id', title: '表单编号', sortable: true, halign: 'center'},
-            {field: 'age', title: '故障品图号', sortable: true, halign: 'center',formatter: function (value, row, index) {
+        columns: [{field: 'fBdbh', title: '表单编号', sortable: true, halign: 'center'},
+            {field: 'fGzpthwzbm', title: '故障品图号', sortable: true, halign: 'center',formatter: function (value, row, index) {
                 var seqNo = $("#hiddenSeqNo").val();
                 console.log("seqNo===");
                     return '<a href="/forward/getLinkForwardPage?seqNo="'+seqNo+'>'+value+'</a>';
                 }},
-            {field: 'name', title: '故障品名称', sortable: true, halign: 'center'},
-            {field: 'scoreSum', title: '车型大类', sortable: true, halign: 'center'},
-            {field: 'scoreAvg', title: '车型', sortable: true, halign: 'center'},
-            {field: 'scoreAvg', title: '责任单位', sortable: true, halign: 'center'},
-            {field: 'scoreAvg', title: '项目名称', sortable: true, halign: 'center'},
-            {field: 'scoreAvg', title: '项目号', sortable: true, halign: 'center'},
-            {field: 'scoreAvg', title: '所属一级零部件', sortable: true, halign: 'center'},
-            {field: 'scoreAvg', title: '生产单位', sortable: true, halign: 'center'},
-            {field: 'scoreAvg', title: '故障名称', sortable: true, halign: 'center'},
-            {field: 'scoreAvg', title: '故障代码', sortable: true, halign: 'center'},
-            {field: 'scoreAvg', title: '故障后果', sortable: true, halign: 'center'},
-            {field: 'scoreAvg', title: '故障等级', sortable: true, halign: 'center'},
-            {field: 'birthDate', title: '故障发生时间', sortable: true, halign: 'center',formatter: function (value, row, index) {
+            {field: 'fGzpmc', title: '故障品名称', sortable: true, halign: 'center'},
+            {field: 'fCxdl', title: '车型大类', sortable: true, halign: 'center'},
+            {field: 'fZccx', title: '车型', sortable: true, halign: 'center'},
+            {field: 'fZyzrdw', title: '责任单位', sortable: true, halign: 'center'},
+            {field: 'fXmmc', title: '项目名称', sortable: true, halign: 'center'},
+            {field: 'fXmh', title: '项目号', sortable: true, halign: 'center'},
+            {field: 'fSsyjlbj', title: '所属一级零部件', sortable: true, halign: 'center'},
+            {field: 'fScdw', title: '生产单位', sortable: true, halign: 'center'},
+            {field: 'fGzmc', title: '故障名称', sortable: true, halign: 'center'},
+            {field: 'fGzdm', title: '故障代码', sortable: true, halign: 'center'},
+            {field: 'fGzhg', title: '故障后果', sortable: true, halign: 'center'},
+            {field: 'fGzdj', title: '故障等级', sortable: true, halign: 'center'},
+            {field: 'fGzfssj_long', title: '故障发生时间', sortable: true, halign: 'center',formatter: function (value, row, index) {
                     return changeDateFormat(value)
                 }},
         ],

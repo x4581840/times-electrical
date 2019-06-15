@@ -3,7 +3,7 @@ var $table2;
 //初始化bootstrap-table的内容
 function InitTable2 (sqn) {
     //记录页面bootstrap-table全局变量$table，方便应用
-    var queryUrl = '/backward/getList?rnd=' + Math.random();
+    var queryUrl = '/backward/getProductDefectRecordList?rnd=' + Math.random();
     if(sqn != null && sqn != undefined && sqn != "" && $.trim(sqn) != "") {
         queryUrl = queryUrl + "&sqn=" + sqn;
     }
@@ -45,30 +45,30 @@ function InitTable2 (sqn) {
             console.log("test=="+$("#dependOn").val());
             return temp;
         },
-        columns: [{field: 'id', title: '产品序列号', sortable: true, halign: 'center'},
+        columns: [{field: 'sublotId', title: '产品序列号', sortable: true, halign: 'center'},
             {field: 'age', title: '订单号', sortable: true, halign: 'center'},
             {field: 'name', title: '工序', sortable: true, halign: 'center'},
-            {field: 'scoreSum', title: '缺陷类型', sortable: true, halign: 'center'},
-            {field: 'scoreAvg', title: '缺陷代码', sortable: true, halign: 'center'},
-            {field: 'scoreAvg', title: '现象描述', sortable: true, halign: 'center'},
-            {field: 'scoreAvg', title: '缺陷物料编号', sortable: true, halign: 'center'},
-            {field: 'scoreAvg', title: '缺陷物料位置', sortable: true, halign: 'center'},
-            {field: 'scoreAvg', title: '缺陷物料分类组', sortable: true, halign: 'center'},
-            {field: 'scoreAvg', title: '缺陷物料序列号', sortable: true, halign: 'center'},
-            {field: 'scoreAvg', title: '缺陷物料数量', sortable: true, halign: 'center'},
-            {field: 'scoreAvg', title: '供应商序列号', sortable: true, halign: 'center'},
-            {field: 'scoreAvg', title: '供应商代码', sortable: true, halign: 'center'},
-            {field: 'scoreAvg', title: '物料凭证编号', sortable: true, halign: 'center'},
-            {field: 'scoreAvg', title: '是否筛选', sortable: true, halign: 'center'},
-            {field: 'scoreAvg', title: '筛选单位', sortable: true, halign: 'center'},
-            {field: 'birthDate', title: '筛选日期', sortable: true, halign: 'center',formatter: function (value, row, index) {
+            {field: 'defectType', title: '缺陷类型', sortable: true, halign: 'center'},
+            {field: 'defectCode', title: '缺陷代码', sortable: true, halign: 'center'},
+            {field: 'defectComment', title: '现象描述', sortable: true, halign: 'center'},
+            {field: 'bomMatId', title: '缺陷物料编号', sortable: true, halign: 'center'},
+            {field: 'locationNum', title: '缺陷物料位置', sortable: true, halign: 'center'},
+            {field: 'matCmf1', title: '缺陷物料分类组', sortable: true, halign: 'center'},
+            {field: 'seq', title: '缺陷物料序列号', sortable: true, halign: 'center'},
+            {field: 'defCmf2', title: '缺陷物料数量', sortable: true, halign: 'center'},
+            {field: 'zgys', title: '供应商序列号', sortable: true, halign: 'center'},
+            {field: 'lifnr', title: '供应商代码', sortable: true, halign: 'center'},
+            {field: 'mblnr', title: '物料凭证编号', sortable: true, halign: 'center'},
+            {field: 'zsfsx', title: '是否筛选', sortable: true, halign: 'center'},
+            {field: 'zsxdw', title: '筛选单位', sortable: true, halign: 'center'},
+            {field: 'zsxrq_long', title: '筛选日期', sortable: true, halign: 'center',formatter: function (value, row, index) {
                     return changeDateFormat(value)
                 }},
-            {field: 'birthDate', title: '筛选时间', sortable: true, halign: 'center',formatter: function (value, row, index) {
+            {field: 'zsxsj_long', title: '筛选时间', sortable: true, halign: 'center',formatter: function (value, row, index) {
                     return changeDateFormat(value)
                 }},
-            {field: 'scoreAvg', title: '采用筛选方案版本', sortable: true, halign: 'center'},
-            {field: 'scoreAvg', title: '筛选结果', sortable: true, halign: 'center'},
+            {field: 'zsxbb', title: '采用筛选方案版本', sortable: true, halign: 'center'},
+            {field: 'zsxjg', title: '筛选结果', sortable: true, halign: 'center'},
         ],
         onLoadSuccess: function () {
 

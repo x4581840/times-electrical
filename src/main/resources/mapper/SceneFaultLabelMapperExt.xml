@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.timeselectrical.mapper.SceneFaultLabelMapperExt">
-
+    <select id="getSceneFaultLabels" resultMap="com.timeselectrical.mapper.SceneFaultLabelMapper.BaseResultMap">
+        SELECT
+          <include refid="com.timeselectrical.mapper.SceneFaultLabelMapper.Base_Column_List"></include>
+        FROM
+          scene_fault_label
+    </select>
 </mapper>

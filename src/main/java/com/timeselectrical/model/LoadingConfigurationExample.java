@@ -305,6 +305,76 @@ public class LoadingConfigurationExample {
             return (Criteria) this;
         }
 
+        public Criteria andSqnChildIsNull() {
+            addCriterion("sqn_child is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSqnChildIsNotNull() {
+            addCriterion("sqn_child is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSqnChildEqualTo(String value) {
+            addCriterion("sqn_child =", value, "sqnChild");
+            return (Criteria) this;
+        }
+
+        public Criteria andSqnChildNotEqualTo(String value) {
+            addCriterion("sqn_child <>", value, "sqnChild");
+            return (Criteria) this;
+        }
+
+        public Criteria andSqnChildGreaterThan(String value) {
+            addCriterion("sqn_child >", value, "sqnChild");
+            return (Criteria) this;
+        }
+
+        public Criteria andSqnChildGreaterThanOrEqualTo(String value) {
+            addCriterion("sqn_child >=", value, "sqnChild");
+            return (Criteria) this;
+        }
+
+        public Criteria andSqnChildLessThan(String value) {
+            addCriterion("sqn_child <", value, "sqnChild");
+            return (Criteria) this;
+        }
+
+        public Criteria andSqnChildLessThanOrEqualTo(String value) {
+            addCriterion("sqn_child <=", value, "sqnChild");
+            return (Criteria) this;
+        }
+
+        public Criteria andSqnChildLike(String value) {
+            addCriterion("sqn_child like", value, "sqnChild");
+            return (Criteria) this;
+        }
+
+        public Criteria andSqnChildNotLike(String value) {
+            addCriterion("sqn_child not like", value, "sqnChild");
+            return (Criteria) this;
+        }
+
+        public Criteria andSqnChildIn(List<String> values) {
+            addCriterion("sqn_child in", values, "sqnChild");
+            return (Criteria) this;
+        }
+
+        public Criteria andSqnChildNotIn(List<String> values) {
+            addCriterion("sqn_child not in", values, "sqnChild");
+            return (Criteria) this;
+        }
+
+        public Criteria andSqnChildBetween(String value1, String value2) {
+            addCriterion("sqn_child between", value1, value2, "sqnChild");
+            return (Criteria) this;
+        }
+
+        public Criteria andSqnChildNotBetween(String value1, String value2) {
+            addCriterion("sqn_child not between", value1, value2, "sqnChild");
+            return (Criteria) this;
+        }
+
         public Criteria andItemnumIsNull() {
             addCriterion("itemnum is null");
             return (Criteria) this;
@@ -372,6 +442,76 @@ public class LoadingConfigurationExample {
 
         public Criteria andItemnumNotBetween(String value1, String value2) {
             addCriterion("itemnum not between", value1, value2, "itemnum");
+            return (Criteria) this;
+        }
+
+        public Criteria andLocChildIsNull() {
+            addCriterion("loc_child is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLocChildIsNotNull() {
+            addCriterion("loc_child is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLocChildEqualTo(String value) {
+            addCriterion("loc_child =", value, "locChild");
+            return (Criteria) this;
+        }
+
+        public Criteria andLocChildNotEqualTo(String value) {
+            addCriterion("loc_child <>", value, "locChild");
+            return (Criteria) this;
+        }
+
+        public Criteria andLocChildGreaterThan(String value) {
+            addCriterion("loc_child >", value, "locChild");
+            return (Criteria) this;
+        }
+
+        public Criteria andLocChildGreaterThanOrEqualTo(String value) {
+            addCriterion("loc_child >=", value, "locChild");
+            return (Criteria) this;
+        }
+
+        public Criteria andLocChildLessThan(String value) {
+            addCriterion("loc_child <", value, "locChild");
+            return (Criteria) this;
+        }
+
+        public Criteria andLocChildLessThanOrEqualTo(String value) {
+            addCriterion("loc_child <=", value, "locChild");
+            return (Criteria) this;
+        }
+
+        public Criteria andLocChildLike(String value) {
+            addCriterion("loc_child like", value, "locChild");
+            return (Criteria) this;
+        }
+
+        public Criteria andLocChildNotLike(String value) {
+            addCriterion("loc_child not like", value, "locChild");
+            return (Criteria) this;
+        }
+
+        public Criteria andLocChildIn(List<String> values) {
+            addCriterion("loc_child in", values, "locChild");
+            return (Criteria) this;
+        }
+
+        public Criteria andLocChildNotIn(List<String> values) {
+            addCriterion("loc_child not in", values, "locChild");
+            return (Criteria) this;
+        }
+
+        public Criteria andLocChildBetween(String value1, String value2) {
+            addCriterion("loc_child between", value1, value2, "locChild");
+            return (Criteria) this;
+        }
+
+        public Criteria andLocChildNotBetween(String value1, String value2) {
+            addCriterion("loc_child not between", value1, value2, "locChild");
             return (Criteria) this;
         }
 
