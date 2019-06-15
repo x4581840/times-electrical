@@ -6,6 +6,7 @@
     <result column="f_bdbh" jdbcType="VARCHAR" property="fBdbh" />
     <result column="f_gzpthwzbm" jdbcType="VARCHAR" property="fGzpthwzbm" />
     <result column="f_gzpmc" jdbcType="VARCHAR" property="fGzpmc" />
+    <result column="f_gzpxh" jdbcType="VARCHAR" property="fGzpxh" />
     <result column="f_cxdl" jdbcType="VARCHAR" property="fCxdl" />
     <result column="f_zccx" jdbcType="VARCHAR" property="fZccx" />
     <result column="f_ssyjlbj" jdbcType="VARCHAR" property="fSsyjlbj" />
@@ -79,8 +80,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, f_bdbh, f_gzpthwzbm, f_gzpmc, f_cxdl, f_zccx, f_ssyjlbj, f_scdw, f_gzmc, f_gzdm, 
-    f_gzhg, f_gzdj, f_gzfssj, f_xmmc, f_xmh, f_zyzrdw, count
+    id, f_bdbh, f_gzpthwzbm, f_gzpmc, f_gzpxh, f_cxdl, f_zccx, f_ssyjlbj, f_scdw, f_gzmc, 
+    f_gzdm, f_gzhg, f_gzdj, f_gzfssj, f_xmmc, f_xmh, f_zyzrdw, count
   </sql>
   <select id="selectByExample" parameterType="com.timeselectrical.model.SceneFaultLabelExample" resultMap="BaseResultMap">
     select
@@ -114,17 +115,19 @@
   </delete>
   <insert id="insert" parameterType="com.timeselectrical.model.SceneFaultLabel">
     insert into scene_fault_label (id, f_bdbh, f_gzpthwzbm, 
-      f_gzpmc, f_cxdl, f_zccx, 
-      f_ssyjlbj, f_scdw, f_gzmc, 
-      f_gzdm, f_gzhg, f_gzdj, 
-      f_gzfssj, f_xmmc, f_xmh, 
-      f_zyzrdw, count)
+      f_gzpmc, f_gzpxh, f_cxdl, 
+      f_zccx, f_ssyjlbj, f_scdw, 
+      f_gzmc, f_gzdm, f_gzhg, 
+      f_gzdj, f_gzfssj, f_xmmc, 
+      f_xmh, f_zyzrdw, count
+      )
     values (#{id,jdbcType=INTEGER}, #{fBdbh,jdbcType=VARCHAR}, #{fGzpthwzbm,jdbcType=VARCHAR}, 
-      #{fGzpmc,jdbcType=VARCHAR}, #{fCxdl,jdbcType=VARCHAR}, #{fZccx,jdbcType=VARCHAR}, 
-      #{fSsyjlbj,jdbcType=VARCHAR}, #{fScdw,jdbcType=VARCHAR}, #{fGzmc,jdbcType=VARCHAR}, 
-      #{fGzdm,jdbcType=VARCHAR}, #{fGzhg,jdbcType=VARCHAR}, #{fGzdj,jdbcType=VARCHAR}, 
-      #{fGzfssj,jdbcType=TIMESTAMP}, #{fXmmc,jdbcType=VARCHAR}, #{fXmh,jdbcType=VARCHAR}, 
-      #{fZyzrdw,jdbcType=VARCHAR}, #{count,jdbcType=INTEGER})
+      #{fGzpmc,jdbcType=VARCHAR}, #{fGzpxh,jdbcType=VARCHAR}, #{fCxdl,jdbcType=VARCHAR}, 
+      #{fZccx,jdbcType=VARCHAR}, #{fSsyjlbj,jdbcType=VARCHAR}, #{fScdw,jdbcType=VARCHAR}, 
+      #{fGzmc,jdbcType=VARCHAR}, #{fGzdm,jdbcType=VARCHAR}, #{fGzhg,jdbcType=VARCHAR}, 
+      #{fGzdj,jdbcType=VARCHAR}, #{fGzfssj,jdbcType=TIMESTAMP}, #{fXmmc,jdbcType=VARCHAR}, 
+      #{fXmh,jdbcType=VARCHAR}, #{fZyzrdw,jdbcType=VARCHAR}, #{count,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.timeselectrical.model.SceneFaultLabel">
     insert into scene_fault_label
@@ -140,6 +143,9 @@
       </if>
       <if test="fGzpmc != null">
         f_gzpmc,
+      </if>
+      <if test="fGzpxh != null">
+        f_gzpxh,
       </if>
       <if test="fCxdl != null">
         f_cxdl,
@@ -193,6 +199,9 @@
       </if>
       <if test="fGzpmc != null">
         #{fGzpmc,jdbcType=VARCHAR},
+      </if>
+      <if test="fGzpxh != null">
+        #{fGzpxh,jdbcType=VARCHAR},
       </if>
       <if test="fCxdl != null">
         #{fCxdl,jdbcType=VARCHAR},
@@ -256,6 +265,9 @@
       <if test="record.fGzpmc != null">
         f_gzpmc = #{record.fGzpmc,jdbcType=VARCHAR},
       </if>
+      <if test="record.fGzpxh != null">
+        f_gzpxh = #{record.fGzpxh,jdbcType=VARCHAR},
+      </if>
       <if test="record.fCxdl != null">
         f_cxdl = #{record.fCxdl,jdbcType=VARCHAR},
       </if>
@@ -306,6 +318,7 @@
       f_bdbh = #{record.fBdbh,jdbcType=VARCHAR},
       f_gzpthwzbm = #{record.fGzpthwzbm,jdbcType=VARCHAR},
       f_gzpmc = #{record.fGzpmc,jdbcType=VARCHAR},
+      f_gzpxh = #{record.fGzpxh,jdbcType=VARCHAR},
       f_cxdl = #{record.fCxdl,jdbcType=VARCHAR},
       f_zccx = #{record.fZccx,jdbcType=VARCHAR},
       f_ssyjlbj = #{record.fSsyjlbj,jdbcType=VARCHAR},
@@ -334,6 +347,9 @@
       </if>
       <if test="fGzpmc != null">
         f_gzpmc = #{fGzpmc,jdbcType=VARCHAR},
+      </if>
+      <if test="fGzpxh != null">
+        f_gzpxh = #{fGzpxh,jdbcType=VARCHAR},
       </if>
       <if test="fCxdl != null">
         f_cxdl = #{fCxdl,jdbcType=VARCHAR},
@@ -382,6 +398,7 @@
     set f_bdbh = #{fBdbh,jdbcType=VARCHAR},
       f_gzpthwzbm = #{fGzpthwzbm,jdbcType=VARCHAR},
       f_gzpmc = #{fGzpmc,jdbcType=VARCHAR},
+      f_gzpxh = #{fGzpxh,jdbcType=VARCHAR},
       f_cxdl = #{fCxdl,jdbcType=VARCHAR},
       f_zccx = #{fZccx,jdbcType=VARCHAR},
       f_ssyjlbj = #{fSsyjlbj,jdbcType=VARCHAR},

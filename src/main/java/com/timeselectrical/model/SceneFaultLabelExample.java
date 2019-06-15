@@ -375,6 +375,76 @@ public class SceneFaultLabelExample {
             return (Criteria) this;
         }
 
+        public Criteria andFGzpxhIsNull() {
+            addCriterion("f_gzpxh is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFGzpxhIsNotNull() {
+            addCriterion("f_gzpxh is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFGzpxhEqualTo(String value) {
+            addCriterion("f_gzpxh =", value, "fGzpxh");
+            return (Criteria) this;
+        }
+
+        public Criteria andFGzpxhNotEqualTo(String value) {
+            addCriterion("f_gzpxh <>", value, "fGzpxh");
+            return (Criteria) this;
+        }
+
+        public Criteria andFGzpxhGreaterThan(String value) {
+            addCriterion("f_gzpxh >", value, "fGzpxh");
+            return (Criteria) this;
+        }
+
+        public Criteria andFGzpxhGreaterThanOrEqualTo(String value) {
+            addCriterion("f_gzpxh >=", value, "fGzpxh");
+            return (Criteria) this;
+        }
+
+        public Criteria andFGzpxhLessThan(String value) {
+            addCriterion("f_gzpxh <", value, "fGzpxh");
+            return (Criteria) this;
+        }
+
+        public Criteria andFGzpxhLessThanOrEqualTo(String value) {
+            addCriterion("f_gzpxh <=", value, "fGzpxh");
+            return (Criteria) this;
+        }
+
+        public Criteria andFGzpxhLike(String value) {
+            addCriterion("f_gzpxh like", value, "fGzpxh");
+            return (Criteria) this;
+        }
+
+        public Criteria andFGzpxhNotLike(String value) {
+            addCriterion("f_gzpxh not like", value, "fGzpxh");
+            return (Criteria) this;
+        }
+
+        public Criteria andFGzpxhIn(List<String> values) {
+            addCriterion("f_gzpxh in", values, "fGzpxh");
+            return (Criteria) this;
+        }
+
+        public Criteria andFGzpxhNotIn(List<String> values) {
+            addCriterion("f_gzpxh not in", values, "fGzpxh");
+            return (Criteria) this;
+        }
+
+        public Criteria andFGzpxhBetween(String value1, String value2) {
+            addCriterion("f_gzpxh between", value1, value2, "fGzpxh");
+            return (Criteria) this;
+        }
+
+        public Criteria andFGzpxhNotBetween(String value1, String value2) {
+            addCriterion("f_gzpxh not between", value1, value2, "fGzpxh");
+            return (Criteria) this;
+        }
+
         public Criteria andFCxdlIsNull() {
             addCriterion("f_cxdl is null");
             return (Criteria) this;
