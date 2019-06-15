@@ -2,26 +2,28 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
 
-    <script src="webjars/jquery/3.1.1/jquery.min.js"></script>
-    <script src="webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="webjars/bootstrap/3.3.5/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+   <!-- <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-     <script src="../jquery-3.2.1.min.js"></script>
-    <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
-    <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+    <script th:src="@{/static/js/jquery-2.2.4.js}"></script>
+    <link th:href="@{/static/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
+    <script th:src="@{/static/js/bootstrap.js}"></script>
+ <!--    <script src="../jquery-3.2.1.min.js"></script>-->
+<!--    <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">-->
+   <!-- <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>-->
+   <!-- jquery-ui-->
+    <link th:href="@{/static/css/jquery-ui.min.css}" rel="stylesheet" type="text/css">
+    <script th:src="@{/static/js/jquery-ui.min.js}"></script>
+    <!--forward_tab2-->
     <script th:src="@{/static/js/forward.js}"></script>
     <script th:src="@{/static/js/forward_tab2.js}"></script>
     <script th:src="@{/static/js/forward_tab3.js}"></script>
-    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.css">
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.js"></script>
-    <!-- Latest compiled and minified Locales -->
-    <script src="https://unpkg.com/bootstrap-table@1.14.2/dist/locale/bootstrap-table-zh-CN.min.js"></script>
+    <!-- bootstrap table -->
+    <link th:href="@{/static/css/bootstrap-table.min.css}" rel="stylesheet" type="text/css">
+    <script th:src="@{/static/js/bootstrap-table.min.js}"></script>
+    <script th:src="@{/static/js/bootstrap-table-zh-CN.min.js}"></script>
     <meta charset="UTF-8">
-    <script>$('#myModal1').modal(show)</script>
+
     <title>正向查询页面</title>
 </head>
 <body>
@@ -33,9 +35,9 @@
 
             <div class="col-lg-10">
                 <label class="col-md-1 control-label" style="margin-top: 5px">物料编码</label>
-                <div class="input-group" style="display: inline-block;float: left">
+                <div class="input-group" style="display: inline-block;float: left;margin-left: 12px">
 
-                    <input type="text" class="form-control" placeholder="请输入值" transparent autofocus x-webkit-speech style="width: 150px;height:30px;" id="serach" th:value="${testPn}">
+                    <input type="text" class="form-control" placeholder="请输入值"  style="width: 150px;height:30px;" id="serach" th:value="${testPn}">
                     <span class="input-group-addon btn btn-default"style="width: 20px;" data-toggle="modal" data-target="#myModal">
                                  <span class="glyphicon glyphicon-search"></span>
                             </span>
@@ -44,19 +46,44 @@
                 <div style="display: inline-block;margin-left: 20px;float: left;"> <button type="button" style="background: cornflowerblue;height: 30px" th:onclick="tab1_query_button()">查询</button></div>
                 <div style="display: inline-block;margin-left: 20px;float: left;"> <button type="button" style="background: cornflowerblue;height: 30px" onclick="reSetMessage()">重置</button></div>
             </div>
+            <div  class="row head" style="margin-top: 60px">
 
+                <div class="col-lg-10">
+                    <label class="col-md-1 control-label" style="margin-top: 5px;width: 100px;margin-left: 13px">时间范围从</label>
+                    <div class="input-group" style="display: inline-block;float: left;margin-left: 18px">
+
+                        <input type="text" class="form-control" placeholder="" style="width: 150px;height:30px;" id="from" name="from">
+                        <span class="input-group-addon btn btn-default"style="width: 20px;">
+                                 <span class="glyphicon  glyphicon-pencil" id="test1" onclick="selectDate()"></span>
+                            </span>
+
+                    </div>
+
+                    <label class="col-md-1 control-label;" style="margin-top: 5px;width: 100px;margin-left: 50px">时间范围至</label>
+                    <div class="input-group" style="display: inline-block;float: left;margin-left: 23px">
+
+                        <input type="text" class="form-control" placeholder="" style="width: 150px;height:30px;" id="to" name="to" >
+                        <span class="input-group-addon btn btn-default"style="width: 20px;">
+                                 <span class="glyphicon  glyphicon-pencil"id="test2"></span>
+                            </span>
+
+                    </div>
+
+
+
+            </div>
         </div>
-
+<!--
         <div>
         <div style="margin-left: 0px;margin-top: 25px;"><label for="from" class="col-md-1 control-label" style="margin-top: 5px;margin-right: -22px">时间范围从</label>
-            <input type="text" id="from" name="from" class="form-control" style="width: 150px;height:30px;margin-right: 100px;display: inline-block">
+            <input type="text" id="from1" name="from" class="form-control" style="width: 150px;height:30px;margin-right: 100px;display: inline-block">
             <div style="display: inline-block;margin-left: -50px">
             <label for="from" class="col-md-5 control-label" style="margin-top: 5px;margin-right: -22px;">时间范围至</label>
-            <input type="text" id="to" name="to" class="form-control" style="width: 150px;height:30px;margin-right: 100px">
+            <input type="text" id="t1o" name="to" class="form-control" style="width: 150px;height:30px;margin-right: 100px">
                 </div>
         </div>
 
-            </div>
+            </div>-->
 
       <div>
       </div>
@@ -82,7 +109,7 @@
                         <form   style="margin-top:13px">
                             <div class="input-group">
                                 <span style="display:inline-block;margin-right: 15px;font-weight: 900;">物料编码</span>
-                                <input type="text"  placeholder="Twitterhandle" value="1" id="test">
+                                <input type="text"  placeholder=""  id="test">
                                 <button type="button" style="margin-left: 10px;background: cornflowerblue" onclick="tab3_query_button()">查询</button>
                                 <button type="button" style="margin-left: 10px;background: cornflowerblue" data-dismiss="modal" onclick="getValue1()">确认</button>
                             </div>
@@ -152,6 +179,85 @@
     </div><!-- /.modal -->
 
     </div><!-- /.modal -->
+    <div class="modal fade"  id="myModal1" aria-hidden="true" >
+
+        <div class="modal-dialog" style="width: 600px;">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <button type="button" class="close" data-dismiss="modal"
+
+                            aria-hidden="true">×
+
+                    </button>
+
+
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active" id="tab2">
+
+                            <table id="table2">
+
+                            </table>
+                        </div>
+                        <!--      <table class="table table-condensed" id="table">
+
+                                  <thead>
+                                  <tr>
+                                      <td>物料编码</td>
+                                      <td>物料描述</td>
+                                  </tr>
+                                  </thead>
+                                  <tbody>
+
+                                  <tr>
+                                      <td style="width: 150px">
+                                          <input type="checkbox" name="inlineCheckbox1" value="option1"><span>选项一</span>
+
+                                      </td>
+
+                                      <td><span>Bangalore</span></td>
+                                  </tr>
+                                  <tr>
+                                      <td style=" width: 150px">
+                                          <input type="checkbox" name="inlineCheckbox1" value="option2"> 选项2
+                                      </td>
+
+                                      <td>Mumbai</td>
+                                  </tr>
+                                  <tr>
+                                      <td>
+                                          <input type="checkbox" name="inlineCheckbox1" value="option3"> 选项3
+                                      </td>
+
+                                      <td>Pune</td>
+
+                                  </tr>
+
+                                  </tbody>
+                              </table>-->
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-default"
+
+                            data-dismiss="modal">关闭
+
+                    </button>
+
+                </div>
+
+            </div><!-- /.modal-content -->
+
+        </div><!-- /.modal-dialog -->
+
+    </div><!-- /.modal -->
+
+    </div><!-- /.modal -->
     <div class="tab-content">
                 <!--<table id="table1">
 
@@ -163,13 +269,13 @@
             </table>
         </div>
         <!--第二个查询表格-->
-        <div class="tab-pane fade in active" id="tab2">
+       <!-- <div class="tab-pane fade in active" id="tab2">
 
                 <table id="table2">
 
                 </table>
 
-        </div>
+        </div>-->
 
             </div>
         </div>
@@ -178,7 +284,9 @@
 
 </body>
 <script type="text/javascript">
+ function  selectDate() {
 
+ }
     function person(){
         var gg = $("#test").val();
 
@@ -273,6 +381,7 @@
             changeYear:true,//通过select选择年
             //changeMonth:true,
             showMonthAfterYear:true,//是否把月放在年的后面
+            yearRange : '-20:+0',
             // defaultDate:'2011-03-10',//默认日期
             //minDate:'2011-03-05',//最小日期
             // maxDate:'2011-03-20',//最大日期
@@ -307,6 +416,7 @@
             closeText:"关闭",//关闭选择框的按钮名称
             yearSuffix: '年', //年的后缀
             currentText: '今天',
+            yearRange : '-20:+0',
             changeYear:true,//通过select选择年
             showMonthAfterYear:true,//是否把月放在年的后面
             // defaultDate:'2011-03-10',//默认日期

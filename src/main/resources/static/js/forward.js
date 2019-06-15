@@ -13,7 +13,7 @@ function InitTable1 () {
         pagination: true,                   //是否显示分页（*）
         //sortable: true,                     //是否启用排序
         //sortOrder: "asc",                   //排序方式
-        sidePagination: "client",           //分页方式：client客户端分页，server服务端分页（*）
+        sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
         pageNumber: 1,                      //初始化加载第一页，默认第一页,并记录
         pageSize: 10,                     //每页的记录行数（*）
         pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
@@ -31,11 +31,17 @@ function InitTable1 () {
         //得到查询的参数
         queryParams : function (params) {
             //这里的键的名字和控制器的变量名必须一致，这边改动，控制器也需要改成一样的
+            var serach = $("#serach").val();
+            var  from=$("#from").val();
+            var  to=$("#to").val();
             var temp = {
-                rows: params.limit,                         //页面大小
-                page: (params.offset / params.limit) + 1,   //页码
-                sort: params.sort,      //排序列名
-                sortOrder: params.order //排位命令（desc，asc）
+                pageSize: params.limit,                         //页面大小
+                pageNo: (params.offset / params.limit) + 1,  //页码
+                serachContext:serach,
+                fromDate:from,
+                toDate:to
+               /* sort: params.sort,      //排序列名
+                sortOrder: params.order //排位命令（desc，asc）*/
             };
             console.log("test=="+$("#dependOn").val());
             return temp;
@@ -44,12 +50,14 @@ function InitTable1 () {
                 {field: 'age', title: '故障物料名称', sortable: true, halign: 'center',align: 'center'},
                 {field: 'name', title: '车型大类', sortable: true, halign: 'center',valign: 'middle',align: 'center'
                    },
+                {field: 'name', title: '车型大类', sortable: true, halign: 'center',valign: 'middle',align: 'center'
+                },
                 {field: 'scoreSum', title: '车型', sortable: true, halign: 'center',align: 'center'},
                 {field: 'scoreAvg', title: '物料发生故障频次', sortable: true, halign: 'center',align: 'center',
                     formatter: function(value, row, index) {
                         var actions = [];
                         /* actions.push('<input type="checkbox" name="inlineCheckbox1" style="width: 40px;" value="'+value+'" onclick="chooseOne(this)">'+'<span>'+value+'</span>');*/
-                        actions.push('<a href="#" onclick="tab2_query_button()">'+value+'</a>')
+                        actions.push('<a href="#" onclick="tab2_query_button()"data-toggle="modal" data-target="#myModal1">'+value+'</a>')
                         return actions.join('');
                     }
                  }],
@@ -71,5 +79,6 @@ function tab1_query_button() {
     search1.style.borderBottom="none";
     search1.style.borderRight="none";
     search1.style.borderLeft="none";
+    $("#table1").bootstrapTable('destroy');
     InitTable1();
 }

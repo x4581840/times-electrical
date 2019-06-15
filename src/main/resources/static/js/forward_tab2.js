@@ -13,7 +13,7 @@ function InitTable2() {
         pagination: true,                   //是否显示分页（*）
         //sortable: true,                     //是否启用排序
         //sortOrder: "asc",                   //排序方式
-        sidePagination: "client",           //分页方式：client客户端分页，server服务端分页（*）
+        sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
         pageNumber: 1,                      //初始化加载第一页，默认第一页,并记录
         pageSize: 10,                     //每页的记录行数（*）
         pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
@@ -32,20 +32,22 @@ function InitTable2() {
         queryParams : function (params) {
             //这里的键的名字和控制器的变量名必须一致，这边改动，控制器也需要改成一样的
             var temp = {
-                rows: params.limit,                         //页面大小
-                page: (params.offset / params.limit) + 1,   //页码
-                sort: params.sort,      //排序列名
-                sortOrder: params.order //排位命令（desc，asc）
+                pageSize: params.limit,                         //页面大小
+                pageNo: (params.offset / params.limit) + 1//页码
+            /*    sort: params.sort,      //排序列名
+                sortOrder: params.order //排位命令（desc，asc）*/
             };
             console.log("test=="+$("#dependOn").val());
             return temp;
         },
-            columns: [{field: 'id', title: '故障物料编码22', sortable: true, halign: 'center',align: 'center'},
+            columns: [{field: 'id', title: '故障物料编码', sortable: true, halign: 'center',align: 'center'},
                 {field: 'age', title: '故障物料名称', sortable: true, halign: 'center',align: 'center'},
                 {field: 'name', title: '车型大类', sortable: true, halign: 'center',valign: 'middle',align: 'center'
                 },
                 {field: 'scoreSum', title: '车型', sortable: true, halign: 'center',align: 'center'},
-                {field: 'scoreAvg', title: '物料发生故障频次', sortable: true, halign: 'center',align: 'center'
+                {field: 'scoreAvg', title: '物料发生故障频次', sortable: true, halign: 'center',align: 'center',cellStyle:function(value,row,index){
+                        return {css:{"width":"450px"}}
+                    }
 
 
                 }],
@@ -64,12 +66,12 @@ function InitTable2() {
 
 function  tab2_query_button() {
 
-    var target= document.getElementById("tab1");
+
     var search= document.getElementById("search1");
     search.style.borderBottom="none";
     search.style.borderRight="none";
     search.style.borderLeft="none";
 
-    target.style.display="none";
+    $("#table2").bootstrapTable('destroy');
     InitTable2();
 }

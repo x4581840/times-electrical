@@ -1,6 +1,7 @@
 package com.timeselectrical.controller;
 
 
+import com.timeselectrical.component.PageWrapper;
 import com.timeselectrical.model.Student;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,9 +54,13 @@ public class ForwardController {
     }
     @ResponseBody
     @RequestMapping("/getList")
-    public List<Student> getList(HttpServletRequest request) {
-       String aa=request.getParameter("searchContext");
-        System.out.print("参数为"+aa);
+    public ResponseEntity getList(HttpServletRequest request) {
+
+       /* String bb=request.getParameter("fromDate");
+        String cc=request.getParameter("toDate");
+
+        System.out.print("参数为"+aa+bb+cc);*/
+
         List<Student> result = new ArrayList<>();
         Student student = new Student(1, 1, "A", "1", "1");
         result.add(student);
@@ -89,6 +94,7 @@ public class ForwardController {
 
         student = new Student(11, 11, "K", "11", "11");
         result.add(student);
-        return result;
+
+        return ResponseEntity.ok(new PageWrapper<>(result,100));
     }
 }

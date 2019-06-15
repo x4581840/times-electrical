@@ -1,6 +1,7 @@
 package com.timeselectrical.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.github.pagehelper.PageHelper;
 import com.timeselectrical.component.PageWrapper;
 import com.timeselectrical.dto.ComponentLocationDTO;
 import com.timeselectrical.dto.ComponentLocationDTO.*;
@@ -133,6 +134,7 @@ public class BackwardController {
 
         student = new StudentImpl(11, 11, "K", "11", "11", new Date().getTime());
         result.add(student);
+
         if("1".equals(flag)) {
             return ResponseEntity.ok(new PageWrapper<>(result));
         }

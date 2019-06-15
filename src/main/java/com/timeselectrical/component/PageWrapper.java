@@ -36,7 +36,6 @@ public class PageWrapper<T>{
     public List<T> getRows() {
         return rows;
     }
-
     public long getTotal() {
         return total;
     }
