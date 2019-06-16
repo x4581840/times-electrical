@@ -97,6 +97,19 @@ public class SceneFaultLabel {
      */
     private Integer count;
 
+    /**
+     * 故障发生时间
+     */
+    private long fGzfssj_long;
+
+    public long getfGzfssj_long() {
+        return fGzfssj_long;
+    }
+
+    public void setfGzfssj_long(long fGzfssj_long) {
+        this.fGzfssj_long = fGzfssj_long;
+    }
+
     public Integer getId() {
         return id;
     }

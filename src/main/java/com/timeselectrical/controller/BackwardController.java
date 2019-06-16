@@ -65,7 +65,7 @@ public class BackwardController {
         cond.setLocChildList(locChildList);
         PageHelper.startPage(pageNo, pageSize, true);
         List<LoadingConfiguration> lcList = loadingConfigurationService.getLoadingConfigurationsByCond(cond);
-        List<LoadingConfigurationExt> lcExtList = new ArrayList<>();
+        /*List<LoadingConfigurationExt> lcExtList = new ArrayList<>();
         if(!CollectionUtils.isEmpty(lcList)) {
             LoadingConfigurationExt lcExt = null;
             for(LoadingConfiguration lc : lcList) {
@@ -77,8 +77,16 @@ public class BackwardController {
                 lcExt.setfGzfssj_long(lc.getfGzfssj() != null ? lc.getfGzfssj().getTime() : 0);
                 lcExtList.add(lcExt);
             }
+        }*/
+        if(!CollectionUtils.isEmpty(lcList)) {
+            for(LoadingConfiguration lc : lcList) {
+                lc.setOnlinetime_long(lc.getOnlinetime() != null ? lc.getOnlinetime().getTime() : 0);
+                lc.setReleasedate_long(lc.getReleasedate() != null ? lc.getReleasedate().getTime() : 0);
+                lc.setUpdatetime_long(lc.getUpdatetime() != null ? lc.getUpdatetime().getTime() : 0);
+                lc.setfGzfssj_long(lc.getfGzfssj() != null ? lc.getfGzfssj().getTime() : 0);
+            }
         }
-        return ResponseEntity.ok(new PageWrapper<>(lcExtList));
+        return ResponseEntity.ok(new PageWrapper<>(lcList));
     }
 
     @RequestMapping("/getLocSelectData")
@@ -92,7 +100,7 @@ public class BackwardController {
                                         @RequestParam(defaultValue = "10", required = false) Integer pageSize) {
         PageHelper.startPage(pageNo, pageSize, true);
         List<ProductionDefectRecord> pdrList = productionDefectRecordService.getProductiondefectRecords();
-        List<ProductionDefectRecordExt> pdrExtList = new ArrayList<>();
+        /*List<ProductionDefectRecordExt> pdrExtList = new ArrayList<>();
         if(!CollectionUtils.isEmpty(pdrList)) {
             ProductionDefectRecordExt pdrExt = null;
             for(ProductionDefectRecord pdr : pdrList) {
@@ -102,8 +110,14 @@ public class BackwardController {
                 pdrExt.setZsxsj_long(pdr.getZsxsj() != null ? pdr.getZsxsj().getTime() : 0);
                 pdrExtList.add(pdrExt);
             }
+        }*/
+        if(!CollectionUtils.isEmpty(pdrList)) {
+            for(ProductionDefectRecord pdr : pdrList) {
+                pdr.setZsxrq_long(pdr.getZsxrq() != null ? pdr.getZsxrq().getTime() : 0);
+                pdr.setZsxsj_long(pdr.getZsxsj() != null ? pdr.getZsxsj().getTime() : 0);
+            }
         }
-        return ResponseEntity.ok(new PageWrapper<>(pdrExtList));
+        return ResponseEntity.ok(new PageWrapper<>(pdrList));
     }
 
     @RequestMapping("/getSceneFaultLabelList")
@@ -111,7 +125,7 @@ public class BackwardController {
                                                  @RequestParam(defaultValue = "10", required = false) Integer pageSize) {
         PageHelper.startPage(pageNo, pageSize, true);
         List<SceneFaultLabel> sflList = sceneFaultLabelService.getSceneFaultLabels();
-        List<SceneFaultLabelExt> sflExtList = new ArrayList<>();
+        /*List<SceneFaultLabelExt> sflExtList = new ArrayList<>();
         if(!CollectionUtils.isEmpty(sflList)) {
             SceneFaultLabelExt sflExt = null;
             for(SceneFaultLabel sfl : sflList) {
@@ -120,7 +134,12 @@ public class BackwardController {
                 sflExt.setfGzfssj_long(sfl.getfGzfssj() != null ? sfl.getfGzfssj().getTime() : 0);
                 sflExtList.add(sflExt);
             }
+        }*/
+        if(!CollectionUtils.isEmpty(sflList)) {
+            for (SceneFaultLabel sfl : sflList) {
+                sfl.setfGzfssj_long(sfl.getfGzfssj() != null ? sfl.getfGzfssj().getTime() : 0);
+            }
         }
-        return ResponseEntity.ok(new PageWrapper<>(sflExtList));
+        return ResponseEntity.ok(new PageWrapper<>(sflList));
     }
 }

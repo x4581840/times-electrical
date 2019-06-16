@@ -1,9 +1,12 @@
 
 var $table1;
 //初始化bootstrap-table的内容
-function InitTable1 (selectValueArray) {
+function InitTable1 (sqn, selectValueArray) {
     //记录页面bootstrap-table全局变量$table，方便应用
     var queryUrl = '/backward/getLoadConfigurationList?rnd=' + Math.random();
+    if(sqn != null && sqn != undefined && sqn != "" && $.trim(sqn) != "") {
+        queryUrl = queryUrl + "&sqn=" + sqn;
+    }
     if(selectValueArray != undefined && selectValueArray != null && selectValueArray != "") {
         queryUrl = queryUrl + "&locChildList=" + selectValueArray;
     }
@@ -39,7 +42,6 @@ function InitTable1 (selectValueArray) {
                 pageNo: (params.offset / params.limit) + 1,   //页码
                 //sort: params.sort,      //排序列名
                 //sortOrder: params.order, //排位命令（desc，asc）
-                flag: 1
             };
             console.log("表格一");
             // console.log("test=="+$("#dependOn").val());
@@ -119,7 +121,8 @@ function backward_tab1_query_button() {
     $("#table1").bootstrapTable('destroy');
     //取 下拉框中选中的值
     var selectValueArray = getMultiSelectVal();
-    InitTable1(selectValueArray);
+    var sqn = $("#seqNo").val();
+    InitTable1(sqn, selectValueArray);
 }
 
 //多选取值
