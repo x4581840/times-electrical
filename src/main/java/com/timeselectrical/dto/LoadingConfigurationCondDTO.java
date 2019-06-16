@@ -13,9 +13,9 @@ public class LoadingConfigurationCondDTO {
     //父项产品序列号
     private String sqn;
     //组件位置号模糊字符串
-    private String locLike;
+    private String locChildLike;
     //组件位置号列表
-    private List<String> locList;
+    private List<String> locChildList;
 
     public String getSqn() {
         return sqn;
@@ -25,19 +25,19 @@ public class LoadingConfigurationCondDTO {
         this.sqn = sqn;
     }
 
-    public String getLocLike() {
-        return locLike;
+    public String getLocChildLike() {
+        return locChildLike;
     }
 
-    public void setLocLike(String locLike) {
-        this.locLike = locLike;
+    public void setLocChildLike(String locChildLike) {
+        this.locChildLike = locChildLike;
     }
 
-    public List<String> getLocList() {
-        return locList;
+    public List<String> getLocChildList() {
+        return locChildList;
     }
 
-    public void setLocList(List<String> locList) {
-        this.locList = locList;
+    public void setLocChildList(List<String> locChildList) {
+        this.locChildList = locChildList;
     }
 }

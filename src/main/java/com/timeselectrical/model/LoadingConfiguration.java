@@ -6,10 +6,21 @@ import java.util.Date;
  * 装车配置实体类
  */
 public class LoadingConfiguration {
+
     /**
      * 主键
      */
-    private Integer id;
+    private Integer primaryKeyId;
+
+    /**
+     * 当前记录唯一标识ID
+     */
+    private String id;
+
+    /**
+     * 子节点唯一标识ID
+     */
+    private String idChild;
 
     /**
      * 父项产品序列号
@@ -131,12 +142,28 @@ public class LoadingConfiguration {
      */
     private Integer countXcgz;
 
-    public Integer getId() {
+    public Integer getPrimaryKeyId() {
+        return primaryKeyId;
+    }
+
+    public void setPrimaryKeyId(Integer primaryKeyId) {
+        this.primaryKeyId = primaryKeyId;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
+    }
+
+    public String getIdChild() {
+        return idChild;
+    }
+
+    public void setIdChild(String idChild) {
+        this.idChild = idChild == null ? null : idChild.trim();
     }
 
     public String getSqn() {

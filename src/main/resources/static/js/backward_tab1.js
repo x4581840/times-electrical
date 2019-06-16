@@ -5,7 +5,7 @@ function InitTable1 (selectValueArray) {
     //记录页面bootstrap-table全局变量$table，方便应用
     var queryUrl = '/backward/getLoadConfigurationList?rnd=' + Math.random();
     if(selectValueArray != undefined && selectValueArray != null && selectValueArray != "") {
-        queryUrl = queryUrl + "&locList=" + selectValueArray;
+        queryUrl = queryUrl + "&locChildList=" + selectValueArray;
     }
     $table1 = $('#table1').bootstrapTable({
         url: queryUrl,                      //请求后台的URL（*）
@@ -67,12 +67,13 @@ function InitTable1 (selectValueArray) {
                     return changeDateFormat(value);
                 }},
             {field: 'countScgz', title: '生产故障次数', sortable: true, halign: 'center',formatter: function (value, row, index) {
-                    var sqn = row.age;
-                    return '<a onclick="productDefectNumClick('+sqn+')">'+value+'</a>';
+                    var sqn = row.sqn;
+                    // 在方法内要传的值的前后加上&quot;，否则会报Uncaught ReferenceError: xxx is not defined
+                    return '<a onclick="productDefectNumClick(&quot;'+sqn+'&quot;)">'+value+'</a>';
                 }}, //超链接
             {field: 'countXcgz', title: '现场故障记录', sortable: true, halign: 'center',formatter: function (value, row, index) {
-                    var sqn = row.age;
-                    return '<a onclick="sceneFaultNumClick('+sqn+')">'+value+'</a>';
+                    var sqn = row.sqn;
+                    return '<a onclick="sceneFaultNumClick(&quot;'+sqn+'&quot;)">'+value+'</a>';
                 }}, //超链接
         ],
         onLoadSuccess: function () {
@@ -88,13 +89,13 @@ function InitTable1 (selectValueArray) {
 //点击"生产故障次数"字段的值 触发的函数，跳到"生产缺陷记录"的tab
 function productDefectNumClick(sqn) {
     console.log("sqn==="+sqn);
-    // debugger;
+    debugger;
     $("#tab_1").removeClass("active");
     $("#tab1").removeClass("in").removeClass("active");
     $("#tab_2").addClass("active");
     $("#tab2").addClass("in").addClass("active");
 
-    tab2_query_button(sqn);
+    backward_tab2_query_button(sqn);
 }
 
 //点击"现场故障记录"字段的值触发的函数，跳到"现场故障标签"的tab
@@ -106,14 +107,14 @@ function sceneFaultNumClick(sqn) {
     $("#tab_3").addClass("active");
     $("#tab3").addClass("in").addClass("active");
 
-    tab3_query_button(sqn);
+    backward_tab3_query_button(sqn);
 }
 
 // $(function(){
 //     InitMainTable();
 // });
 
-function tab1_query_button() {
+function backward_tab1_query_button() {
     //再次点击查询时把table对象信息销毁
     $("#table1").bootstrapTable('destroy');
     //取 下拉框中选中的值
@@ -138,7 +139,7 @@ $(function () {
             data: function(param){
                 console.log("======"+$("#seqNo").val());
                 return {
-                    locLike: param.term,
+                    locChildLike: param.term,
                     sqn: $("#seqNo").val()
                     //searchType: 'public',
                     //page: param.page || 1

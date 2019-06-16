@@ -2,7 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.timeselectrical.mapper.LoadingConfigurationMapper">
   <resultMap id="BaseResultMap" type="com.timeselectrical.model.LoadingConfiguration">
-    <id column="id" jdbcType="INTEGER" property="id" />
+    <id column="primary_key_id" jdbcType="INTEGER" property="primaryKeyId" />
+    <result column="id" jdbcType="VARCHAR" property="id" />
+    <result column="id_child" jdbcType="VARCHAR" property="idChild" />
     <result column="sqn" jdbcType="VARCHAR" property="sqn" />
     <result column="loc" jdbcType="VARCHAR" property="loc" />
     <result column="sqn_child" jdbcType="VARCHAR" property="sqnChild" />
@@ -87,9 +89,10 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, sqn, loc, sqn_child, itemnum, loc_child, locdesc, cmodel, carno, carriagenum, 
-    ownercustomer, repairprocess, maker, onlinetime, releasedate, updatetime, ancestor, 
-    assetlevel, parent, assetnum, type, f_gzpxh, f_gzfssj, count_scgz, count_xcgz
+    primary_key_id, id, id_child, sqn, loc, sqn_child, itemnum, loc_child, locdesc, cmodel, 
+    carno, carriagenum, ownercustomer, repairprocess, maker, onlinetime, releasedate, 
+    updatetime, ancestor, assetlevel, parent, assetnum, type, f_gzpxh, f_gzfssj, count_scgz, 
+    count_xcgz
   </sql>
   <select id="selectByExample" parameterType="com.timeselectrical.model.LoadingConfigurationExample" resultMap="BaseResultMap">
     select
@@ -109,11 +112,11 @@
     select 
     <include refid="Base_Column_List" />
     from loading_configuration
-    where id = #{id,jdbcType=INTEGER}
+    where primary_key_id = #{primaryKeyId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from loading_configuration
-    where id = #{id,jdbcType=INTEGER}
+    where primary_key_id = #{primaryKeyId,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.timeselectrical.model.LoadingConfigurationExample">
     delete from loading_configuration
@@ -122,30 +125,38 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.timeselectrical.model.LoadingConfiguration">
-    insert into loading_configuration (id, sqn, loc, 
-      sqn_child, itemnum, loc_child, 
-      locdesc, cmodel, carno, 
-      carriagenum, ownercustomer, repairprocess, 
-      maker, onlinetime, releasedate, 
-      updatetime, ancestor, assetlevel, 
-      parent, assetnum, type, 
-      f_gzpxh, f_gzfssj, count_scgz, 
-      count_xcgz)
-    values (#{id,jdbcType=INTEGER}, #{sqn,jdbcType=VARCHAR}, #{loc,jdbcType=VARCHAR}, 
-      #{sqnChild,jdbcType=VARCHAR}, #{itemnum,jdbcType=VARCHAR}, #{locChild,jdbcType=VARCHAR}, 
-      #{locdesc,jdbcType=VARCHAR}, #{cmodel,jdbcType=VARCHAR}, #{carno,jdbcType=VARCHAR}, 
-      #{carriagenum,jdbcType=VARCHAR}, #{ownercustomer,jdbcType=VARCHAR}, #{repairprocess,jdbcType=VARCHAR}, 
-      #{maker,jdbcType=VARCHAR}, #{onlinetime,jdbcType=TIMESTAMP}, #{releasedate,jdbcType=TIMESTAMP}, 
-      #{updatetime,jdbcType=TIMESTAMP}, #{ancestor,jdbcType=VARCHAR}, #{assetlevel,jdbcType=VARCHAR}, 
-      #{parent,jdbcType=VARCHAR}, #{assetnum,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
-      #{fGzpxh,jdbcType=VARCHAR}, #{fGzfssj,jdbcType=TIMESTAMP}, #{countScgz,jdbcType=INTEGER}, 
-      #{countXcgz,jdbcType=INTEGER})
+    insert into loading_configuration (primary_key_id, id, id_child, 
+      sqn, loc, sqn_child, 
+      itemnum, loc_child, locdesc, 
+      cmodel, carno, carriagenum, 
+      ownercustomer, repairprocess, maker, 
+      onlinetime, releasedate, updatetime, 
+      ancestor, assetlevel, parent, 
+      assetnum, type, f_gzpxh, 
+      f_gzfssj, count_scgz, count_xcgz
+      )
+    values (#{primaryKeyId,jdbcType=INTEGER}, #{id,jdbcType=VARCHAR}, #{idChild,jdbcType=VARCHAR}, 
+      #{sqn,jdbcType=VARCHAR}, #{loc,jdbcType=VARCHAR}, #{sqnChild,jdbcType=VARCHAR}, 
+      #{itemnum,jdbcType=VARCHAR}, #{locChild,jdbcType=VARCHAR}, #{locdesc,jdbcType=VARCHAR}, 
+      #{cmodel,jdbcType=VARCHAR}, #{carno,jdbcType=VARCHAR}, #{carriagenum,jdbcType=VARCHAR}, 
+      #{ownercustomer,jdbcType=VARCHAR}, #{repairprocess,jdbcType=VARCHAR}, #{maker,jdbcType=VARCHAR}, 
+      #{onlinetime,jdbcType=TIMESTAMP}, #{releasedate,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, 
+      #{ancestor,jdbcType=VARCHAR}, #{assetlevel,jdbcType=VARCHAR}, #{parent,jdbcType=VARCHAR}, 
+      #{assetnum,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{fGzpxh,jdbcType=VARCHAR}, 
+      #{fGzfssj,jdbcType=TIMESTAMP}, #{countScgz,jdbcType=INTEGER}, #{countXcgz,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.timeselectrical.model.LoadingConfiguration">
     insert into loading_configuration
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="primaryKeyId != null">
+        primary_key_id,
+      </if>
       <if test="id != null">
         id,
+      </if>
+      <if test="idChild != null">
+        id_child,
       </if>
       <if test="sqn != null">
         sqn,
@@ -221,8 +232,14 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="primaryKeyId != null">
+        #{primaryKeyId,jdbcType=INTEGER},
+      </if>
       <if test="id != null">
-        #{id,jdbcType=INTEGER},
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="idChild != null">
+        #{idChild,jdbcType=VARCHAR},
       </if>
       <if test="sqn != null">
         #{sqn,jdbcType=VARCHAR},
@@ -307,8 +324,14 @@
   <update id="updateByExampleSelective" parameterType="map">
     update loading_configuration
     <set>
+      <if test="record.primaryKeyId != null">
+        primary_key_id = #{record.primaryKeyId,jdbcType=INTEGER},
+      </if>
       <if test="record.id != null">
-        id = #{record.id,jdbcType=INTEGER},
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idChild != null">
+        id_child = #{record.idChild,jdbcType=VARCHAR},
       </if>
       <if test="record.sqn != null">
         sqn = #{record.sqn,jdbcType=VARCHAR},
@@ -389,7 +412,9 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update loading_configuration
-    set id = #{record.id,jdbcType=INTEGER},
+    set primary_key_id = #{record.primaryKeyId,jdbcType=INTEGER},
+      id = #{record.id,jdbcType=VARCHAR},
+      id_child = #{record.idChild,jdbcType=VARCHAR},
       sqn = #{record.sqn,jdbcType=VARCHAR},
       loc = #{record.loc,jdbcType=VARCHAR},
       sqn_child = #{record.sqnChild,jdbcType=VARCHAR},
@@ -421,6 +446,12 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.timeselectrical.model.LoadingConfiguration">
     update loading_configuration
     <set>
+      <if test="id != null">
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="idChild != null">
+        id_child = #{idChild,jdbcType=VARCHAR},
+      </if>
       <if test="sqn != null">
         sqn = #{sqn,jdbcType=VARCHAR},
       </if>
@@ -494,11 +525,13 @@
         count_xcgz = #{countXcgz,jdbcType=INTEGER},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where primary_key_id = #{primaryKeyId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.timeselectrical.model.LoadingConfiguration">
     update loading_configuration
-    set sqn = #{sqn,jdbcType=VARCHAR},
+    set id = #{id,jdbcType=VARCHAR},
+      id_child = #{idChild,jdbcType=VARCHAR},
+      sqn = #{sqn,jdbcType=VARCHAR},
       loc = #{loc,jdbcType=VARCHAR},
       sqn_child = #{sqnChild,jdbcType=VARCHAR},
       itemnum = #{itemnum,jdbcType=VARCHAR},
@@ -522,6 +555,6 @@
       f_gzfssj = #{fGzfssj,jdbcType=TIMESTAMP},
       count_scgz = #{countScgz,jdbcType=INTEGER},
       count_xcgz = #{countXcgz,jdbcType=INTEGER}
-    where id = #{id,jdbcType=INTEGER}
+    where primary_key_id = #{primaryKeyId,jdbcType=INTEGER}
   </update>
 </mapper>

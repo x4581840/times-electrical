@@ -27,7 +27,7 @@ public class ProductionDefectRecord {
     private String sublotId;
 
     /**
-     * lot号
+     * lot号(订单号)
      */
     private String lotId;
 

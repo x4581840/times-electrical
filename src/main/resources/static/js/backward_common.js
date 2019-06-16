@@ -1,6 +1,8 @@
 
 //初始化树形控件
 function initTreeView() {
+    // 把之前选中的放在隐藏框中的值清掉
+    $("#hiddenSeqNo").val("");
     var seqNo = $("#seqNo").val();
     if(seqNo == "" || seqNo == undefined || seqNo == null || $.trim(seqNo) == "" ) {
         $("#inputSeqNo").css("color", "red");
@@ -11,10 +13,10 @@ function initTreeView() {
     $("#inputSeqNo").css("color", "#333");
     var defaultData;
     var nodeId_temp = null;
-    var flag = $("#seqNo").val();
+    var sqn = $("#seqNo").val();
     $.ajax({
         type: "post",
-        url: "/test/getTreeData?rnd=" + Math.random() + "&flag=" + flag,
+        url: "/backward/getTreeData?rnd=" + Math.random() + "&sqn=" + sqn,
         contentType: 'text/json,charset=utf-8',
         dataType: "json",
         success: function (result) {
@@ -42,6 +44,11 @@ function initTreeView() {
                     nodeId_temp = data.nodeId;
                     //把选中的节点的text写进hidden中
                     $("#hiddenSeqNo").val(data.text);
+                },
+                onNodeUnchecked: function (event, data) {
+                    console.log("取消checked");
+                    nodeId_temp == null;
+                    $("#hiddenSeqNo").val("");
                 }
             });
             $("#treeViewDiv").css("display", "block");

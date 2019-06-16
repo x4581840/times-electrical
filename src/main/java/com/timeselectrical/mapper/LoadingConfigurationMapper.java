@@ -10,7 +10,7 @@ public interface LoadingConfigurationMapper {
 
     int deleteByExample(LoadingConfigurationExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Integer primaryKeyId);
 
     int insert(LoadingConfiguration record);
 
@@ -18,7 +18,7 @@ public interface LoadingConfigurationMapper {
 
     List<LoadingConfiguration> selectByExample(LoadingConfigurationExample example);
 
-    LoadingConfiguration selectByPrimaryKey(Integer id);
+    LoadingConfiguration selectByPrimaryKey(Integer primaryKeyId);
 
     int updateByExampleSelective(@Param("record") LoadingConfiguration record, @Param("example") LoadingConfigurationExample example);
 

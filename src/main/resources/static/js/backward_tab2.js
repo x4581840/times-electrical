@@ -46,8 +46,8 @@ function InitTable2 (sqn) {
             return temp;
         },
         columns: [{field: 'sublotId', title: '产品序列号', sortable: true, halign: 'center'},
-            {field: 'age', title: '订单号', sortable: true, halign: 'center'},
-            {field: 'name', title: '工序', sortable: true, halign: 'center'},
+            {field: 'lotId', title: '订单号', sortable: true, halign: 'center'},
+            /*{field: 'name', title: '工序', sortable: true, halign: 'center'},*/
             {field: 'defectType', title: '缺陷类型', sortable: true, halign: 'center'},
             {field: 'defectCode', title: '缺陷代码', sortable: true, halign: 'center'},
             {field: 'defectComment', title: '现象描述', sortable: true, halign: 'center'},
@@ -80,7 +80,7 @@ function InitTable2 (sqn) {
     });
 };
 
-function tab2_query_button(sqn) {
+function backward_tab2_query_button(sqn) {
     //再次点击查询时把table对象信息销毁
     $("#table2").bootstrapTable('destroy');
     InitTable2(sqn);

@@ -11,22 +11,22 @@
             <if test="cond != null and cond.sqn != null and cond.sqn != ''">
                 AND sqn = #{cond.sqn}
             </if>
-            <if test="cond != null and cond.locLike != null and cond.locLike != ''">
-                AND loc like LIKE CONCAT('%', #{con.locLike}, '%')
+            <if test="cond != null and cond.locChildLike != null and cond.locChildLike != ''">
+                AND loc_child like LIKE CONCAT('%', #{con.locChildLike}, '%')
             </if>
-            <if test="cond != null and cond.locList != null and cond.locList.size() != 0">
-                AND loc IN
-                <foreach collection="cond.locList" item="loc" open="(" close=")" separator=",">
-                    #{loc}
+            <if test="cond != null and cond.locChildList != null and cond.locChildList.size() != 0">
+                AND loc_child IN
+                <foreach collection="cond.locChildList" item="locChild" open="(" close=")" separator=",">
+                    #{locChild}
                 </foreach>
             </if>
         </where>
 
     </select>
 
-    <select id="getLocByCond" resultType="java.lang.String">
+    <select id="getLocChildsByCond" resultType="java.lang.String">
         SELECT
-          loc
+          loc_child
         FROM
           loading_configuration
         <where>
@@ -34,10 +34,54 @@
             <if test="cond != null and cond.sqn != null and cond.sqn != ''">
                 AND sqn = #{cond.sqn}
             </if>
-            <if test="cond != null and cond.locLike != null and cond.locLike != ''">
-                AND loc LIKE CONCAT('%', #{cond.locLike}, '%')
+            <if test="cond != null and cond.locChildLike != null and cond.locChildLike != ''">
+                AND loc_child LIKE CONCAT('%', #{cond.locChildLike}, '%')
             </if>
         </where>
+    </select>
 
+    <!--<resultMap id="partLCResultMap" type="com.timeselectrical.dto.PartLoadingConfigurationDTO">
+        <result column="ID" property="id"></result>
+        <result column="ID_CHILD" property="idChild"></result>
+        <result column="ITEMNUM" property="itemnum"></result>
+        <result column="SQN" property="sqn"></result>
+        <result column="SQN_CHILD" property="sqnChild"></result>
+        <result column="LOC" property="loc"></result>
+        <result column="LOC_CHILD" property="locChild"></result>
+        <result column="LOCDESC" property="locdesc"></result>
+    </resultMap>-->
+
+    <select id="getPartColumnLoadingConfigurationsBySqn" resultType="com.timeselectrical.dto.PartLoadingConfigurationDTO">
+        SELECT
+            ID AS id,
+            ID_CHILD AS idChild,
+            ITEMNUM AS itemnum,
+            SQN AS sqn,
+            SQN_CHILD AS sqnChild,
+            LOC AS loc,
+            LOC_CHILD AS locChild,
+            LOCDESC AS locdesc
+        FROM
+            loading_configuration
+            /*"_SYS_BIC"."com.CRRC.POC/CV_ZCPZ_V"*/
+        WHERE
+            SQN = #{sqn}
+    </select>
+
+    <select id="getPartColumnLoadingConfigurationsById" resultType="com.timeselectrical.dto.PartLoadingConfigurationDTO">
+        SELECT
+            ID AS id,
+            ID_CHILD AS idChild,
+            ITEMNUM AS itemnum,
+            SQN AS sqn,
+            SQN_CHILD AS sqnChild,
+            LOC AS loc,
+            LOC_CHILD AS locChild,
+            LOCDESC AS locdesc
+        FROM
+            loading_configuration
+            /*"_SYS_BIC"."com.CRRC.POC/CV_ZCPZ_V"*/
+        WHERE
+            ID = #{id}
     </select>
 </mapper>

@@ -2,6 +2,7 @@ package com.timeselectrical.mapper;
 
 
 import com.timeselectrical.dto.LoadingConfigurationCondDTO;
+import com.timeselectrical.dto.PartLoadingConfigurationDTO;
 import com.timeselectrical.model.LoadingConfiguration;
 import org.apache.ibatis.annotations.Param;
 
@@ -13,5 +14,9 @@ public interface LoadingConfigurationMapperExt extends LoadingConfigurationMappe
 
     List<LoadingConfiguration> getLoadingConfigurations(@Param("cond") LoadingConfigurationCondDTO cond);
 
-    List<String> getLocByCond(@Param("cond") LoadingConfigurationCondDTO cond);
+    List<String> getLocChildsByCond(@Param("cond") LoadingConfigurationCondDTO cond);
+
+    List<PartLoadingConfigurationDTO> getPartColumnLoadingConfigurationsBySqn(@Param("sqn") String sqn);
+
+    PartLoadingConfigurationDTO getPartColumnLoadingConfigurationsById(@Param("id") String id);
 }
