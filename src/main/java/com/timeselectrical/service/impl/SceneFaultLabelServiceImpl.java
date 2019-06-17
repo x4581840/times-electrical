@@ -1,11 +1,19 @@
 package com.timeselectrical.service.impl;
 
+
 import com.timeselectrical.dto.SceneFaultLabelCondDTO;
 import com.timeselectrical.mapper.SceneFaultLabelMapperExt;
 import com.timeselectrical.model.SceneFaultLabel;
+
+
+import com.timeselectrical.model.copySceneFaultLabel;
+
 import com.timeselectrical.service.ISceneFaultLabelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+
+
 
 import java.util.List;
 
@@ -21,6 +29,16 @@ public class SceneFaultLabelServiceImpl implements ISceneFaultLabelService {
 
     @Autowired
     private SceneFaultLabelMapperExt sceneFaultLabelMapperExt;
+
+    public List<SceneFaultLabel> getOneTabResult(String fGzpthwzbm, String startTime, String endTime){
+        return  sceneFaultLabelMapperExt.getOneTable(fGzpthwzbm,startTime,endTime);
+    }
+    public List<SceneFaultLabel> getTwoTabResult(String fGzpthwzbm){
+        return sceneFaultLabelMapperExt.childSelect(fGzpthwzbm);
+    }
+    public   List<copySceneFaultLabel> getLinkREsult(String fGzpthwzbm, String fGzpmc, String fCxdl, String fZccx, String fZyzrdw ){
+        return  sceneFaultLabelMapperExt.linkSelect(fGzpthwzbm,fGzpmc,fCxdl,fZccx,fZyzrdw);
+    }
 
     @Override
     public List<SceneFaultLabel> getSceneFaultLabels(SceneFaultLabelCondDTO cond) {

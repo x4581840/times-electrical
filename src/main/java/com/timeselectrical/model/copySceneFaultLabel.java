@@ -1,11 +1,9 @@
 package com.timeselectrical.model;
 
-import java.util.Date;
-
 /**
- * 现场故障标签 实体类
+ * 现场故障标签
  */
-public class SceneFaultLabel {
+public class copySceneFaultLabel {
 
     /**
      * 主键
@@ -23,14 +21,14 @@ public class SceneFaultLabel {
     private String fGzpthwzbm;
 
     /**
-     * 故障品名称
-     */
-    private String fGzpmc;
-
-    /**
      * 故障品序号
      */
     private String fGzpxh;
+
+    /**
+     * 故障品名称
+     */
+    private String fGzpmc;
 
     /**
      * 车型大类
@@ -75,7 +73,7 @@ public class SceneFaultLabel {
     /**
      * 故障发生时间
      */
-    private Date fGzfssj;
+    private String fGzfssj;
 
     /**
      * 项目名称
@@ -99,17 +97,12 @@ public class SceneFaultLabel {
 
     private Integer count;
 
-    /**
-     * 故障发生时间
-     */
-    private long fGzfssj_long;
-
-    public long getfGzfssj_long() {
-        return fGzfssj_long;
+    public String getfGzpxh() {
+        return fGzpxh;
     }
 
-    public void setfGzfssj_long(long fGzfssj_long) {
-        this.fGzfssj_long = fGzfssj_long;
+    public void setfGzpxh(String fGzpxh) {
+        this.fGzpxh = fGzpxh;
     }
 
     public Integer getId() {
@@ -142,14 +135,6 @@ public class SceneFaultLabel {
 
     public void setfGzpmc(String fGzpmc) {
         this.fGzpmc = fGzpmc == null ? null : fGzpmc.trim();
-    }
-
-    public String getfGzpxh() {
-        return fGzpxh;
-    }
-
-    public void setfGzpxh(String fGzpxh) {
-        this.fGzpxh = fGzpxh == null ? null : fGzpxh.trim();
     }
 
     public String getfCxdl() {
@@ -216,11 +201,11 @@ public class SceneFaultLabel {
         this.fGzdj = fGzdj == null ? null : fGzdj.trim();
     }
 
-    public Date getfGzfssj() {
+    public String getfGzfssj() {
         return fGzfssj;
     }
 
-    public void setfGzfssj(Date fGzfssj) {
+    public void setfGzfssj(String fGzfssj) {
         this.fGzfssj = fGzfssj;
     }
 

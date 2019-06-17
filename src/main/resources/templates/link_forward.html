@@ -34,27 +34,26 @@
         <div  class="row head" style="margin-top: 13px">
 
             <div class="col-lg-10">
-                <label class="col-md-1 control-label" style="margin-top: 5px">物料编码</label>
+                <label class="col-md-1 control-label" style="margin-top: 5px;width: 104px">物料编码</label>
                 <div class="input-group" style="display: inline-block;float: left;margin-left: 12px">
-
                     <input type="text" class="form-control" placeholder="请输入值"  style="width: 150px;height:30px;" id="serach" th:value="${testPn}">
-                    <span class="input-group-addon btn btn-default"style="width: 20px;" data-toggle="modal" data-target="#myModal">
+                    <span class="input-group-addon btn btn-default"style="width: 20px;" data-toggle="modal" data-target="#myModal" onclick="getSearchValue()">
                                  <span class="glyphicon glyphicon-search"></span>
                             </span>
-
                 </div>
                 <div style="display: inline-block;margin-left: 20px;float: left;"> <button type="button" style="background: cornflowerblue;height: 30px" th:onclick="tab1_query_button()">查询</button></div>
                 <div style="display: inline-block;margin-left: 20px;float: left;"> <button type="button" style="background: cornflowerblue;height: 30px" onclick="reSetMessage()">重置</button></div>
             </div>
-            <div  class="row head" style="margin-top: 60px">
+
+            <div  class="row head" style="margin-top: 50px;">
 
                 <div class="col-lg-10">
-                    <label class="col-md-1 control-label" style="margin-top: 5px;width: 100px;margin-left: 13px">时间范围从</label>
+                  <label class="col-md-1 control-label" style="margin-top: 5px;width: 100px;margin-left: 13px">时间范围从</label>
                     <div class="input-group" style="display: inline-block;float: left;margin-left: 18px">
 
                         <input type="text" class="form-control" placeholder="" style="width: 150px;height:30px;" id="from" name="from">
-                        <span class="input-group-addon btn btn-default"style="width: 20px;">
-                                 <span class="glyphicon  glyphicon-pencil" id="test1" onclick="selectDate()"></span>
+                        <span class="input-group-addon btn btn-default"style="width: 20px;" id="test1">
+                                 <span class="glyphicon  glyphicon-pencil"></span>
                             </span>
 
                     </div>
@@ -63,8 +62,8 @@
                     <div class="input-group" style="display: inline-block;float: left;margin-left: 23px">
 
                         <input type="text" class="form-control" placeholder="" style="width: 150px;height:30px;" id="to" name="to" >
-                        <span class="input-group-addon btn btn-default"style="width: 20px;">
-                                 <span class="glyphicon  glyphicon-pencil"id="test2"></span>
+                        <span class="input-group-addon btn btn-default"style="width: 20px;" id="test2">
+                                 <span class="glyphicon  glyphicon-pencil"></span>
                             </span>
 
                     </div>
@@ -181,7 +180,7 @@
     </div><!-- /.modal -->
     <div class="modal fade"  id="myModal1" aria-hidden="true" >
 
-        <div class="modal-dialog" style="width: 600px;">
+        <div class="modal-dialog" style="width: 1500px;">
 
             <div class="modal-content">
 
@@ -284,10 +283,11 @@
 
 </body>
 <script type="text/javascript">
- function  selectDate() {
-
- }
-    function person(){
+    function getSearchValue() {
+        var searchValue=$("#serach").val();
+        $("#test").val(searchValue);
+    }
+/*    function person(){
         var gg = $("#test").val();
 
         $.ajax({
@@ -321,7 +321,7 @@
 
 
 
-    }
+    }*/
     function getValue1(obj) {
 
         var gg =document.getElementsByName("inlineCheckbox1");
@@ -361,7 +361,12 @@
         });
     });
     $(function() {
-
+        $("#test1").click(function () {
+            $("#from").datepicker("show");
+        });
+        $("#test2").click(function () {
+            $("#to").datepicker("show");
+        });
         /* $( "#from" ).datepicker({
              defaultDate: "+1w",
              changeMonth: true,

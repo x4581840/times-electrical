@@ -1,9 +1,12 @@
 
 var $table2;
 //初始化bootstrap-table的内容
-function InitTable2() {
+function InitTable2(fGzpthwzbm,fGzpmc,fCxdl,fZccx,fZyzrdw) {
     //记录页面bootstrap-table全局变量$table，方便应用
-    var queryUrl = '/forward/getList?rnd=' + Math.random();
+
+    var queryUrl = '/forward/linkSelectResult?rnd=' + Math.random();
+
+
     $table2= $('#table2').bootstrapTable({
         url: queryUrl,                      //请求后台的URL（*）
         method: 'GET',                      //请求方式（*）
@@ -17,6 +20,7 @@ function InitTable2() {
         pageNumber: 1,                      //初始化加载第一页，默认第一页,并记录
         pageSize: 10,                     //每页的记录行数（*）
         pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
+        smartDisplay:false,
         search: false,                      //是否显示表格搜索
         strictSearch: true,
         //showColumns: true,                  //是否显示所有的列（选择显示的列）
@@ -33,24 +37,33 @@ function InitTable2() {
             //这里的键的名字和控制器的变量名必须一致，这边改动，控制器也需要改成一样的
             var temp = {
                 pageSize: params.limit,                         //页面大小
-                pageNo: (params.offset / params.limit) + 1//页码
+                pageNo: (params.offset / params.limit) + 1,//页码
+                fGzpthwzbm:fGzpthwzbm,
+                fGzpmc:fGzpmc,
+                fCxdl:fCxdl,
+                fZccx:fZccx,
+                fZyzrdw:fZyzrdw
+
+
             /*    sort: params.sort,      //排序列名
                 sortOrder: params.order //排位命令（desc，asc）*/
             };
             console.log("test=="+$("#dependOn").val());
             return temp;
         },
-            columns: [{field: 'id', title: '故障物料编码', sortable: true, halign: 'center',align: 'center'},
-                {field: 'age', title: '故障物料名称', sortable: true, halign: 'center',align: 'center'},
-                {field: 'name', title: '车型大类', sortable: true, halign: 'center',valign: 'middle',align: 'center'
+            columns: [{field: 'fBdbh', title: '表单编号', sortable: true, halign: 'center',align: 'center'},
+                {field: 'fXmmc', title: '项目名称', sortable: true, halign: 'center',align: 'center'},
+                {field: 'fXmh', title: '项目号', sortable: true, halign: 'center',valign: 'middle',align: 'center'
                 },
-                {field: 'scoreSum', title: '车型', sortable: true, halign: 'center',align: 'center'},
-                {field: 'scoreAvg', title: '物料发生故障频次', sortable: true, halign: 'center',align: 'center',cellStyle:function(value,row,index){
-                        return {css:{"width":"450px"}}
-                    }
-
-
-                }],
+                {field: 'fSsyjlbj', title: '所属一级零部件', sortable: true, halign: 'center',align: 'center'},
+                {field: 'fScdw', title: '生产单位', sortable: true, halign: 'center',align: 'center'
+                },
+                {field: 'fGzmc', title: '故障名称', sortable: true, halign: 'center',align: 'center'},
+                {field: 'fGzdm', title: '故障代码', sortable: true, halign: 'center',align: 'center'},
+                {field: 'fGzhg', title: '故障后果', sortable: true, halign: 'center',align: 'center'},
+                {field: 'fGzdj', title: '故障等级', sortable: true, halign: 'center',align: 'center'},
+                {field: 'fGzfssj', title: '故障发生时间', sortable: true, halign: 'center',align: 'center'}
+                  ],
         onLoadSuccess: function () {
 
         },
@@ -64,14 +77,14 @@ function InitTable2() {
 //     InitMainTable();
 // });
 
-function  tab2_query_button() {
+function  tab2_query_button(fGzpthwzbm,fGzpmc,fCxdl,fZccx,fZyzrdw) {
 
-
-    var search= document.getElementById("search1");
+  /*  var search= document.getElementById("search1");
     search.style.borderBottom="none";
     search.style.borderRight="none";
-    search.style.borderLeft="none";
+    search.style.borderLeft="none";*/
+
 
     $("#table2").bootstrapTable('destroy');
-    InitTable2();
+    InitTable2(fGzpthwzbm,fGzpmc,fCxdl,fZccx,fZyzrdw);
 }

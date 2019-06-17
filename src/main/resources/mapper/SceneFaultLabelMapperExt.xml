@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.timeselectrical.mapper.SceneFaultLabelMapperExt">
+
     <select id="getSceneFaultLabels" resultMap="com.timeselectrical.mapper.SceneFaultLabelMapper.BaseResultMap">
         SELECT
           <include refid="com.timeselectrical.mapper.SceneFaultLabelMapper.Base_Column_List"></include>
@@ -13,4 +14,34 @@
             </if>
         </where>
     </select>
+
+         <select id="getOneTable" resultType="com.timeselectrical.model.SceneFaultLabel" >
+                select f_gzpthwzbm as fGzpthwzbm,f_gzpmc as fGzpmc,f_cxdl as fCxdl,f_zccx as fZccx,f_zyzrdw as fZyzrdw ,count from scene_fault_label where f_gzpthwzbm=#{fGzpthwzbm}
+             <if test='startTime !=""and endTime !=""'>
+                 and   f_gzfssj between #{startTime}  and #{endTime}
+             </if>
+             <if test='startTime !=""and endTime ==""'>
+                 and   f_gzfssj >=#{startTime}
+             </if>
+             <if test='startTime ==""and endTime !=""'>
+                 and   f_gzfssj  &lt;=#{endTime}
+             </if>
+
+       </select>
+
+    <select id="childSelect" resultType="com.timeselectrical.model.SceneFaultLabel" >
+        select f_gzpthwzbm as fGzpthwzbm,f_gzpmc as fGzpmc from scene_fault_label where f_gzpthwzbm like concat('%', #{fGzpthwzbm},'%')
+    </select>
+
+    <select id="linkSelect" resultType="com.timeselectrical.model.copySceneFaultLabel" >
+        select f_bdbh as fBdbh,f_xmmc as fXmmc,f_xmh as fXmh,f_ssyjlbj as fSsyjlbj,f_scdw as fScdw,f_gzmc as fGzmc,f_gzdm as fGzdm,f_gzhg as fGzhg,f_gzdj as fGzdj,
+        f_gzfssj as fGzfssj from scene_fault_label
+        where f_gzpthwzbm=#{fGzpthwzbm}
+        and f_gzpmc =#{fGzpmc}
+        and f_cxdl =#{fCxdl}
+        and f_zccx =#{fZccx}
+        and f_zyzrdw =#{fZyzrdw}
+    </select>
+
+
 </mapper>

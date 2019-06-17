@@ -3,7 +3,7 @@ var $table1;
 //初始化bootstrap-table的内容
 function InitTable1 () {
     //记录页面bootstrap-table全局变量$table，方便应用
-    var queryUrl = '/forward/getList?rnd=' + Math.random();
+    var queryUrl = '/forward/parentSelectResult?rnd=' + Math.random();
     $table1 = $('#table1').bootstrapTable({
         url: queryUrl,                      //请求后台的URL（*）
         method: 'GET',                      //请求方式（*）
@@ -17,6 +17,7 @@ function InitTable1 () {
         pageNumber: 1,                      //初始化加载第一页，默认第一页,并记录
         pageSize: 10,                     //每页的记录行数（*）
         pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
+        smartDisplay:false,
         search: false,                      //是否显示表格搜索
         strictSearch: true,
         //showColumns: true,                  //是否显示所有的列（选择显示的列）
@@ -46,18 +47,23 @@ function InitTable1 () {
             console.log("test=="+$("#dependOn").val());
             return temp;
         },
-            columns: [{field: 'id', title: '故障物料编码', sortable: true, halign: 'center',align: 'center'},
-                {field: 'age', title: '故障物料名称', sortable: true, halign: 'center',align: 'center'},
-                {field: 'name', title: '车型大类', sortable: true, halign: 'center',valign: 'middle',align: 'center'
+        columns: [{field: 'fGzpthwzbm', title: '故障物料编码', sortable: true, halign: 'center',align: 'center'},
+                {field: 'fGzpmc', title: '故障物料名称', sortable: true, halign: 'center',align: 'center'},
+                {field: 'fCxdl', title: '车型大类', sortable: true, halign: 'center',valign: 'middle',align: 'center'
                    },
-                {field: 'name', title: '车型大类', sortable: true, halign: 'center',valign: 'middle',align: 'center'
+                {field: 'fZccx', title: '车型', sortable: true, halign: 'center',valign: 'middle',align: 'center'
                 },
-                {field: 'scoreSum', title: '车型', sortable: true, halign: 'center',align: 'center'},
-                {field: 'scoreAvg', title: '物料发生故障频次', sortable: true, halign: 'center',align: 'center',
+                {field: 'fZyzrdw', title: '责任单位', sortable: true, halign: 'center',align: 'center'},
+                {field: 'count', title: '物料发生故障频次', sortable: true, halign: 'center',align: 'center',
                     formatter: function(value, row, index) {
+                       var fGzpthwzbm=row.fGzpthwzbm;
+                       var fGzpmc=row.fGzpmc;
+                       var fCxdl=row.fCxdl;
+                       var fZccx=row.fZccx;
+                        var fZyzrdw=row.fZyzrdw;
                         var actions = [];
                         /* actions.push('<input type="checkbox" name="inlineCheckbox1" style="width: 40px;" value="'+value+'" onclick="chooseOne(this)">'+'<span>'+value+'</span>');*/
-                        actions.push('<a href="#" onclick="tab2_query_button()"data-toggle="modal" data-target="#myModal1">'+value+'</a>')
+                        actions.push('<a href="#" onclick="tab2_query_button(\''+fGzpthwzbm+'\',\''+fGzpmc+'\',\''+fCxdl+'\',\''+fZccx+'\',\''+fZyzrdw+'\')" data-toggle="modal" data-target="#myModal1">'+value+'</a>')
                         return actions.join('');
                     }
                  }],
@@ -79,6 +85,7 @@ function tab1_query_button() {
     search1.style.borderBottom="none";
     search1.style.borderRight="none";
     search1.style.borderLeft="none";
+
     $("#table1").bootstrapTable('destroy');
     InitTable1();
 }

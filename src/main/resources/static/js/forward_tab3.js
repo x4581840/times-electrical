@@ -3,7 +3,7 @@ var $table3;
 //初始化bootstrap-table的内容
 function InitTable3() {
     //记录页面bootstrap-table全局变量$table，方便应用
-    var queryUrl = '/forward/getList';
+    var queryUrl = '/forward/chilSelectResult';
     $table3= $('#table3').bootstrapTable({
         url: queryUrl,                      //请求后台的URL（*）
         method: 'GET',                      //请求方式（*）
@@ -19,6 +19,7 @@ function InitTable3() {
         pageNumber: 1,                      //初始化加载第一页，默认第一页,并记录
         pageSize: 10,                     //每页的记录行数（*）
         pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
+        smartDisplay:false,
         search: false,                      //是否显示表格搜索
         strictSearch: true,
         //showColumns: true,                  //是否显示所有的列（选择显示的列）
@@ -33,7 +34,7 @@ function InitTable3() {
         //得到查询的参数
         queryParams : function (params) {
             //这里的键的名字和控制器的变量名必须一致，这边改动，控制器也需要改成一样的
-            var childSearch= $("#childSearch").val();
+            var childSearch= $("#test").val();
             var temp = {
                 pageSize: params.limit,                         //页面大小
                 pageNo: (params.offset / params.limit) + 1  ,//页码
@@ -44,7 +45,7 @@ function InitTable3() {
             console.log("test=="+$("#dependOn").val());
             return temp;
         },
-            columns: [{field: 'id', title: '物料编码', sortable: true, halign: 'left',align: 'left',cellStyle:function(value,row,index){
+            columns: [{field: 'fGzpthwzbm', title: '物料编码', sortable: true, halign: 'left',align: 'left',cellStyle:function(value,row,index){
                     return {css:{"width":"150px"}}
                 },formatter: function(value, row, index) {
                     var actions = [];
@@ -53,7 +54,7 @@ function InitTable3() {
                     return actions.join('');
                 }
                 },
-                {field: 'age', title: '故障物料名称', sortable: true, halign: 'left', cellStyle: function(value, row, index) {
+                {field: 'fGzpmc', title: '故障物料名称', sortable: true, halign: 'left', cellStyle: function(value, row, index) {
 
                         return {css:{"width":"150px"}}
                     }},
