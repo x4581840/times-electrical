@@ -41,6 +41,7 @@
         and f_cxdl =#{fCxdl}
         and f_zccx =#{fZccx}
         and f_zyzrdw =#{fZyzrdw}
+        order by f_gzfssj asc
     </select>
 
 

@@ -119,7 +119,7 @@ public class ForwardController {
 
     /**
      * @Description
-     * @Author  超链接模糊查询
+     * @Author  超链接查询
      * @Date
      * @Version 1.0
      **/
