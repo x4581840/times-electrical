@@ -101,9 +101,9 @@ public class LoadingConfigurationServiceImpl implements ILoadingConfigurationSer
             map1.put("id", plc.getIdChild());
             map1.put("text", plc.getSqnChild());
             List<String> tags = new ArrayList<>();
-            tags.add(plc.getLocChild());
-            tags.add(plc.getLocdesc());
-            tags.add(plc.getItemnum());
+            tags.add(StringUtils.isEmpty(plc.getLocChild()) ? " 无 " : plc.getLocChild());
+            tags.add(StringUtils.isEmpty(plc.getLocdesc()) ? " 无 " : plc.getLocdesc());
+            tags.add(StringUtils.isEmpty(plc.getItemnum()) ? " 无 " : plc.getItemnum());
             map1.put("tags", tags);
             if(!StringUtils.isEmpty(plc.getIdChild())) {
                 PartLoadingConfigurationDTO child = loadingConfigurationMapperExt.getPartColumnLoadingConfigurationsById(plc.getIdChild());

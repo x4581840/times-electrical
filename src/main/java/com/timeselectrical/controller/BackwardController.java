@@ -84,6 +84,8 @@ public class BackwardController {
                 lc.setReleasedate_long(lc.getReleasedate() != null ? lc.getReleasedate().getTime() : 0);
                 lc.setUpdatetime_long(lc.getUpdatetime() != null ? lc.getUpdatetime().getTime() : 0);
                 lc.setfGzfssj_long(lc.getfGzfssj() != null ? lc.getfGzfssj().getTime() : 0);
+                lc.setCountScgz(lc.getCountXcgz() == null ? 0 : lc.getCountXcgz());
+                lc.setCountXcgz(lc.getCountScgz() == null ? 0 : lc.getCountScgz());
             }
         }
         return ResponseEntity.ok(new PageWrapper<>(lcList));
@@ -115,6 +117,7 @@ public class BackwardController {
             for(ProductionDefectRecord pdr : pdrList) {
                 pdr.setZsxrq_long(pdr.getZsxrq() != null ? pdr.getZsxrq().getTime() : 0);
                 pdr.setZsxsj_long(pdr.getZsxsj() != null ? pdr.getZsxsj().getTime() : 0);
+                pdr.setCount(pdr.getCount() == null ? 0 : pdr.getCount());
             }
         }
         return ResponseEntity.ok(new PageWrapper<>(pdrList));
@@ -138,6 +141,7 @@ public class BackwardController {
         if(!CollectionUtils.isEmpty(sflList)) {
             for (SceneFaultLabel sfl : sflList) {
                 sfl.setfGzfssj_long(sfl.getfGzfssj() != null ? sfl.getfGzfssj().getTime() : 0);
+                sfl.setCount(sfl.getCount() == null ? 0 : sfl.getCount());
             }
         }
         return ResponseEntity.ok(new PageWrapper<>(sflList));
