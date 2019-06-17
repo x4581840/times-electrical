@@ -40,7 +40,6 @@ function InitTable2 (sqn) {
                 pageNo: (params.offset / params.limit) + 1,   //页码
                 //sort: params.sort,      //排序列名
                 //sortOrder: params.order, //排位命令（desc，asc）
-                flag: 1
             };
             console.log("test=="+$("#dependOn").val());
             return temp;

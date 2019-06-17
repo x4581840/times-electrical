@@ -90,8 +90,6 @@ function InitTable1 (sqn, selectValueArray) {
 
 //点击"生产故障次数"字段的值 触发的函数，跳到"生产缺陷记录"的tab
 function productDefectNumClick(sqn) {
-    console.log("sqn==="+sqn);
-    debugger;
     $("#tab_1").removeClass("active");
     $("#tab1").removeClass("in").removeClass("active");
     $("#tab_2").addClass("active");

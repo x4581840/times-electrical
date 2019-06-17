@@ -7,7 +7,7 @@ package com.timeselectrical.dto;
  * @Version 1.0
  **/
 
-public class ProductionDefectRecordCondDTO {
+public class SceneFaultLabelCondDTO {
 
     //父项产品序列号
     private String sqn;

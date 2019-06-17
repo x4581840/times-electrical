@@ -6,5 +6,11 @@
           <include refid="com.timeselectrical.mapper.SceneFaultLabelMapper.Base_Column_List"></include>
         FROM
           scene_fault_label
+        <where>
+            1=1
+            <if test="cond != null and cond.sqn != null and cond.sqn != ''">
+                AND f_gzpxh = #{cond.sqn}
+            </if>
+        </where>
     </select>
 </mapper>

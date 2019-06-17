@@ -3,6 +3,8 @@ package com.timeselectrical.controller;
 import com.github.pagehelper.PageHelper;
 import com.timeselectrical.component.PageWrapper;
 import com.timeselectrical.dto.LoadingConfigurationCondDTO;
+import com.timeselectrical.dto.ProductionDefectRecordCondDTO;
+import com.timeselectrical.dto.SceneFaultLabelCondDTO;
 import com.timeselectrical.model.*;
 import com.timeselectrical.service.ILoadingConfigurationService;
 import com.timeselectrical.service.IProductionDefectRecordService;
@@ -99,9 +101,12 @@ public class BackwardController {
 
     @RequestMapping("/getProductDefectRecordList")
     public ResponseEntity getProductDefectRecordList(@RequestParam(defaultValue = "1", required = false) Integer pageNo,
-                                        @RequestParam(defaultValue = "10", required = false) Integer pageSize) {
+                                                     @RequestParam(defaultValue = "10", required = false) Integer pageSize,
+                                                     @RequestParam(name = "sqn", required = false) String sqn) {
         PageHelper.startPage(pageNo, pageSize, true);
-        List<ProductionDefectRecord> pdrList = productionDefectRecordService.getProductiondefectRecords();
+        ProductionDefectRecordCondDTO cond = new ProductionDefectRecordCondDTO();
+        cond.setSqn(sqn);
+        List<ProductionDefectRecord> pdrList = productionDefectRecordService.getProductiondefectRecords(cond);
         /*List<ProductionDefectRecordExt> pdrExtList = new ArrayList<>();
         if(!CollectionUtils.isEmpty(pdrList)) {
             ProductionDefectRecordExt pdrExt = null;
@@ -125,9 +130,12 @@ public class BackwardController {
 
     @RequestMapping("/getSceneFaultLabelList")
     public ResponseEntity getSceneFaultLabelList(@RequestParam(defaultValue = "1", required = false) Integer pageNo,
-                                                 @RequestParam(defaultValue = "10", required = false) Integer pageSize) {
+                                                 @RequestParam(defaultValue = "10", required = false) Integer pageSize,
+                                                 @RequestParam(name = "sqn", required = false) String sqn) {
         PageHelper.startPage(pageNo, pageSize, true);
-        List<SceneFaultLabel> sflList = sceneFaultLabelService.getSceneFaultLabels();
+        SceneFaultLabelCondDTO cond = new SceneFaultLabelCondDTO();
+        cond.setSqn(sqn);
+        List<SceneFaultLabel> sflList = sceneFaultLabelService.getSceneFaultLabels(cond);
         /*List<SceneFaultLabelExt> sflExtList = new ArrayList<>();
         if(!CollectionUtils.isEmpty(sflList)) {
             SceneFaultLabelExt sflExt = null;

@@ -9,7 +9,7 @@
         <where>
             1=1
             <if test="cond != null and cond.sqn != null and cond.sqn != ''">
-                AND sqn = #{cond.sqn}
+                AND sublot_id = #{cond.sqn}
             </if>
         </where>
     </select>
