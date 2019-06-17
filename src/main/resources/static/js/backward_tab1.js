@@ -17,7 +17,7 @@ function InitTable1 (sqn, selectValueArray) {
         striped: true,                      //是否显示行间隔色
         cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
         pagination: true,                   //是否显示分页（*）
-        //sortable: true,                     //是否启用排序
+        ///*sortable: true,*/                     //是否启用排序
         //sortOrder: "asc",                   //排序方式
         sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
         pageNumber: 1,                      //初始化加载第一页，默认第一页,并记录
@@ -47,33 +47,33 @@ function InitTable1 (sqn, selectValueArray) {
             // console.log("test=="+$("#dependOn").val());
             return temp;
         },
-        columns: [{field: 'sqn', title: '产品序列号', sortable: true, halign: 'center'},
-            {field: 'loc', title: '父项位置号', sortable: true, halign: 'center'},
-            {field: 'sqnChild', title: '组件产品序列号', sortable: true, halign: 'center'},
-            {field: 'itemnum', title: '组件物料编码', sortable: true, halign: 'center'},
-            {field: 'locdesc', title: '组件位置描述', sortable: true, halign: 'center'},
-            {field: 'locChild', title: '组件位置号', sortable: true, halign: 'center'},
-            {field: 'cmodel', title: '车型编号', sortable: true, halign: 'center'},
-            {field: 'carno', title: '车号', sortable: true, halign: 'center'},
-            {field: 'carriagenum', title: '车厢号', sortable: true, halign: 'center'},
-            {field: 'ownercustomer', title: '配属用户', sortable: true, halign: 'center'},
-            {field: 'repairprocess', title: '修程修次', sortable: true, halign: 'center'},
-            {field: 'maker', title: '制造企业', sortable: true, halign: 'center'},
-            {field: 'onlinetime_long', title: '上线日期', sortable: true, halign: 'center',formatter: function (value, row, index) {
+        columns: [{field: 'sqn', title: '产品序列号', /*sortable: true,*/ halign: 'center'},
+            {field: 'loc', title: '父项位置号', /*sortable: true,*/ halign: 'center'},
+            {field: 'sqnChild', title: '组件产品序列号', /*sortable: true,*/ halign: 'center'},
+            {field: 'itemnum', title: '组件物料编码', /*sortable: true,*/ halign: 'center'},
+            {field: 'locdesc', title: '组件位置描述', /*sortable: true,*/ halign: 'center'},
+            {field: 'locChild', title: '组件位置号', /*sortable: true,*/ halign: 'center'},
+            {field: 'cmodel', title: '车型编号', /*sortable: true,*/ halign: 'center'},
+            {field: 'carno', title: '车号', /*sortable: true,*/ halign: 'center'},
+            {field: 'carriagenum', title: '车厢号', /*sortable: true,*/ halign: 'center'},
+            {field: 'ownercustomer', title: '配属用户', /*sortable: true,*/ halign: 'center'},
+            {field: 'repairprocess', title: '修程修次', /*sortable: true,*/ halign: 'center'},
+            {field: 'maker', title: '制造企业', /*sortable: true,*/ halign: 'center'},
+            {field: 'onlinetime_long', title: '上线日期', /*sortable: true,*/ halign: 'center',formatter: function (value, row, index) {
                     return changeDateFormat(value);
                 }},
-            {field: 'releasedate_long', title: '出厂日期', sortable: true, halign: 'center',formatter: function (value, row, index) {
+            {field: 'releasedate_long', title: '出厂日期', /*sortable: true,*/ halign: 'center',formatter: function (value, row, index) {
                     return changeDateFormat(value);
                 }},
-            {field: 'updatetime_long', title: '检修日期', sortable: true, halign: 'center',formatter: function (value, row, index) {
+            {field: 'updatetime_long', title: '检修日期', /*sortable: true,*/ halign: 'center',formatter: function (value, row, index) {
                     return changeDateFormat(value);
                 }},
-            {field: 'countScgz', title: '生产故障次数', sortable: true, halign: 'center',formatter: function (value, row, index) {
+            {field: 'countScgz', title: '生产故障次数', /*sortable: true,*/ halign: 'center',formatter: function (value, row, index) {
                     var sqn = row.sqn;
                     // 在方法内要传的值的前后加上&quot;，否则会报Uncaught ReferenceError: xxx is not defined
                     return '<a onclick="productDefectNumClick(&quot;'+sqn+'&quot;)">'+value+'</a>';
                 }}, //超链接
-            {field: 'countXcgz', title: '现场故障记录', sortable: true, halign: 'center',formatter: function (value, row, index) {
+            {field: 'countXcgz', title: '现场故障记录', /*sortable: true,*/ halign: 'center',formatter: function (value, row, index) {
                     var sqn = row.sqn;
                     return '<a onclick="sceneFaultNumClick(&quot;'+sqn+'&quot;)">'+value+'</a>';
                 }}, //超链接

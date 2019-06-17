@@ -14,7 +14,7 @@ function InitTable3 (sqn) {
         striped: true,                      //是否显示行间隔色
         cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
         pagination: true,                   //是否显示分页（*）
-        //sortable: true,                     //是否启用排序
+        //sortable: true,                    //是否启用排序
         //sortOrder: "asc",                   //排序方式
         sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
         pageNumber: 1,                      //初始化加载第一页，默认第一页,并记录
@@ -39,30 +39,29 @@ function InitTable3 (sqn) {
                 pageNo: (params.offset / params.limit) + 1,   //页码
                 //sort: params.sort,      //排序列名
                 //sortOrder: params.order, //排位命令（desc，asc）
-                flag: 1
             };
             console.log("test=="+$("#dependOn").val());
             return temp;
         },
-        columns: [{field: 'fBdbh', title: '表单编号', sortable: true, halign: 'center'},
-            {field: 'fGzpthwzbm', title: '故障品图号', sortable: true, halign: 'center',formatter: function (value, row, index) {
+        columns: [{field: 'fBdbh', title: '表单编号', /*sortable: true, */ halign: 'center'},
+            {field: 'fGzpthwzbm', title: '故障品图号', /*sortable: true, */ halign: 'center',formatter: function (value, row, index) {
                 var seqNo = $("#hiddenSeqNo").val();
                 console.log("seqNo===");
                     return '<a href="/forward/getLinkForwardPage?seqNo="'+seqNo+'>'+value+'</a>';
                 }},
-            {field: 'fGzpmc', title: '故障品名称', sortable: true, halign: 'center'},
-            {field: 'fCxdl', title: '车型大类', sortable: true, halign: 'center'},
-            {field: 'fZccx', title: '车型', sortable: true, halign: 'center'},
-            {field: 'fZyzrdw', title: '责任单位', sortable: true, halign: 'center'},
-            {field: 'fXmmc', title: '项目名称', sortable: true, halign: 'center'},
-            {field: 'fXmh', title: '项目号', sortable: true, halign: 'center'},
-            {field: 'fSsyjlbj', title: '所属一级零部件', sortable: true, halign: 'center'},
-            {field: 'fScdw', title: '生产单位', sortable: true, halign: 'center'},
-            {field: 'fGzmc', title: '故障名称', sortable: true, halign: 'center'},
-            {field: 'fGzdm', title: '故障代码', sortable: true, halign: 'center'},
-            {field: 'fGzhg', title: '故障后果', sortable: true, halign: 'center'},
-            {field: 'fGzdj', title: '故障等级', sortable: true, halign: 'center'},
-            {field: 'fGzfssj_long', title: '故障发生时间', sortable: true, halign: 'center',formatter: function (value, row, index) {
+            {field: 'fGzpmc', title: '故障品名称', /*sortable: true, */ halign: 'center'},
+            {field: 'fCxdl', title: '车型大类', /*sortable: true, */ halign: 'center'},
+            {field: 'fZccx', title: '车型', /*sortable: true, */ halign: 'center'},
+            {field: 'fZyzrdw', title: '责任单位', /*sortable: true, */ halign: 'center'},
+            {field: 'fXmmc', title: '项目名称', /*sortable: true, */ halign: 'center'},
+            {field: 'fXmh', title: '项目号', /*sortable: true, */ halign: 'center'},
+            {field: 'fSsyjlbj', title: '所属一级零部件', /*sortable: true, */ halign: 'center'},
+            {field: 'fScdw', title: '生产单位', /*sortable: true, */ halign: 'center'},
+            {field: 'fGzmc', title: '故障名称', /*sortable: true, */ halign: 'center'},
+            {field: 'fGzdm', title: '故障代码', /*sortable: true, */ halign: 'center'},
+            {field: 'fGzhg', title: '故障后果', /*sortable: true, */ halign: 'center'},
+            {field: 'fGzdj', title: '故障等级', /*sortable: true, */ halign: 'center'},
+            {field: 'fGzfssj_long', title: '故障发生时间', /*sortable: true, */ halign: 'center',formatter: function (value, row, index) {
                     return changeDateFormat(value)
                 }},
         ],
