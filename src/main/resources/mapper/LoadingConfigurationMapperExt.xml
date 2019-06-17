@@ -1,11 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.timeselectrical.mapper.LoadingConfigurationMapperExt" >
-    <select id="getLoadingConfigurations" resultMap="com.timeselectrical.mapper.LoadingConfigurationMapper.BaseResultMap">
+    <select id="getLoadingConfigurations" resultType="com.timeselectrical.model.LoadingConfiguration">
+    <!--resultMap="com.timeselectrical.mapper.LoadingConfigurationMapper.BaseResultMap"-->
         SELECT
-          <include refid="com.timeselectrical.mapper.LoadingConfigurationMapper.Base_Column_List"></include>
+          <!--<include refid="com.timeselectrical.mapper.LoadingConfigurationMapper.Base_Column_List"></include>-->
+          SQN AS sqn,
+          LOC AS loc,
+          SQN_CHILD AS sqnChild,
+          ITEMNUM AS itemnum,
+          LOCDESC AS locdesc,
+          LOC_CHILD AS locChild,
+          CMODEL AS cmodel,
+          CARNO AS carno,
+          CARRIAGENUM AS carriagenum,
+          OWNERCUSTOMER AS ownercustomer,
+          REPAIRPROCESS AS repairprocess,
+          MAKER AS maker,
+          ONLINETIME AS onlinetime,
+          RELEASEDATE AS releasedate,
+          UPDATETIME AS updatetime,
+          SUM(COUNT_SCGZ) AS countScgz,
+          SUM(COUNT_XCGZ) AS countXcgz
         FROM
           loading_configuration
+          /*"_SYS_BIC"."com.CRRC.POC/CV_ZCPZ_V"*/
         <where>
             1 = 1
             <if test="cond != null and cond.sqn != null and cond.sqn != ''">
@@ -21,7 +40,22 @@
                 </foreach>
             </if>
         </where>
-
+        GROUP BY
+            SQN,
+            LOC,
+            SQN_CHILD,
+            ITEMNUM,
+            LOCDESC,
+            LOC_CHILD,
+            CMODEL,
+            CARNO,
+            CARRIAGENUM,
+            OWNERCUSTOMER,
+            REPAIRPROCESS,
+            MAKER,
+            ONLINETIME,
+            RELEASEDATE,
+            UPDATETIME
     </select>
 
     <select id="getLocChildsByCond" resultType="java.lang.String">

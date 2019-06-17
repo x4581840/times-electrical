@@ -2,17 +2,50 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.timeselectrical.mapper.SceneFaultLabelMapperExt">
 
-    <select id="getSceneFaultLabels" resultMap="com.timeselectrical.mapper.SceneFaultLabelMapper.BaseResultMap">
+    <select id="getSceneFaultLabels" resultType="com.timeselectrical.model.SceneFaultLabel">
+        <!--<resultMap="com.timeselectrical.mapper.SceneFaultLabelMapper.BaseResultMap">-->
         SELECT
-          <include refid="com.timeselectrical.mapper.SceneFaultLabelMapper.Base_Column_List"></include>
+          <!--<include refid="com.timeselectrical.mapper.SceneFaultLabelMapper.Base_Column_List"></include>-->
+            F_BDBH AS fBdbh,
+            F_GZPTHWZBM AS fGzpthwzbm,
+            F_GZPMC AS fGzpmc,
+            F_CXDL AS fCxdl,
+            F_ZCCX AS fZccx,
+            F_SSYJLBJ AS fSsyjlbj,
+            F_SCDW AS fScdw,
+            F_GZMC AS fGzmc,
+            F_GZDM AS fGzdm,
+            F_GZHG AS fGzhg,
+            F_GZDJ AS fGzdj,
+            F_GZFSSJ AS fGzfssj,
+            F_XMMC AS fXmmc,
+            F_XMH AS fXmh,
+            F_ZYZRDW AS fZyzrdw
         FROM
           scene_fault_label
+        /*"_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"*/
         <where>
             1=1
             <if test="cond != null and cond.sqn != null and cond.sqn != ''">
                 AND f_gzpxh = #{cond.sqn}
             </if>
         </where>
+        GROUP BY
+            F_BDBH,
+            F_GZPTHWZBM,
+            F_GZPMC,
+            F_CXDL,
+            F_ZCCX,
+            F_SSYJLBJ,
+            F_SCDW,
+            F_GZMC,
+            F_GZDM,
+            F_GZHG,
+            F_GZDJ,
+            F_GZFSSJ,
+            F_XMMC,
+            F_XMH,
+            F_ZYZRDW
     </select>
 
          <select id="getOneTable" resultType="com.timeselectrical.model.SceneFaultLabel" >

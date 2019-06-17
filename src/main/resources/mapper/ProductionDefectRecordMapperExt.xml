@@ -1,16 +1,57 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.timeselectrical.mapper.ProductionDefectRecordMapperExt" >
-    <select id="getProductionDefectRecords" resultMap="com.timeselectrical.mapper.ProductionDefectRecordMapper.BaseResultMap">
+    <select id="getProductionDefectRecords" resultType="com.timeselectrical.model.ProductionDefectRecord">
+    <!--<resultMap="com.timeselectrical.mapper.ProductionDefectRecordMapper.BaseResultMap">-->
         SELECT
-          <include refid="com.timeselectrical.mapper.ProductionDefectRecordMapper.Base_Column_List"></include>
+          <!--<include refid="com.timeselectrical.mapper.ProductionDefectRecordMapper.Base_Column_List"></include>-->
+          SUBLOT_ID AS sublotId,
+          LOT_ID AS lotId,
+          DEFECT_TYPE AS defectType,
+          DEFECT_CODE AS defectCode,
+          DEFECT_COMMENT AS defectComment,
+          BOM_MAT_ID AS bomMatId,
+          LOCATION_NUM AS locationNum,
+          MAT_CMF_1 AS matCmf1,
+          SEQ AS seq,
+          DEF_CMF_2 AS defCmf2,
+          ZGYS AS zgys,
+          LIFNR AS lifnr,
+          MBLNR AS mblnr,
+          ZSFSX AS zsfsx,
+          ZSXDW AS zsxdw,
+          ZSXRQ AS zsxrq,
+          ZSXSJ AS zsxsj,
+          ZSXBB AS zsxbb,
+          ZSXJG AS zsxjg
         FROM
           production_defect_record
+          /*"_SYS_BIC"."com.CRRC.POC/CV_SCQXJL_V"*/
         <where>
             1=1
             <if test="cond != null and cond.sqn != null and cond.sqn != ''">
                 AND sublot_id = #{cond.sqn}
             </if>
         </where>
+        GROUP BY
+            SUBLOT_ID,
+            LOT_ID,
+            DEFECT_TYPE,
+            DEFECT_CODE,
+            DEFECT_COMMENT,
+            BOM_MAT_ID,
+            LOCATION_NUM,
+            MAT_CMF_1,
+            SEQ,
+            DEF_CMF_2,
+            ZGYS,
+            LIFNR,
+            MBLNR,
+            ZSFSX,
+            ZSXDW,
+            ZSXRQ,
+            ZSXSJ,
+            ZSXBB,
+            ZSXJG
     </select>
 </mapper>
