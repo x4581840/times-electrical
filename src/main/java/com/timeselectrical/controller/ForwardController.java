@@ -17,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -51,6 +52,7 @@ public class ForwardController {
     public String tab() {
         return "backward";
     }
+
     @RequestMapping("/getMaterialcode")
     @ResponseBody
     public List<String> tab1(HttpServletRequest request) {
@@ -62,9 +64,11 @@ public class ForwardController {
         aa.add("456");
         return aa;
     }
-    @RequestMapping("/getLinkForwardPage")
-    public String tab2(HttpServletRequest request) {
-        request.setAttribute("testPn","testPn");
+
+    @RequestMapping(value = "/getLinkForwardPage",method = RequestMethod.GET)
+    public String tab2(@RequestParam(name = "fGzpthwzbm") String fGzpthwzbm, HttpServletRequest request) {
+        LOGGER.info("fGzpthwzbm:"+fGzpthwzbm);
+        request.setAttribute("fGzpthwzbm", fGzpthwzbm);
         return "link_forward";
     }
     /**

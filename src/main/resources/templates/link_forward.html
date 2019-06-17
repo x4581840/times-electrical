@@ -22,21 +22,25 @@
     <link th:href="@{/static/css/bootstrap-table.min.css}" rel="stylesheet" type="text/css">
     <script th:src="@{/static/js/bootstrap-table.min.js}"></script>
     <script th:src="@{/static/js/bootstrap-table-zh-CN.min.js}"></script>
+    <link th:href="@{/static/css/backward.css}" rel="stylesheet" type="text/css">
     <meta charset="UTF-8">
 
     <title>正向查询页面</title>
 </head>
 <body>
-    <div>
+    <div style="margin-left: 20px;margin-top: 20px;">
+        <h5><a href="/">首页</a></h5>
+    </div>
+    <div align="center">
         <h1>正向查询页面</h1>
     </div>
-    <div class="form-group"style="border:1.5px solid;height: 120px" id="search1">
+    <div class="form-group" style="border:1.5px solid;height: 120px;margin-left: 20px;margin-right: 20px;" id="search1">
         <div  class="row head" style="margin-top: 13px">
 
             <div class="col-lg-10">
                 <label class="col-md-1 control-label" style="margin-top: 5px;width: 104px">物料编码</label>
                 <div class="input-group" style="display: inline-block;float: left;margin-left: 12px">
-                    <input type="text" class="form-control" placeholder="请输入值"  style="width: 150px;height:30px;" id="serach" th:value="${testPn}">
+                    <input type="text" class="form-control" placeholder="请输入值"  style="width: 150px;height:30px;" id="serach" th:value="${fGzpthwzbm}">
                     <span class="input-group-addon btn btn-default"style="width: 20px;" data-toggle="modal" data-target="#myModal" onclick="getSearchValue()">
                                  <span class="glyphicon glyphicon-search"></span>
                             </span>
@@ -90,7 +94,7 @@
 
 
 
-    <div class="modal fade"  id="myModal" aria-hidden="true" >
+    <div class="modal fade"  id="myModal" aria-hidden="true"  style="margin-left: 20px;margin-right: 20px;">
 
         <div class="modal-dialog" style="width: 600px;">
 
@@ -178,7 +182,7 @@
     </div><!-- /.modal -->
 
     </div><!-- /.modal -->
-    <div class="modal fade"  id="myModal1" aria-hidden="true" >
+    <div class="modal fade"  id="myModal1" aria-hidden="true"  style="margin-left: 20px;margin-right: 20px;">
 
         <div class="modal-dialog" style="width: 1500px;">
 
@@ -257,7 +261,7 @@
     </div><!-- /.modal -->
 
     </div><!-- /.modal -->
-    <div class="tab-content">
+    <div class="tab-content"  style="margin-left: 20px;margin-right: 20px;">
                 <!--<table id="table1">
 
                 </table>-->

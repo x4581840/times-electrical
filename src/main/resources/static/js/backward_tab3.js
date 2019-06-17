@@ -45,9 +45,8 @@ function InitTable3 (sqn) {
         },
         columns: [{field: 'fBdbh', title: '表单编号', /*sortable: true, */ halign: 'center'},
             {field: 'fGzpthwzbm', title: '故障品图号', /*sortable: true, */ halign: 'center',formatter: function (value, row, index) {
-                var seqNo = $("#hiddenSeqNo").val();
-                console.log("seqNo===");
-                    return '<a href="/forward/getLinkForwardPage?seqNo="'+seqNo+'>'+value+'</a>';
+                console.log("fGzpthwzbm==="+value);
+                    return '<a href="/forward/getLinkForwardPage?fGzpthwzbm='+value+'">'+value+'</a>';
                 }},
             {field: 'fGzpmc', title: '故障品名称', /*sortable: true, */ halign: 'center'},
             {field: 'fCxdl', title: '车型大类', /*sortable: true, */ halign: 'center'},
