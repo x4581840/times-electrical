@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -66,9 +67,11 @@ public class ForwardController {
     }
 
     @RequestMapping(value = "/getLinkForwardPage",method = RequestMethod.GET)
-    public String tab2(@RequestParam(name = "fGzpthwzbm") String fGzpthwzbm, HttpServletRequest request) {
-        LOGGER.info("fGzpthwzbm:"+fGzpthwzbm);
-        request.setAttribute("fGzpthwzbm", fGzpthwzbm);
+    public String tab2(@RequestParam(name = "fGzpthwzbm", required = false) String fGzpthwzbm, HttpServletRequest request) {
+        if(!StringUtils.isEmpty(fGzpthwzbm)) {
+            LOGGER.info("fGzpthwzbm:" + fGzpthwzbm);
+            request.setAttribute("fGzpthwzbm", fGzpthwzbm);
+        }
         return "link_forward";
     }
     /**
