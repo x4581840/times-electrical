@@ -31,16 +31,28 @@ public class SceneFaultLabelServiceImpl implements ISceneFaultLabelService {
     @Autowired
     private SceneFaultLabelMapperExt sceneFaultLabelMapperExt;
 
-    public List<SceneFaultLabel> getOneTabResult(String fGzpthwzbm, String startTime, String endTime,String fGzpmc){
-        return  sceneFaultLabelMapperExt.getOneTable(fGzpthwzbm,startTime,endTime,fGzpmc);
+    public List<SceneFaultLabel> getOneTabResult(String fGzpthwzbm, String startTime, String endTime,String fGzpmc,int curpage,int pageSize){
+         int pageNO=(curpage-1)*pageSize;
+        return  sceneFaultLabelMapperExt.getOneTable(fGzpthwzbm,startTime,endTime,fGzpmc,pageNO,pageSize);
     }
-    public List<SceneFaultLabel> getTwoTabResult(String fGzpthwzbm){
-        return sceneFaultLabelMapperExt.childSelect(fGzpthwzbm);
+   public int getOneTableCount(String fGzpthwzbm, String startTime, String endTime,String fGzpmc){
+          return sceneFaultLabelMapperExt.getOneTableCount(fGzpthwzbm,startTime,endTime,fGzpmc);
     }
-    public   List<copySceneFaultLabel> getLinkREsult(String fGzpthwzbm, String fGzpmc, String fCxdl, String fZccx, String fZyzrdw,String startTime, String endTime ){
-        return  sceneFaultLabelMapperExt.linkSelect(fGzpthwzbm,fGzpmc,fCxdl,fZccx,fZyzrdw,startTime,endTime);
+    public List<SceneFaultLabel> getTwoTabResult(String fGzpthwzbm,int curPage,int pageSize){
+          int curPage1=(curPage-1)*pageSize;
+        return sceneFaultLabelMapperExt.childSelect(fGzpthwzbm,curPage1,pageSize);
+    }
+    public int getChildCount(String fGzpthwzbm){
+         return sceneFaultLabelMapperExt.getchildCount(fGzpthwzbm);
     }
 
+    public   List<copySceneFaultLabel> getLinkREsult(String fGzpthwzbm, String fGzpmc, String fCxdl, String fZccx, String fZyzrdw,String startTime, String endTime,int curpage,int pageSize ){
+          int pageNo=(curpage-1)*pageSize;
+        return  sceneFaultLabelMapperExt.linkSelect(fGzpthwzbm,fGzpmc,fCxdl,fZccx,fZyzrdw,startTime,endTime,curpage,pageSize);
+    }
+   public int linkSelectCount(String fGzpthwzbm, String fGzpmc, String fCxdl, String fZccx, String fZyzrdw,String startTime, String endTime){
+        return sceneFaultLabelMapperExt.linkSelectCount(fGzpthwzbm,fGzpmc,fCxdl,fZccx,fZyzrdw,startTime,endTime);
+   }
     @Override
     public List<SceneFaultLabel> getSceneFaultLabels(SceneFaultLabelCondDTO cond, PageParam pageParam) {
         return sceneFaultLabelMapperExt.getSceneFaultLabels(cond, pageParam);

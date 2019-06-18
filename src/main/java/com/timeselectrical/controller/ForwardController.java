@@ -87,13 +87,13 @@ public class ForwardController {
         String endDate=request.getParameter("toDate");
 
      try {
-         PageHelper.startPage(pageNo, pageSize);
-         List<SceneFaultLabel> list = parentSelect.getOneTabResult(serachContext, startDate, endDate,fGzpmc);  //得到数据
+         List<SceneFaultLabel> list=new ArrayList<SceneFaultLabel>();
+         int count=parentSelect.getOneTableCount(serachContext, startDate, endDate,fGzpmc);//得到数据
+         if(count>0){
+             list = parentSelect.getOneTabResult(serachContext, startDate, endDate,fGzpmc,pageNo,pageSize);  //得到数据
 
-         PageInfo<SceneFaultLabel> info = new PageInfo<>(list);
-         long total = info.getTotal();
-         return ResponseEntity.ok(new PageWrapper<>(list, total));
-
+         }
+         return ResponseEntity.ok(new PageWrapper<>(list,count));
      }catch (Exception ex){
          ex.printStackTrace();
      }
@@ -111,12 +111,19 @@ public class ForwardController {
                                   @RequestParam(defaultValue = "10", required = false) Integer pageSize) {
 
         try {
-            PageHelper.startPage(pageNo, pageSize);
-            List<SceneFaultLabel> list = parentSelect.getTwoTabResult(childSearchContext);  //得到数据
+            List<SceneFaultLabel> list=new ArrayList<SceneFaultLabel>();
+         int count= parentSelect.getChildCount(childSearchContext);
+           if(count>0){
+                list = parentSelect.getTwoTabResult(childSearchContext,pageNo,pageSize);  //得到数据
 
-            PageInfo<SceneFaultLabel> info = new PageInfo<>(list);
-            long total = info.getTotal();
-            return ResponseEntity.ok(new PageWrapper<>(list, total));
+           }
+            return ResponseEntity.ok(new PageWrapper<>(list,count));
+
+
+
+     /*       PageInfo<SceneFaultLabel> info = new PageInfo<>(list);
+            long total = info.getTotal();*/
+
 
         }catch (Exception ex){
             ex.printStackTrace();
@@ -137,11 +144,14 @@ public class ForwardController {
                                        @RequestParam String fZyzrdw,@RequestParam String fromDate,@RequestParam String toDate) {
 
         try {
-            PageHelper.startPage(pageNo, pageSize);
-            List<copySceneFaultLabel> list = parentSelect.getLinkREsult(fGzpthwzbm,fGzpmc,fCxdl,fZccx,fZyzrdw,fromDate,toDate);  //得到数据
-            PageInfo<copySceneFaultLabel> info = new PageInfo<>(list);
-            long total = info.getTotal();
-            return ResponseEntity.ok(new PageWrapper<>(list, total));
+      /*      PageHelper.startPage(pageNo, pageSize);*/
+            List<copySceneFaultLabel> list=new ArrayList<copySceneFaultLabel>();
+            int count=parentSelect.linkSelectCount(fGzpthwzbm,fGzpmc,fCxdl,fZccx,fZyzrdw,fromDate,toDate);
+            if(count>0){
+                 list = parentSelect.getLinkREsult(fGzpthwzbm,fGzpmc,fCxdl,fZccx,fZyzrdw,fromDate,toDate,pageNo,pageSize);  //得到数据
+
+            }
+            return  ResponseEntity.ok(new PageWrapper<>(list,count));
 
         }catch (Exception ex){
             ex.printStackTrace();

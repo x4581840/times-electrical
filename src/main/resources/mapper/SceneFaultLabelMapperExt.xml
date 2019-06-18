@@ -90,9 +90,26 @@
              <if test='fGzpmc !=""and fGzpmc !=null'>
                  and   f_gzpmc =#{fGzpmc}
              </if>
-           group by f_gzpthwzbm,f_gzpmc,f_cxdl,f_zccx,f_zyzrdw
+              group by f_gzpthwzbm,f_gzpmc,f_cxdl,f_zccx,f_zyzrdw
+             limit #{pageSize} offset  #{curPage}
+  </select>
 
-       </select>
+    <select id="getOneTableCount" resultType="int" >
+     select count(*) from (select f_gzpthwzbm as fGzpthwzbm,f_gzpmc as fGzpmc,f_cxdl as fCxdl,f_zccx as fZccx,f_zyzrdw as fZyzrdw ,sum(count) as count from scene_fault_label where f_gzpthwzbm=#{fGzpthwzbm}
+        <if test='startTime !=""and endTime !=""'>
+            and   f_gzfssj between #{startTime}  and #{endTime}
+        </if>
+        <if test='startTime !=""and endTime ==""'>
+            and   f_gzfssj >=#{startTime}
+        </if>
+        <if test='startTime ==""and endTime !=""'>
+            and   f_gzfssj  &lt;=#{endTime}
+        </if>
+        <if test='fGzpmc !=""and fGzpmc !=null'>
+            and   f_gzpmc =#{fGzpmc}
+        </if>
+        group by f_gzpthwzbm,f_gzpmc,f_cxdl,f_zccx,f_zyzrdw ) newTable
+    </select>
 
 
   <!--  <select id="childSelect" resultType="com.timeselectrical.model.SceneFaultLabel" >
@@ -103,7 +120,14 @@
     <select id="childSelect" resultType="com.timeselectrical.model.SceneFaultLabel" >
         select f_gzpthwzbm as fGzpthwzbm,f_gzpmc as fGzpmc,count(1) from scene_fault_label where f_gzpthwzbm like concat('%', #{fGzpthwzbm},'%')
         group by f_gzpthwzbm,f_gzpmc
+        limit #{pageSize} offset  #{curPage}
     </select>
+    <select id="getchildCount" resultType="int" >
+       select count(*) from (select f_gzpthwzbm,f_gzpmc from scene_fault_label where  f_gzpthwzbm like concat('%', #{fGzpthwzbm},'%')
+       group by f_gzpthwzbm,f_gzpmc) newTable
+
+    </select>
+
 
     <!--<select id="linkSelect" resultType="com.timeselectrical.model.copySceneFaultLabel" >
         select F_BDBH as fBdbh,F_XMMC as fXmmc,F_XMH as fXmh,F_SSYJLBJ as fSsyjlbj,F_SCDW as fScdw,F_GZMCf as fGzmc,F_GZDM as fGzdm,F_GZHG as fGzhg,F_GZDJ as fGzdj,
@@ -143,6 +167,28 @@
             and   f_gzfssj  &lt;=#{endTime}
         </if>
         order by f_gzfssj asc
+        limit #{pageSize} offset  #{curPage}
+    </select>
+
+    <select id="linkSelectCount" resultType="int" >
+      select count(*) from  (select f_bdbh as fBdbh,f_xmmc as fXmmc,f_xmh as fXmh,f_ssyjlbj as fSsyjlbj,f_scdw as fScdw,f_gzmc as fGzmc,f_gzdm as fGzdm,f_gzhg as fGzhg,f_gzdj as fGzdj,
+        f_gzfssj as fGzfssj from scene_fault_label
+        where f_gzpthwzbm=#{fGzpthwzbm}
+        and f_gzpmc =#{fGzpmc}
+        and f_cxdl =#{fCxdl}
+        and f_zccx =#{fZccx}
+        and f_zyzrdw =#{fZyzrdw}
+        <if test='startTime !=""and endTime !=""'>
+            and   f_gzfssj between #{startTime}  and #{endTime}
+        </if>
+        <if test='startTime !=""and endTime ==""'>
+            and   f_gzfssj >=#{startTime}
+        </if>
+        <if test='startTime ==""and endTime !=""'>
+            and   f_gzfssj  &lt;=#{endTime}
+        </if>
+        order by f_gzfssj asc) newTab
+
     </select>
 
 
