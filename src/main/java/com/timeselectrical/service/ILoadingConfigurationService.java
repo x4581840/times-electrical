@@ -1,8 +1,10 @@
 package com.timeselectrical.service;
 
+import com.timeselectrical.component.PageParam;
 import com.timeselectrical.dto.ComponentLocationDTO;
 import com.timeselectrical.dto.LoadingConfigurationCondDTO;
 import com.timeselectrical.model.LoadingConfiguration;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -17,7 +19,7 @@ public interface ILoadingConfigurationService {
      * @param cond
      * @return
      */
-    List<LoadingConfiguration> getLoadingConfigurationsByCond(LoadingConfigurationCondDTO cond);
+    List<LoadingConfiguration> getLoadingConfigurationsByCond(LoadingConfigurationCondDTO cond, PageParam pageParam);
 
     /**
      * 根据sqn和locLike查询 父项位置号（LOC）
@@ -39,4 +41,11 @@ public interface ILoadingConfigurationService {
      * @return
      */
     List<Map<String, Object>> getTreeData(String sqn);
+
+    /**
+     * 查询总数量
+     * @param cond
+     * @return
+     */
+    Integer getLoadingConfigurationsCount(LoadingConfigurationCondDTO cond);
 }

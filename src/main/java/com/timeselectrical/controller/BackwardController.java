@@ -1,6 +1,7 @@
 package com.timeselectrical.controller;
 
 import com.github.pagehelper.PageHelper;
+import com.timeselectrical.component.PageParam;
 import com.timeselectrical.component.PageWrapper;
 import com.timeselectrical.dto.LoadingConfigurationCondDTO;
 import com.timeselectrical.dto.ProductionDefectRecordCondDTO;
@@ -65,8 +66,11 @@ public class BackwardController {
         LoadingConfigurationCondDTO cond = new LoadingConfigurationCondDTO();
         cond.setSqn(sqn);
         cond.setLocChildList(locChildList);
-        PageHelper.startPage(pageNo, pageSize, true);
-        List<LoadingConfiguration> lcList = loadingConfigurationService.getLoadingConfigurationsByCond(cond);
+        //PageHelper.startPage(pageNo, pageSize, true);
+        Integer total = loadingConfigurationService.getLoadingConfigurationsCount(cond);
+        if(total > 0) {
+            PageParam pageParam = new PageParam(total, pageNo, pageSize);
+            List<LoadingConfiguration> lcList = loadingConfigurationService.getLoadingConfigurationsByCond(cond, pageParam);
         /*List<LoadingConfigurationExt> lcExtList = new ArrayList<>();
         if(!CollectionUtils.isEmpty(lcList)) {
             LoadingConfigurationExt lcExt = null;
@@ -80,17 +84,19 @@ public class BackwardController {
                 lcExtList.add(lcExt);
             }
         }*/
-        if(!CollectionUtils.isEmpty(lcList)) {
-            for(LoadingConfiguration lc : lcList) {
-                lc.setOnlinetime_long(lc.getOnlinetime() != null ? lc.getOnlinetime().getTime() : 0);
-                lc.setReleasedate_long(lc.getReleasedate() != null ? lc.getReleasedate().getTime() : 0);
-                lc.setUpdatetime_long(lc.getUpdatetime() != null ? lc.getUpdatetime().getTime() : 0);
-                lc.setfGzfssj_long(lc.getfGzfssj() != null ? lc.getfGzfssj().getTime() : 0);
-                lc.setCountScgz(lc.getCountXcgz() == null ? 0 : lc.getCountXcgz());
-                lc.setCountXcgz(lc.getCountScgz() == null ? 0 : lc.getCountScgz());
+            if (!CollectionUtils.isEmpty(lcList)) {
+                for (LoadingConfiguration lc : lcList) {
+                    lc.setOnlinetime_long(lc.getOnlinetime() != null ? lc.getOnlinetime().getTime() : 0);
+                    lc.setReleasedate_long(lc.getReleasedate() != null ? lc.getReleasedate().getTime() : 0);
+                    lc.setUpdatetime_long(lc.getUpdatetime() != null ? lc.getUpdatetime().getTime() : 0);
+                    lc.setfGzfssj_long(lc.getfGzfssj() != null ? lc.getfGzfssj().getTime() : 0);
+                    lc.setCountScgz(lc.getCountXcgz() == null ? 0 : lc.getCountXcgz());
+                    lc.setCountXcgz(lc.getCountScgz() == null ? 0 : lc.getCountScgz());
+                }
             }
+            return ResponseEntity.ok(new PageWrapper<>(lcList, total));
         }
-        return ResponseEntity.ok(new PageWrapper<>(lcList));
+        return ResponseEntity.ok(null);
     }
 
     @RequestMapping("/getLocSelectData")

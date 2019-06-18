@@ -1,5 +1,6 @@
 package com.timeselectrical.service.impl;
 
+import com.timeselectrical.component.PageParam;
 import com.timeselectrical.dto.LoadingConfigurationCondDTO;
 import com.timeselectrical.dto.ComponentLocationDTO;
 import com.timeselectrical.dto.ComponentLocationDTO.*;
@@ -32,8 +33,8 @@ public class LoadingConfigurationServiceImpl implements ILoadingConfigurationSer
     private LoadingConfigurationMapperExt loadingConfigurationMapperExt;
 
     @Override
-    public List<LoadingConfiguration> getLoadingConfigurationsByCond(LoadingConfigurationCondDTO cond) {
-        return loadingConfigurationMapperExt.getLoadingConfigurations(cond);
+    public List<LoadingConfiguration> getLoadingConfigurationsByCond(LoadingConfigurationCondDTO cond, PageParam pageParam) {
+        return loadingConfigurationMapperExt.getLoadingConfigurations(cond, pageParam);
     }
 
     @Override
@@ -91,6 +92,11 @@ public class LoadingConfigurationServiceImpl implements ILoadingConfigurationSer
         buildChildData(res, root);
         resList.add(root);
         return resList;
+    }
+
+    @Override
+    public Integer getLoadingConfigurationsCount(LoadingConfigurationCondDTO cond) {
+        return loadingConfigurationMapperExt.getLoadingConfigurationsCount(cond);
     }
 
 
