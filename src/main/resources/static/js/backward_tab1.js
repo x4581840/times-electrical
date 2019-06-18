@@ -59,15 +59,15 @@ function InitTable1 (sqn, selectValueArray) {
             {field: 'ownercustomer', title: '配属用户', /*sortable: true,*/ halign: 'center'},
             {field: 'repairprocess', title: '修程修次', /*sortable: true,*/ halign: 'center'},
             {field: 'maker', title: '制造企业', /*sortable: true,*/ halign: 'center'},
-            {field: 'onlinetime_long', title: '上线日期', /*sortable: true,*/ halign: 'center',formatter: function (value, row, index) {
+            {field: 'onlinetime', title: '上线日期', /*sortable: true,*/ halign: 'center'/*,formatter: function (value, row, index) {
                     return changeDateFormat(value);
-                }},
-            {field: 'releasedate_long', title: '出厂日期', /*sortable: true,*/ halign: 'center',formatter: function (value, row, index) {
+                }*/},
+            {field: 'releasedate', title: '出厂日期', /*sortable: true,*/ halign: 'center'/*,formatter: function (value, row, index) {
                     return changeDateFormat(value);
-                }},
-            {field: 'updatetime_long', title: '检修日期', /*sortable: true,*/ halign: 'center',formatter: function (value, row, index) {
+                }*/},
+            {field: 'updatetime', title: '检修日期', /*sortable: true,*/ halign: 'center'/*,formatter: function (value, row, index) {
                     return changeDateFormat(value);
-                }},
+                }*/},
             {field: 'countScgz', title: '生产故障次数', /*sortable: true,*/ halign: 'center',formatter: function (value, row, index) {
                     var sqn = row.sqn;
                     // 在方法内要传的值的前后加上&quot;，否则会报Uncaught ReferenceError: xxx is not defined

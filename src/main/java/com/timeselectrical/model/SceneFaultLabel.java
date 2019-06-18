@@ -1,6 +1,5 @@
 package com.timeselectrical.model;
 
-import java.util.Date;
 
 /**
  * 现场故障标签 实体类
@@ -75,7 +74,7 @@ public class SceneFaultLabel {
     /**
      * 故障发生时间
      */
-    private Date fGzfssj;
+    private String fGzfssj;
 
     /**
      * 项目名称
@@ -216,11 +215,11 @@ public class SceneFaultLabel {
         this.fGzdj = fGzdj == null ? null : fGzdj.trim();
     }
 
-    public Date getfGzfssj() {
+    public String getfGzfssj() {
         return fGzfssj;
     }
 
-    public void setfGzfssj(Date fGzfssj) {
+    public void setfGzfssj(String fGzfssj) {
         this.fGzfssj = fGzfssj;
     }
 

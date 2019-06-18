@@ -1,6 +1,5 @@
 package com.timeselectrical.model;
 
-import java.util.Date;
 
 /**
  * 装车配置实体类
@@ -85,17 +84,17 @@ public class LoadingConfiguration {
     /**
      * 上线日期
      */
-    private Date onlinetime;
+    private String onlinetime;
 
     /**
      * 出厂日期
      */
-    private Date releasedate;
+    private String releasedate;
 
     /**
      * 检修日期
      */
-    private Date updatetime;
+    private String updatetime;
 
     /**
      * 车ID
@@ -130,7 +129,7 @@ public class LoadingConfiguration {
     /**
      * 故障发生时间
      */
-    private Date fGzfssj;
+    private String fGzfssj;
 
     /**
      * 生产故障次数
@@ -314,27 +313,27 @@ public class LoadingConfiguration {
         this.maker = maker == null ? null : maker.trim();
     }
 
-    public Date getOnlinetime() {
+    public String getOnlinetime() {
         return onlinetime;
     }
 
-    public void setOnlinetime(Date onlinetime) {
+    public void setOnlinetime(String onlinetime) {
         this.onlinetime = onlinetime;
     }
 
-    public Date getReleasedate() {
+    public String getReleasedate() {
         return releasedate;
     }
 
-    public void setReleasedate(Date releasedate) {
+    public void setReleasedate(String releasedate) {
         this.releasedate = releasedate;
     }
 
-    public Date getUpdatetime() {
+    public String getUpdatetime() {
         return updatetime;
     }
 
-    public void setUpdatetime(Date updatetime) {
+    public void setUpdatetime(String updatetime) {
         this.updatetime = updatetime;
     }
 
@@ -386,11 +385,11 @@ public class LoadingConfiguration {
         this.fGzpxh = fGzpxh == null ? null : fGzpxh.trim();
     }
 
-    public Date getfGzfssj() {
+    public String getfGzfssj() {
         return fGzfssj;
     }
 
-    public void setfGzfssj(Date fGzfssj) {
+    public void setfGzfssj(String fGzfssj) {
         this.fGzfssj = fGzfssj;
     }
 

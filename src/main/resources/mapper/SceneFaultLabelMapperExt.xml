@@ -6,17 +6,17 @@
         <!--<resultMap="com.timeselectrical.mapper.SceneFaultLabelMapper.BaseResultMap">-->
         <include refid="getSceneFaultLabelsSql"></include>
         <if test="pageParam != null and pageParam.pageNo != null and pageParam.pageSize != null">
-            LIMIT #{pageParam.startRow},#{pageParam.endRow}
+            LIMIT #{pageParam.pageSize} offset #{pageParam.startRow}
         </if>
     </select>
 
     <select id="getSceneFaultLabelsCount" resultType="java.lang.Integer">
         SELECT
-          COUNT(0)
+        COUNT(0)
         FROM
-            (
-            <include refid="getSceneFaultLabelsSql"></include>
-            ) AS total
+        (
+        <include refid="getSceneFaultLabelsSql"></include>
+        ) AS total
     </select>
 
     <sql id="getSceneFaultLabelsSql">
@@ -38,8 +38,8 @@
         F_XMH AS fXmh,
         F_ZYZRDW AS fZyzrdw
         FROM
-        scene_fault_label
-        /*"_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"*/
+        /*scene_fault_label*/
+        "_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"
         <where>
             1=1
             <if test="cond != null and cond.sqn != null and cond.sqn != ''">
@@ -63,43 +63,33 @@
         F_XMH,
         F_ZYZRDW
     </sql>
-          <select id="getOneTable" resultType="com.timeselectrical.model.SceneFaultLabel" >
-              select F_GZPTHWZBM as fGzpthwzbm,F_GZPMC as fGzpmc,F_CXDL as fCxdl,F_ZCCX as fZccx,F_ZYZRDW as fZyzrdw ,sum(COUNT_) as count from scene_fault_label where F_GZPTHWZBM=#{fGzpthwzbm}
-              <if test='startTime !=""and endTime !=""'>
-                  and   F_GZFSSJ between #{startTime}  and #{endTime}
-              </if>
-              <if test='startTime !=""and endTime ==""'>
-                  and   F_GZFSSJ >=#{startTime}
-              </if>
-              <if test='startTime ==""and endTime !=""'>
-                  and   F_GZFSSJ  &lt;=#{endTime}
-              </if>
-              <if test='fGzpmc !=""and fGzpmc !=null'>
-                  and   F_GZPMC =#{fGzpmc}
-              </if>
-              group by F_GZPTHWZBM,F_GZPMC,F_CXDL,F_ZCCX,F_ZYZRDW
-              limit #{pageSize} offset  #{curPage}
-          </select>
-      <!--   <select id="getOneTable" resultType="com.timeselectrical.model.SceneFaultLabel" >
-                select f_gzpthwzbm as fGzpthwzbm,f_gzpmc as fGzpmc,f_cxdl as fCxdl,f_zccx as fZccx,f_zyzrdw as fZyzrdw ,sum(count) as count from scene_fault_label where f_gzpthwzbm=#{fGzpthwzbm}
-             <if test='startTime !=""and endTime !=""'>   "_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"
-                 and   f_gzfssj between #{startTime}  and #{endTime}
-             </if>
-             <if test='startTime !=""and endTime ==""'>
-                 and   f_gzfssj >=#{startTime}
-             </if>
-             <if test='startTime ==""and endTime !=""'>
-                 and   f_gzfssj  &lt;=#{endTime}
-             </if>
-             <if test='fGzpmc !=""and fGzpmc !=null'>
-                 and   f_gzpmc =#{fGzpmc}
-             </if>
-              group by f_gzpthwzbm,f_gzpmc,f_cxdl,f_zccx,f_zyzrdw
-             limit #{pageSize} offset  #{curPage}
-  </select>-->
+    <select id="getOneTable" resultType="com.timeselectrical.model.SceneFaultLabel" >
+        select F_GZPTHWZBM as fGzpthwzbm,F_GZPMC as fGzpmc,F_CXDL as fCxdl,F_ZCCX as fZccx,F_ZYZRDW as fZyzrdw ,sum(COUNT_) as count from
+        /*scene_fault_label*/
+        "_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"
+        where F_GZPTHWZBM=#{fGzpthwzbm}
+        <if test='startTime !=""and endTime !=""'>
+            and   F_GZFSSJ between #{startTime}  and #{endTime}
+        </if>
+        <if test='startTime !=""and endTime ==""'>
+            and   F_GZFSSJ >=#{startTime}
+        </if>
+        <if test='startTime ==""and endTime !=""'>
+            and   F_GZFSSJ  &lt;=#{endTime}
+        </if>
+        <if test='fGzpmc !=""and fGzpmc !=null'>
+            and   F_GZPMC =#{fGzpmc}
+        </if>
+        group by F_GZPTHWZBM,F_GZPMC,F_CXDL,F_ZCCX,F_ZYZRDW
+        limit #{pageSize} offset  #{curPage}
+    </select>
+
 
     <select id="getOneTableCount" resultType="int" >
-     select count(*) from (select F_GZPTHWZBM as fGzpthwzbm,F_GZPMC as fGzpmc,F_CXDL as fCxdl,F_ZCCX as fZccx,F_ZYZRDW as fZyzrdw ,sum(COUNT_) as count from scene_fault_label where F_GZPTHWZBM=#{fGzpthwzbm}
+        select count(*) from (select F_GZPTHWZBM as fGzpthwzbm,F_GZPMC as fGzpmc,F_CXDL as fCxdl,F_ZCCX as fZccx,F_ZYZRDW as fZyzrdw ,sum(COUNT_) as count from
+        /*scene_fault_label*/
+        "_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"
+        where F_GZPTHWZBM=#{fGzpthwzbm}
         <if test='startTime !=""and endTime !=""'>
             and   F_GZFSSJ between #{startTime}  and #{endTime}
         </if>
@@ -116,19 +106,21 @@
     </select>
 
 
- <select id="childSelect" resultType="com.timeselectrical.model.SceneFaultLabel" >
-        select F_GZPTHWZBM as fGzpthwzbm,F_GZPMC as fGzpmc from scene_fault_label where F_GZPTHWZBM like concat('%', #{fGzpthwzbm},'%')
+    <select id="childSelect" resultType="com.timeselectrical.model.SceneFaultLabel" >
+        select F_GZPTHWZBM as fGzpthwzbm,F_GZPMC as fGzpmc from
+        /*scene_fault_label*/
+        "_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"
+        where F_GZPTHWZBM like concat('%', #{fGzpthwzbm},'%')
         group by F_GZPTHWZBM,F_GZPMC
          limit #{pageSize} offset  #{curPage}
     </select>
 
- <!--   <select id="childSelect" resultType="com.timeselectrical.model.SceneFaultLabel" >
-        select f_gzpthwzbm as fGzpthwzbm,f_gzpmc as fGzpmc,count(1) from scene_fault_label where f_gzpthwzbm like concat('%', #{fGzpthwzbm},'%')
-        group by f_gzpthwzbm,f_gzpmc
-        limit #{pageSize} offset  #{curPage}
-    </select>-->
+
     <select id="getchildCount" resultType="int" >
-       select count(*) from (  select F_GZPTHWZBM as fGzpthwzbm,F_GZPMC as fGzpmc from scene_fault_label  where F_GZPTHWZBM like concat('%', #{fGzpthwzbm},'%')
+       select count(*) from (  select F_GZPTHWZBM as fGzpthwzbm,F_GZPMC as fGzpmc from
+       /*scene_fault_label*/
+        "_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"
+       where F_GZPTHWZBM like concat('%', #{fGzpthwzbm},'%')
         group by F_GZPTHWZBM,F_GZPMC) newTable
 
     </select>
@@ -136,7 +128,9 @@
 
     <select id="linkSelect" resultType="com.timeselectrical.model.copySceneFaultLabel" >
         select F_BDBH as fBdbh,F_XMMC as fXmmc,F_XMH as fXmh,F_SSYJLBJ as fSsyjlbj,F_SCDW as fScdw,F_GZMC as fGzmc,F_GZDM as fGzdm,F_GZHG as fGzhg,F_GZDJ as fGzdj,
-        F_GZFSSJ as fGzfssj from scene_fault_label
+        F_GZFSSJ as fGzfssj from
+        /*scene_fault_label*/
+        "_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"
         where F_GZPTHWZBM=#{fGzpthwzbm}
         and F_GZPMC =#{fGzpmc}
         and F_CXDL =#{fCxdl}
@@ -155,30 +149,13 @@
         limit #{pageSize} offset  #{curPage}
     </select>
 
-  <!--  <select id="linkSelect" resultType="com.timeselectrical.model.copySceneFaultLabel" >
-        select f_bdbh as fBdbh,f_xmmc as fXmmc,f_xmh as fXmh,f_ssyjlbj as fSsyjlbj,f_scdw as fScdw,f_gzmc as fGzmc,f_gzdm as fGzdm,f_gzhg as fGzhg,f_gzdj as fGzdj,
-        f_gzfssj as fGzfssj from scene_fault_label
-        where f_gzpthwzbm=#{fGzpthwzbm}
-        and f_gzpmc =#{fGzpmc}
-        and f_cxdl =#{fCxdl}
-        and f_zccx =#{fZccx}
-        and f_zyzrdw =#{fZyzrdw}
-        <if test='startTime !=""and endTime !=""'>
-            and   f_gzfssj between #{startTime}  and #{endTime}
-        </if>
-        <if test='startTime !=""and endTime ==""'>
-            and   f_gzfssj >=#{startTime}
-        </if>
-        <if test='startTime ==""and endTime !=""'>
-            and   f_gzfssj  &lt;=#{endTime}
-        </if>
-        order by f_gzfssj asc
-        limit #{pageSize} offset  #{curPage}
-    </select>-->
+
 
     <select id="linkSelectCount" resultType="int" >
         select count(*) from (  select F_BDBH as fBdbh,F_XMMC as fXmmc,F_XMH as fXmh,F_SSYJLBJ as fSsyjlbj,F_SCDW as fScdw,F_GZMC as fGzmc,F_GZDM as fGzdm,F_GZHG as fGzhg,F_GZDJ as fGzdj,
-        F_GZFSSJ as fGzfssj from scene_fault_label
+        F_GZFSSJ as fGzfssj from
+        /*scene_fault_label*/
+        "_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"
         where F_GZPTHWZBM=#{fGzpthwzbm}
         and F_GZPMC =#{fGzpmc}
         and F_CXDL =#{fCxdl}

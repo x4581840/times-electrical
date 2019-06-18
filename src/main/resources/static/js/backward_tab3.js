@@ -60,9 +60,9 @@ function InitTable3 (sqn) {
             {field: 'fGzdm', title: '故障代码', /*sortable: true, */ halign: 'center'},
             {field: 'fGzhg', title: '故障后果', /*sortable: true, */ halign: 'center'},
             {field: 'fGzdj', title: '故障等级', /*sortable: true, */ halign: 'center'},
-            {field: 'fGzfssj_long', title: '故障发生时间', /*sortable: true, */ halign: 'center',formatter: function (value, row, index) {
+            {field: 'fGzfssj', title: '故障发生时间', /*sortable: true, */ halign: 'center'/*,formatter: function (value, row, index) {
                     return changeDateFormat(value)
-                }},
+                }*/},
         ],
         onLoadSuccess: function () {
 

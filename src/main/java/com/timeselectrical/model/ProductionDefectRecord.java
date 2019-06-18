@@ -1,6 +1,5 @@
 package com.timeselectrical.model;
 
-import java.util.Date;
 
 /**
  * 生产缺陷记录
@@ -89,12 +88,12 @@ public class ProductionDefectRecord {
     /**
      * 筛选日期
      */
-    private Date zsxrq;
+    private String zsxrq;
 
     /**
      * 筛选时间
      */
-    private Date zsxsj;
+    private String zsxsj;
 
     /**
      * 采用筛选方案版本
@@ -265,19 +264,19 @@ public class ProductionDefectRecord {
         this.zsxdw = zsxdw == null ? null : zsxdw.trim();
     }
 
-    public Date getZsxrq() {
+    public String getZsxrq() {
         return zsxrq;
     }
 
-    public void setZsxrq(Date zsxrq) {
+    public void setZsxrq(String zsxrq) {
         this.zsxrq = zsxrq;
     }
 
-    public Date getZsxsj() {
+    public String getZsxsj() {
         return zsxsj;
     }
 
-    public void setZsxsj(Date zsxsj) {
+    public void setZsxsj(String zsxsj) {
         this.zsxsj = zsxsj;
     }
 

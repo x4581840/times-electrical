@@ -1,6 +1,5 @@
 package com.timeselectrical.controller;
 
-import com.github.pagehelper.PageHelper;
 import com.timeselectrical.component.PageParam;
 import com.timeselectrical.component.PageWrapper;
 import com.timeselectrical.dto.LoadingConfigurationCondDTO;
@@ -87,10 +86,10 @@ public class BackwardController {
         }*/
             if (!CollectionUtils.isEmpty(lcList)) {
                 for (LoadingConfiguration lc : lcList) {
-                    lc.setOnlinetime_long(lc.getOnlinetime() != null ? lc.getOnlinetime().getTime() : 0);
-                    lc.setReleasedate_long(lc.getReleasedate() != null ? lc.getReleasedate().getTime() : 0);
-                    lc.setUpdatetime_long(lc.getUpdatetime() != null ? lc.getUpdatetime().getTime() : 0);
-                    lc.setfGzfssj_long(lc.getfGzfssj() != null ? lc.getfGzfssj().getTime() : 0);
+//                    lc.setOnlinetime_long(lc.getOnlinetime() != null ? lc.getOnlinetime().getTime() : 0);
+//                    lc.setReleasedate_long(lc.getReleasedate() != null ? lc.getReleasedate().getTime() : 0);
+//                    lc.setUpdatetime_long(lc.getUpdatetime() != null ? lc.getUpdatetime().getTime() : 0);
+//                    lc.setfGzfssj_long(lc.getfGzfssj() != null ? lc.getfGzfssj().getTime() : 0);
                     lc.setCountScgz(lc.getCountXcgz() == null ? 0 : lc.getCountXcgz());
                     lc.setCountXcgz(lc.getCountScgz() == null ? 0 : lc.getCountScgz());
                 }
@@ -131,8 +130,8 @@ public class BackwardController {
         }*/
             if (!CollectionUtils.isEmpty(pdrList)) {
                 for (ProductionDefectRecord pdr : pdrList) {
-                    pdr.setZsxrq_long(pdr.getZsxrq() != null ? pdr.getZsxrq().getTime() : 0);
-                    pdr.setZsxsj_long(pdr.getZsxsj() != null ? pdr.getZsxsj().getTime() : 0);
+//                    pdr.setZsxrq_long(pdr.getZsxrq() != null ? pdr.getZsxrq().getTime() : 0);
+//                    pdr.setZsxsj_long(pdr.getZsxsj() != null ? pdr.getZsxsj().getTime() : 0);
                     pdr.setCount(pdr.getCount() == null ? 0 : pdr.getCount());
                 }
             }
@@ -165,7 +164,7 @@ public class BackwardController {
         }*/
             if (!CollectionUtils.isEmpty(sflList)) {
                 for (SceneFaultLabel sfl : sflList) {
-                    sfl.setfGzfssj_long(sfl.getfGzfssj() != null ? sfl.getfGzfssj().getTime() : 0);
+//                    sfl.setfGzfssj_long(sfl.getfGzfssj() != null ? sfl.getfGzfssj().getTime() : 0);
                     sfl.setCount(sfl.getCount() == null ? 0 : sfl.getCount());
                 }
             }
