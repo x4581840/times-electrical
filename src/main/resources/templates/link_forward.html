@@ -22,7 +22,11 @@
     <link th:href="@{/static/css/bootstrap-table.min.css}" rel="stylesheet" type="text/css">
     <script th:src="@{/static/js/bootstrap-table.min.js}"></script>
     <script th:src="@{/static/js/bootstrap-table-zh-CN.min.js}"></script>
+
     <link th:href="@{/static/css/backward.css}" rel="stylesheet" type="text/css">
+
+
+
     <meta charset="UTF-8">
 
     <title>正向查询页面</title>
@@ -57,7 +61,7 @@
 
                         <input type="text" class="form-control" placeholder="" style="width: 150px;height:30px;" id="from" name="from">
                         <span class="input-group-addon btn btn-default"style="width: 20px;" id="test1">
-                                 <span class="glyphicon  glyphicon-pencil"></span>
+                                 <span class="glyphicon  glyphicon-pencil" id="test3"></span>
                             </span>
 
                     </div>
@@ -67,14 +71,11 @@
 
                         <input type="text" class="form-control" placeholder="" style="width: 150px;height:30px;" id="to" name="to" >
                         <span class="input-group-addon btn btn-default"style="width: 20px;" id="test2">
-                                 <span class="glyphicon  glyphicon-pencil"></span>
+                                 <span class="glyphicon  glyphicon-pencil" id="test4"></span>
                             </span>
-
                     </div>
-
-
-
-            </div>
+                </div>
+                <div style="display: none"><span id="hiddenValue"></span></div>
         </div>
 <!--
         <div>
@@ -279,14 +280,34 @@
                 </table>
 
         </div>-->
-
-            </div>
+    </div>
         </div>
     </div>
 
 
 </body>
+<script th:src="@{/static/laydate/laydate.js}"></script>
+
 <script type="text/javascript">
+
+    laydate.render({
+        elem: '#from'
+        ,eventElem: '#test1',
+        type: 'datetime'
+        ,trigger: 'click'
+    });
+    laydate.render({
+        elem: '#from'
+        ,eventElem: '#test3',
+        type: 'datetime'
+        ,trigger: 'click'
+    });
+    laydate.render({
+        elem: '#to'
+        ,eventElem: '#test2',
+        type: 'datetime'
+        ,trigger: 'click'
+    });
     function getSearchValue() {
         var searchValue=$("#serach").val();
         $("#test").val(searchValue);
@@ -343,7 +364,7 @@
         $("#from").val("");
         $("#to").val("");
     }
-  function chooseOne(obj){
+  function chooseOne(obj,fGzpmc){
 
       var gg= document.getElementsByName("inlineCheckbox1");
       for(var i=0;i<gg.length;i++){
@@ -352,6 +373,8 @@
               gg[i].checked = false;
           }
       else gg[i].checked = true;
+
+          $("#hiddenValue").val(fGzpmc);
 
       }
   }
@@ -379,10 +402,12 @@
                  $( "#to" ).datepicker( "option", "minDate", selectedDate );
              }
          });*/
-        $("#from").datepicker({//添加日期选择功能
+       /* $("#from").datepicker({//添加日期选择功能datetimepicker
             numberOfMonths:1,//显示几个月
             showButtonPanel:true,//是否显示按钮面板
+
             dateFormat: 'yy-mm-dd',//日期格式
+
             clearText:"清除",//清除日期的按钮名称
             closeText:"关闭",//关闭选择框的按钮名称
             yearSuffix: '年', //年的后缀
@@ -412,12 +437,12 @@
             }
         });
         $( "#to" ).datepicker({
-            /*defaultDate: "+1w",
+            /!*defaultDate: "+1w",
             changeMonth: true,
             numberOfMonths:1,
             onClose: function( selectedDate ) {
                 $( "#from" ).datepicker( "option", "maxDate", selectedDate );
-            }*/
+            }*!/
             numberOfMonths:1,//显示几个月
             showButtonPanel:true,//是否显示按钮面板
             dateFormat: 'yy-mm-dd',//日期格式
@@ -467,7 +492,7 @@
             }
             this._notifyChange(inst);
             this._adjustDate(target);
-        }
+        }*/
     });
 </script>
 </html>

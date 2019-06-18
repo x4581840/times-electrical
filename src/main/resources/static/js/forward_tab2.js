@@ -19,8 +19,8 @@ function InitTable2(fGzpthwzbm,fGzpmc,fCxdl,fZccx,fZyzrdw) {
         sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
         pageNumber: 1,                      //初始化加载第一页，默认第一页,并记录
         pageSize: 10,                     //每页的记录行数（*）
+        smartDisplay:false,
         pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
-
         search: false,                      //是否显示表格搜索
         strictSearch: true,
         //showColumns: true,                  //是否显示所有的列（选择显示的列）
@@ -35,6 +35,8 @@ function InitTable2(fGzpthwzbm,fGzpmc,fCxdl,fZccx,fZyzrdw) {
         //得到查询的参数
         queryParams : function (params) {
             //这里的键的名字和控制器的变量名必须一致，这边改动，控制器也需要改成一样的
+            var  from=$("#from").val();
+            var  to=$("#to").val();
             var temp = {
                 pageSize: params.limit,                         //页面大小
                 pageNo: (params.offset / params.limit) + 1,//页码
@@ -42,7 +44,9 @@ function InitTable2(fGzpthwzbm,fGzpmc,fCxdl,fZccx,fZyzrdw) {
                 fGzpmc:fGzpmc,
                 fCxdl:fCxdl,
                 fZccx:fZccx,
-                fZyzrdw:fZyzrdw
+                fZyzrdw:fZyzrdw,
+                fromDate:from,
+                toDate:to
 
 
             /*    sort: params.sort,      //排序列名
@@ -83,8 +87,6 @@ function  tab2_query_button(fGzpthwzbm,fGzpmc,fCxdl,fZccx,fZyzrdw) {
     search.style.borderBottom="none";
     search.style.borderRight="none";
     search.style.borderLeft="none";*/
-
-
     $("#table2").bootstrapTable('destroy');
     InitTable2(fGzpthwzbm,fGzpmc,fCxdl,fZccx,fZyzrdw);
 }
