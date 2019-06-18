@@ -63,6 +63,7 @@
         F_XMH,
         F_ZYZRDW
     </sql>
+
     <select id="getOneTable" resultType="com.timeselectrical.model.SceneFaultLabel" >
         select F_GZPTHWZBM as fGzpthwzbm,F_GZPMC as fGzpmc,F_CXDL as fCxdl,F_ZCCX as fZccx,F_ZYZRDW as fZyzrdw ,sum(COUNT_) as count from
         /*scene_fault_label*/
