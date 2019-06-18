@@ -1,5 +1,8 @@
 package com.timeselectrical.component;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * @Description
  * @Author longjianyong
@@ -7,6 +10,8 @@ package com.timeselectrical.component;
  * @Version 1.0
  **/
 public class PageParam {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(PageParam.class);
 
     /**
      * 总数
@@ -44,9 +49,9 @@ public class PageParam {
         if(endRowTemp > total) {
             this.endRow = total;
         }else {
-            this.endRow = (pageNo-1)*pageSize + pageSize;
+            this.endRow = endRowTemp;
         }
-
+        LOGGER.info("pageParam:total={},pageNo={},pageSize={},startRow={},endRow={}",total,pageNo,pageSize,startRow,endRowTemp);
     }
 
     public Integer getPageNo() {

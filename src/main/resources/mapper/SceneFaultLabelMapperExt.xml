@@ -4,25 +4,41 @@
 
     <select id="getSceneFaultLabels" resultType="com.timeselectrical.model.SceneFaultLabel">
         <!--<resultMap="com.timeselectrical.mapper.SceneFaultLabelMapper.BaseResultMap">-->
+        <include refid="getSceneFaultLabelsSql"></include>
+        <if test="pageParam != null and pageParam.pageNo != null and pageParam.pageSize != null">
+            LIMIT #{pageParam.startRow},#{pageParam.endRow}
+        </if>
+    </select>
+
+    <select id="getSceneFaultLabelsCount" resultType="java.lang.Integer">
         SELECT
-          <!--<include refid="com.timeselectrical.mapper.SceneFaultLabelMapper.Base_Column_List"></include>-->
-            F_BDBH AS fBdbh,
-            F_GZPTHWZBM AS fGzpthwzbm,
-            F_GZPMC AS fGzpmc,
-            F_CXDL AS fCxdl,
-            F_ZCCX AS fZccx,
-            F_SSYJLBJ AS fSsyjlbj,
-            F_SCDW AS fScdw,
-            F_GZMC AS fGzmc,
-            F_GZDM AS fGzdm,
-            F_GZHG AS fGzhg,
-            F_GZDJ AS fGzdj,
-            F_GZFSSJ AS fGzfssj,
-            F_XMMC AS fXmmc,
-            F_XMH AS fXmh,
-            F_ZYZRDW AS fZyzrdw
+          COUNT(0)
         FROM
-          scene_fault_label
+            (
+            <include refid="getSceneFaultLabelsSql"></include>
+            ) AS total
+    </select>
+
+    <sql id="getSceneFaultLabelsSql">
+        SELECT
+        <!--<include refid="com.timeselectrical.mapper.SceneFaultLabelMapper.Base_Column_List"></include>-->
+        F_BDBH AS fBdbh,
+        F_GZPTHWZBM AS fGzpthwzbm,
+        F_GZPMC AS fGzpmc,
+        F_CXDL AS fCxdl,
+        F_ZCCX AS fZccx,
+        F_SSYJLBJ AS fSsyjlbj,
+        F_SCDW AS fScdw,
+        F_GZMC AS fGzmc,
+        F_GZDM AS fGzdm,
+        F_GZHG AS fGzhg,
+        F_GZDJ AS fGzdj,
+        F_GZFSSJ AS fGzfssj,
+        F_XMMC AS fXmmc,
+        F_XMH AS fXmh,
+        F_ZYZRDW AS fZyzrdw
+        FROM
+        scene_fault_label
         /*"_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"*/
         <where>
             1=1
@@ -31,22 +47,22 @@
             </if>
         </where>
         GROUP BY
-            F_BDBH,
-            F_GZPTHWZBM,
-            F_GZPMC,
-            F_CXDL,
-            F_ZCCX,
-            F_SSYJLBJ,
-            F_SCDW,
-            F_GZMC,
-            F_GZDM,
-            F_GZHG,
-            F_GZDJ,
-            F_GZFSSJ,
-            F_XMMC,
-            F_XMH,
-            F_ZYZRDW
-    </select>
+        F_BDBH,
+        F_GZPTHWZBM,
+        F_GZPMC,
+        F_CXDL,
+        F_ZCCX,
+        F_SSYJLBJ,
+        F_SCDW,
+        F_GZMC,
+        F_GZDM,
+        F_GZHG,
+        F_GZDJ,
+        F_GZFSSJ,
+        F_XMMC,
+        F_XMH,
+        F_ZYZRDW
+    </sql>
           <!--<select id="">-->
               <!--select F_GZPTHWZBM as fGzpthwzbm,F_GZPMC as fGzpmc,F_CXDL as fCxdl,F_ZCCX as fZccx,F_ZYZRDW as fZyzrdw ,sum(COUNT_) as count from "_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V" where F_GZPTHWZBM=#{fGzpthwzbm}-->
               <!--<if test='startTime !=""and endTime !=""'>-->

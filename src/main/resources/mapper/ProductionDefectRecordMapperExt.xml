@@ -3,30 +3,46 @@
 <mapper namespace="com.timeselectrical.mapper.ProductionDefectRecordMapperExt" >
     <select id="getProductionDefectRecords" resultType="com.timeselectrical.model.ProductionDefectRecord">
     <!--<resultMap="com.timeselectrical.mapper.ProductionDefectRecordMapper.BaseResultMap">-->
+        <include refid="getProductionDefectRecordsSql"></include>
+        <if test="pageParam != null and pageParam.pageNo != null and pageParam.pageSize != null">
+            LIMIT #{pageParam.startRow},#{pageParam.endRow}
+        </if>
+    </select>
+
+    <select id="getProductionDefectRecordsCount" resultType="java.lang.Integer">
         SELECT
-          <!--<include refid="com.timeselectrical.mapper.ProductionDefectRecordMapper.Base_Column_List"></include>-->
-          SUBLOT_ID AS sublotId,
-          LOT_ID AS lotId,
-          DEFECT_TYPE AS defectType,
-          DEFECT_CODE AS defectCode,
-          DEFECT_COMMENT AS defectComment,
-          BOM_MAT_ID AS bomMatId,
-          LOCATION_NUM AS locationNum,
-          MAT_CMF_1 AS matCmf1,
-          SEQ AS seq,
-          DEF_CMF_2 AS defCmf2,
-          ZGYS AS zgys,
-          LIFNR AS lifnr,
-          MBLNR AS mblnr,
-          ZSFSX AS zsfsx,
-          ZSXDW AS zsxdw,
-          ZSXRQ AS zsxrq,
-          ZSXSJ AS zsxsj,
-          ZSXBB AS zsxbb,
-          ZSXJG AS zsxjg
+            COUNT(0)
         FROM
-          production_defect_record
-          /*"_SYS_BIC"."com.CRRC.POC/CV_SCQXJL_V"*/
+            (
+            <include refid="getProductionDefectRecordsSql"></include>
+            ) AS total
+    </select>
+
+    <sql id="getProductionDefectRecordsSql">
+        SELECT
+            <!--<include refid="com.timeselectrical.mapper.ProductionDefectRecordMapper.Base_Column_List"></include>-->
+            SUBLOT_ID AS sublotId,
+            LOT_ID AS lotId,
+            DEFECT_TYPE AS defectType,
+            DEFECT_CODE AS defectCode,
+            DEFECT_COMMENT AS defectComment,
+            BOM_MAT_ID AS bomMatId,
+            LOCATION_NUM AS locationNum,
+            MAT_CMF_1 AS matCmf1,
+            SEQ AS seq,
+            DEF_CMF_2 AS defCmf2,
+            ZGYS AS zgys,
+            LIFNR AS lifnr,
+            MBLNR AS mblnr,
+            ZSFSX AS zsfsx,
+            ZSXDW AS zsxdw,
+            ZSXRQ AS zsxrq,
+            ZSXSJ AS zsxsj,
+            ZSXBB AS zsxbb,
+            ZSXJG AS zsxjg
+        FROM
+            production_defect_record
+            /*"_SYS_BIC"."com.CRRC.POC/CV_SCQXJL_V"*/
         <where>
             1=1
             <if test="cond != null and cond.sqn != null and cond.sqn != ''">
@@ -53,5 +69,5 @@
             ZSXSJ,
             ZSXBB,
             ZSXJG
-    </select>
+    </sql>
 </mapper>

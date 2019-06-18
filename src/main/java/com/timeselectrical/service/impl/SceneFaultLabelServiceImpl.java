@@ -1,6 +1,7 @@
 package com.timeselectrical.service.impl;
 
 
+import com.timeselectrical.component.PageParam;
 import com.timeselectrical.dto.SceneFaultLabelCondDTO;
 import com.timeselectrical.mapper.SceneFaultLabelMapperExt;
 import com.timeselectrical.model.SceneFaultLabel;
@@ -41,7 +42,12 @@ public class SceneFaultLabelServiceImpl implements ISceneFaultLabelService {
     }
 
     @Override
-    public List<SceneFaultLabel> getSceneFaultLabels(SceneFaultLabelCondDTO cond) {
-        return sceneFaultLabelMapperExt.getSceneFaultLabels(cond);
+    public List<SceneFaultLabel> getSceneFaultLabels(SceneFaultLabelCondDTO cond, PageParam pageParam) {
+        return sceneFaultLabelMapperExt.getSceneFaultLabels(cond, pageParam);
+    }
+
+    @Override
+    public Integer getSceneFaultLabelsCount(SceneFaultLabelCondDTO cond) {
+        return sceneFaultLabelMapperExt.getSceneFaultLabelsCount(cond);
     }
 }

@@ -1,6 +1,7 @@
 package com.timeselectrical.mapper;
 
 
+import com.timeselectrical.component.PageParam;
 import com.timeselectrical.dto.SceneFaultLabelCondDTO;
 import com.timeselectrical.model.SceneFaultLabel;
 import org.apache.ibatis.annotations.Param;
@@ -20,5 +21,7 @@ public interface SceneFaultLabelMapperExt extends StudentMapperExt{
     //超链接查询
     List<copySceneFaultLabel> linkSelect(@Param("fGzpthwzbm")String fGzpthwzbm, @Param("fGzpmc")String fGzpmc, @Param("fCxdl")String fCxdl, @Param("fZccx")String fZccx, @Param("fZyzrdw")String fZyzrdw, @Param("startTime") String startTime, @Param("endTime")String endTime);
 
-    List<SceneFaultLabel> getSceneFaultLabels(@Param("cond") SceneFaultLabelCondDTO cond);
+    List<SceneFaultLabel> getSceneFaultLabels(@Param("cond") SceneFaultLabelCondDTO cond, @Param("pageParam") PageParam pageParam);
+
+    Integer getSceneFaultLabelsCount(@Param("cond") SceneFaultLabelCondDTO cond);
 }

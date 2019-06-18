@@ -1,5 +1,6 @@
 package com.timeselectrical.service.impl;
 
+import com.timeselectrical.component.PageParam;
 import com.timeselectrical.dto.ProductionDefectRecordCondDTO;
 import com.timeselectrical.mapper.ProductionDefectRecordMapperExt;
 import com.timeselectrical.model.ProductionDefectRecord;
@@ -22,8 +23,13 @@ public class ProductionDefectRecordServiceImpl implements IProductionDefectRecor
     private ProductionDefectRecordMapperExt productionDefectRecordMapperExt;
 
     @Override
-    public List<ProductionDefectRecord> getProductiondefectRecords(ProductionDefectRecordCondDTO cond) {
+    public List<ProductionDefectRecord> getProductiondefectRecords(ProductionDefectRecordCondDTO cond, PageParam pageParam) {
 
-        return productionDefectRecordMapperExt.getProductionDefectRecords(cond);
+        return productionDefectRecordMapperExt.getProductionDefectRecords(cond, pageParam);
+    }
+
+    @Override
+    public Integer getProductiondefectRecordsCount(ProductionDefectRecordCondDTO cond) {
+        return productionDefectRecordMapperExt.getProductionDefectRecordsCount(cond);
     }
 }

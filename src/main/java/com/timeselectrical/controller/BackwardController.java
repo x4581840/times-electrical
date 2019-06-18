@@ -68,6 +68,7 @@ public class BackwardController {
         cond.setLocChildList(locChildList);
         //PageHelper.startPage(pageNo, pageSize, true);
         Integer total = loadingConfigurationService.getLoadingConfigurationsCount(cond);
+        LOGGER.info("total:{},pageNo:{},pageSize:{}",total,pageNo,pageSize);
         if(total > 0) {
             PageParam pageParam = new PageParam(total, pageNo, pageSize);
             List<LoadingConfiguration> lcList = loadingConfigurationService.getLoadingConfigurationsByCond(cond, pageParam);
@@ -109,10 +110,14 @@ public class BackwardController {
     public ResponseEntity getProductDefectRecordList(@RequestParam(defaultValue = "1", required = false) Integer pageNo,
                                                      @RequestParam(defaultValue = "10", required = false) Integer pageSize,
                                                      @RequestParam(name = "sqn", required = false) String sqn) {
-        PageHelper.startPage(pageNo, pageSize, true);
+        //PageHelper.startPage(pageNo, pageSize, true);
         ProductionDefectRecordCondDTO cond = new ProductionDefectRecordCondDTO();
         cond.setSqn(sqn);
-        List<ProductionDefectRecord> pdrList = productionDefectRecordService.getProductiondefectRecords(cond);
+        Integer total = productionDefectRecordService.getProductiondefectRecordsCount(cond);
+        LOGGER.info("total:{},pageNo:{},pageSize:{}",total,pageNo,pageSize);
+        if(total > 0) {
+            PageParam pageParam = new PageParam(total, pageNo, pageSize);
+            List<ProductionDefectRecord> pdrList = productionDefectRecordService.getProductiondefectRecords(cond, pageParam);
         /*List<ProductionDefectRecordExt> pdrExtList = new ArrayList<>();
         if(!CollectionUtils.isEmpty(pdrList)) {
             ProductionDefectRecordExt pdrExt = null;
@@ -124,24 +129,30 @@ public class BackwardController {
                 pdrExtList.add(pdrExt);
             }
         }*/
-        if(!CollectionUtils.isEmpty(pdrList)) {
-            for(ProductionDefectRecord pdr : pdrList) {
-                pdr.setZsxrq_long(pdr.getZsxrq() != null ? pdr.getZsxrq().getTime() : 0);
-                pdr.setZsxsj_long(pdr.getZsxsj() != null ? pdr.getZsxsj().getTime() : 0);
-                pdr.setCount(pdr.getCount() == null ? 0 : pdr.getCount());
+            if (!CollectionUtils.isEmpty(pdrList)) {
+                for (ProductionDefectRecord pdr : pdrList) {
+                    pdr.setZsxrq_long(pdr.getZsxrq() != null ? pdr.getZsxrq().getTime() : 0);
+                    pdr.setZsxsj_long(pdr.getZsxsj() != null ? pdr.getZsxsj().getTime() : 0);
+                    pdr.setCount(pdr.getCount() == null ? 0 : pdr.getCount());
+                }
             }
+            return ResponseEntity.ok(new PageWrapper<>(pdrList, total));
         }
-        return ResponseEntity.ok(new PageWrapper<>(pdrList));
+        return ResponseEntity.ok(null);
     }
 
     @RequestMapping("/getSceneFaultLabelList")
     public ResponseEntity getSceneFaultLabelList(@RequestParam(defaultValue = "1", required = false) Integer pageNo,
                                                  @RequestParam(defaultValue = "10", required = false) Integer pageSize,
                                                  @RequestParam(name = "sqn", required = false) String sqn) {
-        PageHelper.startPage(pageNo, pageSize, true);
+        //PageHelper.startPage(pageNo, pageSize, true);
         SceneFaultLabelCondDTO cond = new SceneFaultLabelCondDTO();
         cond.setSqn(sqn);
-        List<SceneFaultLabel> sflList = sceneFaultLabelService.getSceneFaultLabels(cond);
+        Integer total = sceneFaultLabelService.getSceneFaultLabelsCount(cond);
+        LOGGER.info("total:{},pageNo:{},pageSize:{}",total,pageNo,pageSize);
+        if(total != null && total > 0) {
+            PageParam pageParam = new PageParam(total, pageNo, pageSize);
+            List<SceneFaultLabel> sflList = sceneFaultLabelService.getSceneFaultLabels(cond, pageParam);
         /*List<SceneFaultLabelExt> sflExtList = new ArrayList<>();
         if(!CollectionUtils.isEmpty(sflList)) {
             SceneFaultLabelExt sflExt = null;
@@ -152,12 +163,14 @@ public class BackwardController {
                 sflExtList.add(sflExt);
             }
         }*/
-        if(!CollectionUtils.isEmpty(sflList)) {
-            for (SceneFaultLabel sfl : sflList) {
-                sfl.setfGzfssj_long(sfl.getfGzfssj() != null ? sfl.getfGzfssj().getTime() : 0);
-                sfl.setCount(sfl.getCount() == null ? 0 : sfl.getCount());
+            if (!CollectionUtils.isEmpty(sflList)) {
+                for (SceneFaultLabel sfl : sflList) {
+                    sfl.setfGzfssj_long(sfl.getfGzfssj() != null ? sfl.getfGzfssj().getTime() : 0);
+                    sfl.setCount(sfl.getCount() == null ? 0 : sfl.getCount());
+                }
             }
+            return ResponseEntity.ok(new PageWrapper<>(sflList, total));
         }
-        return ResponseEntity.ok(new PageWrapper<>(sflList));
+        return ResponseEntity.ok(null);
     }
 }

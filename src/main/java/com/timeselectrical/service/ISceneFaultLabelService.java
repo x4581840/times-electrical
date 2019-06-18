@@ -1,6 +1,7 @@
 package com.timeselectrical.service;
 
 
+import com.timeselectrical.component.PageParam;
 import com.timeselectrical.dto.SceneFaultLabelCondDTO;
 import com.timeselectrical.model.SceneFaultLabel;
 
@@ -28,5 +29,12 @@ public interface ISceneFaultLabelService {
      * 查询现场故障标签
      * @return
      */
-    List<SceneFaultLabel> getSceneFaultLabels(SceneFaultLabelCondDTO cond);
+    List<SceneFaultLabel> getSceneFaultLabels(SceneFaultLabelCondDTO cond, PageParam pageParam);
+
+    /**
+     * 查询总数
+     * @param cond
+     * @return
+     */
+    Integer getSceneFaultLabelsCount(SceneFaultLabelCondDTO cond);
 }
