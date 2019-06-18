@@ -17,7 +17,7 @@ function InitTable1 () {
         pageNumber: 1,                      //初始化加载第一页，默认第一页,并记录
         pageSize: 10,                     //每页的记录行数（*）
         pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
-
+        smartDisplay:false,
         search: false,                      //是否显示表格搜索
         strictSearch: true,
         //showColumns: true,                  //是否显示所有的列（选择显示的列）
@@ -35,12 +35,14 @@ function InitTable1 () {
             var serach = $("#serach").val();
             var  from=$("#from").val();
             var  to=$("#to").val();
+            var  fGzpmc= $("#hiddenValue").val();
             var temp = {
                 pageSize: params.limit,                         //页面大小
                 pageNo: (params.offset / params.limit) + 1,  //页码
                 serachContext:serach,
                 fromDate:from,
-                toDate:to
+                toDate:to,
+                fGzpmc:fGzpmc
                /* sort: params.sort,      //排序列名
                 sortOrder: params.order //排位命令（desc，asc）*/
             };
@@ -60,8 +62,8 @@ function InitTable1 () {
                        var fGzpmc=row.fGzpmc;
                        var fCxdl=row.fCxdl;
                        var fZccx=row.fZccx;
-                        var fZyzrdw=row.fZyzrdw;
-                        var actions = [];
+                       var fZyzrdw=row.fZyzrdw;
+                       var actions = [];
                         /* actions.push('<input type="checkbox" name="inlineCheckbox1" style="width: 40px;" value="'+value+'" onclick="chooseOne(this)">'+'<span>'+value+'</span>');*/
                         actions.push('<a href="#" onclick="tab2_query_button(\''+fGzpthwzbm+'\',\''+fGzpmc+'\',\''+fCxdl+'\',\''+fZccx+'\',\''+fZyzrdw+'\')" data-toggle="modal" data-target="#myModal1">'+value+'</a>')
                         return actions.join('');

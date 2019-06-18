@@ -30,14 +30,14 @@ public class SceneFaultLabelServiceImpl implements ISceneFaultLabelService {
     @Autowired
     private SceneFaultLabelMapperExt sceneFaultLabelMapperExt;
 
-    public List<SceneFaultLabel> getOneTabResult(String fGzpthwzbm, String startTime, String endTime){
-        return  sceneFaultLabelMapperExt.getOneTable(fGzpthwzbm,startTime,endTime);
+    public List<SceneFaultLabel> getOneTabResult(String fGzpthwzbm, String startTime, String endTime,String fGzpmc){
+        return  sceneFaultLabelMapperExt.getOneTable(fGzpthwzbm,startTime,endTime,fGzpmc);
     }
     public List<SceneFaultLabel> getTwoTabResult(String fGzpthwzbm){
         return sceneFaultLabelMapperExt.childSelect(fGzpthwzbm);
     }
-    public   List<copySceneFaultLabel> getLinkREsult(String fGzpthwzbm, String fGzpmc, String fCxdl, String fZccx, String fZyzrdw ){
-        return  sceneFaultLabelMapperExt.linkSelect(fGzpthwzbm,fGzpmc,fCxdl,fZccx,fZyzrdw);
+    public   List<copySceneFaultLabel> getLinkREsult(String fGzpthwzbm, String fGzpmc, String fCxdl, String fZccx, String fZyzrdw,String startTime, String endTime ){
+        return  sceneFaultLabelMapperExt.linkSelect(fGzpthwzbm,fGzpmc,fCxdl,fZccx,fZyzrdw,startTime,endTime);
     }
 
     @Override

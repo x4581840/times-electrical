@@ -82,13 +82,13 @@ public class ForwardController {
      **/
     @RequestMapping("/parentSelectResult")
     public ResponseEntity getList(HttpServletRequest request,@RequestParam(defaultValue = "1", required = false) Integer pageNo, @RequestParam String serachContext,
-                                  @RequestParam(defaultValue = "10", required = false) Integer pageSize) {
+                                  @RequestParam(defaultValue = "10", required = false) Integer pageSize,@RequestParam String fGzpmc) {
         String startDate=request.getParameter("fromDate");
         String endDate=request.getParameter("toDate");
 
      try {
          PageHelper.startPage(pageNo, pageSize);
-         List<SceneFaultLabel> list = parentSelect.getOneTabResult(serachContext, startDate, endDate);  //得到数据
+         List<SceneFaultLabel> list = parentSelect.getOneTabResult(serachContext, startDate, endDate,fGzpmc);  //得到数据
 
          PageInfo<SceneFaultLabel> info = new PageInfo<>(list);
          long total = info.getTotal();
@@ -134,11 +134,11 @@ public class ForwardController {
     public ResponseEntity getChildList(HttpServletRequest request,@RequestParam(defaultValue = "1", required = false) Integer pageNo,
                                        @RequestParam(defaultValue = "10", required = false) Integer pageSize,
                                        @RequestParam String fGzpthwzbm,@RequestParam String fGzpmc,@RequestParam String fCxdl,@RequestParam String fZccx,
-                                       @RequestParam String fZyzrdw) {
+                                       @RequestParam String fZyzrdw,@RequestParam String fromDate,@RequestParam String toDate) {
 
         try {
             PageHelper.startPage(pageNo, pageSize);
-            List<copySceneFaultLabel> list = parentSelect.getLinkREsult(fGzpthwzbm,fGzpmc,fCxdl,fZccx,fZyzrdw);  //得到数据
+            List<copySceneFaultLabel> list = parentSelect.getLinkREsult(fGzpthwzbm,fGzpmc,fCxdl,fZccx,fZyzrdw,fromDate,toDate);  //得到数据
             PageInfo<copySceneFaultLabel> info = new PageInfo<>(list);
             long total = info.getTotal();
             return ResponseEntity.ok(new PageWrapper<>(list, total));

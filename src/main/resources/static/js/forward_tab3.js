@@ -19,7 +19,7 @@ function InitTable3() {
         pageNumber: 1,                      //初始化加载第一页，默认第一页,并记录
         pageSize: 10,                     //每页的记录行数（*）
         pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
-
+        smartDisplay:false,
         search: false,                      //是否显示表格搜索
         strictSearch: true,
         //showColumns: true,                  //是否显示所有的列（选择显示的列）
@@ -49,7 +49,7 @@ function InitTable3() {
                     return {css:{"width":"150px"}}
                 },formatter: function(value, row, index) {
                     var actions = [];
-                    actions.push('<div style="margin-left: -10px"><input type="checkbox" name="inlineCheckbox1" style="width: 40px;margin-left: 40px" value="'+value+'" onclick="chooseOne(this)">'+'<span>'+value+'</span></div>');
+                    actions.push('<div style="margin-left: -10px"><input type="checkbox" name="inlineCheckbox1" style="width: 40px;margin-left: 40px" value="'+value+'" onclick="chooseOne(this,\''+row.fGzpmc+'\')">'+'<span>'+value+'</span></div>');
 
                     return actions.join('');
                 }
