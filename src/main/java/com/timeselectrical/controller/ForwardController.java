@@ -89,6 +89,7 @@ public class ForwardController {
      try {
          List<SceneFaultLabel> list=new ArrayList<SceneFaultLabel>();
          int count=parentSelect.getOneTableCount(serachContext, startDate, endDate,fGzpmc);//得到数据
+         LOGGER.info(count+"----------");
          if(count>0){
              list = parentSelect.getOneTabResult(serachContext, startDate, endDate,fGzpmc,pageNo,pageSize);  //得到数据
 
@@ -112,7 +113,10 @@ public class ForwardController {
 
         try {
             List<SceneFaultLabel> list=new ArrayList<SceneFaultLabel>();
+
          int count= parentSelect.getChildCount(childSearchContext);
+            LOGGER.info(count+"----------");
+
            if(count>0){
                 list = parentSelect.getTwoTabResult(childSearchContext,pageNo,pageSize);  //得到数据
 
@@ -147,6 +151,7 @@ public class ForwardController {
       /*      PageHelper.startPage(pageNo, pageSize);*/
             List<copySceneFaultLabel> list=new ArrayList<copySceneFaultLabel>();
             int count=parentSelect.linkSelectCount(fGzpthwzbm,fGzpmc,fCxdl,fZccx,fZyzrdw,fromDate,toDate);
+            LOGGER.info(count+"----------");
             if(count>0){
                  list = parentSelect.getLinkREsult(fGzpthwzbm,fGzpmc,fCxdl,fZccx,fZyzrdw,fromDate,toDate,pageNo,pageSize);  //得到数据
 

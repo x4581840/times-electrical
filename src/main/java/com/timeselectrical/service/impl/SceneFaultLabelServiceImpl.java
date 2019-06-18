@@ -48,7 +48,7 @@ public class SceneFaultLabelServiceImpl implements ISceneFaultLabelService {
 
     public   List<copySceneFaultLabel> getLinkREsult(String fGzpthwzbm, String fGzpmc, String fCxdl, String fZccx, String fZyzrdw,String startTime, String endTime,int curpage,int pageSize ){
           int pageNo=(curpage-1)*pageSize;
-        return  sceneFaultLabelMapperExt.linkSelect(fGzpthwzbm,fGzpmc,fCxdl,fZccx,fZyzrdw,startTime,endTime,curpage,pageSize);
+        return  sceneFaultLabelMapperExt.linkSelect(fGzpthwzbm,fGzpmc,fCxdl,fZccx,fZyzrdw,startTime,endTime,pageNo,pageSize);
     }
    public int linkSelectCount(String fGzpthwzbm, String fGzpmc, String fCxdl, String fZccx, String fZyzrdw,String startTime, String endTime){
         return sceneFaultLabelMapperExt.linkSelectCount(fGzpthwzbm,fGzpmc,fCxdl,fZccx,fZyzrdw,startTime,endTime);
