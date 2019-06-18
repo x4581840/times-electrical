@@ -111,7 +111,7 @@
         select F_GZPTHWZBM as fGzpthwzbm,F_GZPMC as fGzpmc from
         /*scene_fault_label*/
         "_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"
-        where F_GZPTHWZBM like concat('%', #{fGzpthwzbm},'%')
+        where F_GZPTHWZBM like concat('%', #{fGzpthwzbm}) || '%'
         group by F_GZPTHWZBM,F_GZPMC
          limit #{pageSize} offset  #{curPage}
     </select>
@@ -121,7 +121,7 @@
        select count(*) from (  select F_GZPTHWZBM as fGzpthwzbm,F_GZPMC as fGzpmc from
        /*scene_fault_label*/
         "_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"
-       where F_GZPTHWZBM like concat('%', #{fGzpthwzbm},'%')
+       where F_GZPTHWZBM like concat('%', #{fGzpthwzbm}) || '%'
         group by F_GZPTHWZBM,F_GZPMC) newTable
 
     </select>

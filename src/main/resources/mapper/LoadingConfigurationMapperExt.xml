@@ -76,7 +76,7 @@
                 AND sqn = #{cond.sqn}
             </if>
             <if test="cond != null and cond.locChildLike != null and cond.locChildLike != ''">
-                AND loc_child LIKE CONCAT('%', #{cond.locChildLike}, '%')
+                AND loc_child LIKE CONCAT('%', #{cond.locChildLike}) || '%'
             </if>
         </where>
     </select>
