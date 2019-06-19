@@ -73,9 +73,12 @@
         F_ZYZRDW as fZyzrdw,
         sum(COUNT_) as count
         from
-        scene_fault_label
-      /*  "_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"*/
+        /*scene_fault_label*/
+       "_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"
         where F_GZPTHWZBM=#{fGzpthwzbm}
+        <if test='fGzpthwzbm =="" or fGzpthwzbm ==null'>
+            and   1=2
+        </if>
         <if test='startTime !=""and endTime !=""'>
             and   F_GZFSSJ between #{startTime}  and #{endTime}
         </if>
@@ -102,9 +105,12 @@
         F_ZYZRDW as fZyzrdw
         ,sum(COUNT_) as count
         from
-        scene_fault_label
-       /* "_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"*/
+       /* scene_fault_label*/
+       "_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"
         where F_GZPTHWZBM=#{fGzpthwzbm}
+        <if test='fGzpthwzbm =="" or fGzpthwzbm ==null'>
+            and   1=2
+        </if>
         <if test='startTime !=""and endTime !=""'>
             and   F_GZFSSJ between #{startTime}  and #{endTime}
         </if>
@@ -129,9 +135,12 @@
     <select id="childSelect" resultType="com.timeselectrical.model.SceneFaultLabel" >
 
         select F_GZPTHWZBM as fGzpthwzbm,F_GZPMC as fGzpmc from
-        /*scene_fault_label*/
         "_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"
-        where F_GZPTHWZBM like concat('%', #{fGzpthwzbm}) || '%'
+       where
+        F_GZPTHWZBM like concat('%', #{fGzpthwzbm}) || '%'
+        <if test='fGzpthwzbm =="" or fGzpthwzbm ==null'>
+            and   1=2
+        </if>
         group by F_GZPTHWZBM,F_GZPMC
          limit #{pageSize} offset  #{curPage}
     </select>
@@ -139,9 +148,12 @@
 
     <select id="getchildCount" resultType="int" >
        select count(*) from (  select F_GZPTHWZBM as fGzpthwzbm,F_GZPMC as fGzpmc from
-       /*scene_fault_label*/
         "_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"
-       where F_GZPTHWZBM like concat('%', #{fGzpthwzbm}) || '%'
+       where
+        F_GZPTHWZBM like concat('%', #{fGzpthwzbm}) || '%'
+        <if test='fGzpthwzbm =="" or fGzpthwzbm ==null'>
+            and   1=2
+        </if>
         group by F_GZPTHWZBM,F_GZPMC) newTable
 
     </select>
@@ -160,8 +172,8 @@
         F_GZDJ as fGzdj,
         F_GZFSSJ as fGzfssj
         from
-        scene_fault_label
-      /*  "_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"*/
+     /*   scene_fault_label*/
+       "_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"
         where F_GZPTHWZBM=#{fGzpthwzbm}
         and F_GZPMC =#{fGzpmc}
         and F_CXDL =#{fCxdl}
@@ -196,8 +208,8 @@
         F_GZDJ as fGzdj,
         F_GZFSSJ as fGzfssj
         from
-        scene_fault_label
-     /*   "_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"*/
+       /* scene_fault_label*/
+       "_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"
         where F_GZPTHWZBM=#{fGzpthwzbm}
         and F_GZPMC =#{fGzpmc}
         and F_CXDL =#{fCxdl}
