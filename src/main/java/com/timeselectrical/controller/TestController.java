@@ -149,4 +149,9 @@ public class TestController {
 
         return ResponseEntity.ok(new PageWrapper<>(result,0));
     }
+
+    @RequestMapping("/test")
+    public String test() {
+        return "test";
+    }
 }

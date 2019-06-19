@@ -165,7 +165,7 @@ $(function () {
         minimumInputLength: 1, //至少要输入一个字符才能去查询
         maximumSelectionLength: 10,  //最多能够选择的个数
         allowClear: true,
-        // tags: true
+        multiple: true // 开启多选
     });
 })
 
