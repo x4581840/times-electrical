@@ -156,5 +156,9 @@ public class ForwardController {
         }
         return null;
     }
+    @RequestMapping("/test")
+    public String getChildList(){
+        return "1";
+    }
 
 }
