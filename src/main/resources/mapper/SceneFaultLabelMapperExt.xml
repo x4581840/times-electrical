@@ -65,9 +65,16 @@
     </sql>
 
     <select id="getOneTable" resultType="com.timeselectrical.model.SceneFaultLabel" >
-        select F_GZPTHWZBM as fGzpthwzbm,F_GZPMC as fGzpmc,F_CXDL as fCxdl,F_ZCCX as fZccx,F_ZYZRDW as fZyzrdw ,sum(COUNT_) as count from
-        /*scene_fault_label*/
-        "_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"
+        select
+        F_GZPTHWZBM as fGzpthwzbm,
+        F_GZPMC as fGzpmc,
+        F_CXDL as fCxdl,
+        F_ZCCX as fZccx,
+        F_ZYZRDW as fZyzrdw,
+        sum(COUNT_) as count
+        from
+        scene_fault_label
+      /*  "_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"*/
         where F_GZPTHWZBM=#{fGzpthwzbm}
         <if test='startTime !=""and endTime !=""'>
             and   F_GZFSSJ between #{startTime}  and #{endTime}
@@ -87,9 +94,16 @@
 
 
     <select id="getOneTableCount" resultType="int" >
-        select count(*) from (select F_GZPTHWZBM as fGzpthwzbm,F_GZPMC as fGzpmc,F_CXDL as fCxdl,F_ZCCX as fZccx,F_ZYZRDW as fZyzrdw ,sum(COUNT_) as count from
-        /*scene_fault_label*/
-        "_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"
+        select count(*)
+        from (select F_GZPTHWZBM as fGzpthwzbm,
+        F_GZPMC as fGzpmc,
+        F_CXDL as fCxdl,
+        F_ZCCX as fZccx,
+        F_ZYZRDW as fZyzrdw
+        ,sum(COUNT_) as count
+        from
+        scene_fault_label
+       /* "_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"*/
         where F_GZPTHWZBM=#{fGzpthwzbm}
         <if test='startTime !=""and endTime !=""'>
             and   F_GZFSSJ between #{startTime}  and #{endTime}
@@ -103,11 +117,17 @@
         <if test='fGzpmc !=""and fGzpmc !=null'>
             and   F_GZPMC =#{fGzpmc}
         </if>
-        group by F_GZPTHWZBM,F_GZPMC,F_CXDL,F_ZCCX,F_ZYZRDW) newTable
+        group by
+        F_GZPTHWZBM,
+        F_GZPMC,
+        F_CXDL,
+        F_ZCCX,
+        F_ZYZRDW) newTable
     </select>
 
 
     <select id="childSelect" resultType="com.timeselectrical.model.SceneFaultLabel" >
+
         select F_GZPTHWZBM as fGzpthwzbm,F_GZPMC as fGzpmc from
         /*scene_fault_label*/
         "_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"
@@ -128,10 +148,20 @@
 
 
     <select id="linkSelect" resultType="com.timeselectrical.model.copySceneFaultLabel" >
-        select F_BDBH as fBdbh,F_XMMC as fXmmc,F_XMH as fXmh,F_SSYJLBJ as fSsyjlbj,F_SCDW as fScdw,F_GZMC as fGzmc,F_GZDM as fGzdm,F_GZHG as fGzhg,F_GZDJ as fGzdj,
-        F_GZFSSJ as fGzfssj from
-        /*scene_fault_label*/
-        "_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"
+        select
+        F_BDBH as fBdbh,
+        F_XMMC as fXmmc,
+        F_XMH as fXmh,
+        F_SSYJLBJ as fSsyjlbj,
+        F_SCDW as fScdw,
+        F_GZMC as fGzmc,
+        F_GZDM as fGzdm,
+        F_GZHG as fGzhg,
+        F_GZDJ as fGzdj,
+        F_GZFSSJ as fGzfssj
+        from
+        scene_fault_label
+      /*  "_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"*/
         where F_GZPTHWZBM=#{fGzpthwzbm}
         and F_GZPMC =#{fGzpmc}
         and F_CXDL =#{fCxdl}
@@ -153,10 +183,21 @@
 
 
     <select id="linkSelectCount" resultType="int" >
-        select count(*) from (  select F_BDBH as fBdbh,F_XMMC as fXmmc,F_XMH as fXmh,F_SSYJLBJ as fSsyjlbj,F_SCDW as fScdw,F_GZMC as fGzmc,F_GZDM as fGzdm,F_GZHG as fGzhg,F_GZDJ as fGzdj,
-        F_GZFSSJ as fGzfssj from
-        /*scene_fault_label*/
-        "_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"
+        select count(*) from (
+        select
+        F_BDBH as fBdbh,
+        F_XMMC as fXmmc,
+        F_XMH as fXmh,
+        F_SSYJLBJ as fSsyjlbj,
+        F_SCDW as fScdw,
+        F_GZMC as fGzmc,
+        F_GZDM as fGzdm,
+        F_GZHG as fGzhg,
+        F_GZDJ as fGzdj,
+        F_GZFSSJ as fGzfssj
+        from
+        scene_fault_label
+     /*   "_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"*/
         where F_GZPTHWZBM=#{fGzpthwzbm}
         and F_GZPMC =#{fGzpmc}
         and F_CXDL =#{fCxdl}
@@ -171,7 +212,7 @@
         <if test='startTime ==""and endTime !=""'>
             and   F_GZFSSJ  &lt;=#{endTime}
         </if>
-        order by F_GZFSSJ asc) newtab
+         order by F_GZFSSJ asc) newtab
 
     </select>
 

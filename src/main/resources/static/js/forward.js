@@ -11,7 +11,7 @@ function InitTable1 () {
         striped: true,                      //是否显示行间隔色
         cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
         pagination: true,                   //是否显示分页（*）
-        //sortable: true,                     //是否启用排序
+     /*   sortable:false,                     //是否启用排序*/
         //sortOrder: "asc",                   //排序方式
         sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
         pageNumber: 1,                      //初始化加载第一页，默认第一页,并记录
@@ -49,14 +49,14 @@ function InitTable1 () {
             console.log("test=="+$("#dependOn").val());
             return temp;
         },
-        columns: [{field: 'fGzpthwzbm', title: '故障物料编码', sortable: true, halign: 'center',align: 'center'},
-                {field: 'fGzpmc', title: '故障物料名称', sortable: true, halign: 'center',align: 'center'},
-                {field: 'fCxdl', title: '车型大类', sortable: true, halign: 'center',valign: 'middle',align: 'center'
+        columns: [{field: 'fGzpthwzbm', title: '故障物料编码', sortable: false, halign: 'center',align: 'center'},
+                {field: 'fGzpmc', title: '故障物料名称', sortable: false, halign: 'center',align: 'center'},
+                {field: 'fCxdl', title: '车型大类', sortable: false, halign: 'center',valign: 'middle',align: 'center'
                    },
-                {field: 'fZccx', title: '车型', sortable: true, halign: 'center',valign: 'middle',align: 'center'
+                {field: 'fZccx', title: '车型', sortable: false, halign: 'center',valign: 'middle',align: 'center'
                 },
-                {field: 'fZyzrdw', title: '责任单位', sortable: true, halign: 'center',align: 'center'},
-                {field: 'count', title: '物料发生故障频次', sortable: true, halign: 'center',align: 'center',
+                {field: 'fZyzrdw', title: '责任单位', sortable: false, halign: 'center',align: 'center'},
+                {field: 'count', title: '物料发生故障频次', sortable: false, halign: 'center',align: 'center',
                     formatter: function(value, row, index) {
                        var fGzpthwzbm=row.fGzpthwzbm;
                        var fGzpmc=row.fGzpmc;
@@ -83,11 +83,6 @@ function InitTable1 () {
 // });
 
 function tab1_query_button() {
-    var search1= document.getElementById("search1");
-    search1.style.borderBottom="none";
-    search1.style.borderRight="none";
-    search1.style.borderLeft="none";
-
     $("#table1").bootstrapTable('destroy');
     InitTable1();
 }

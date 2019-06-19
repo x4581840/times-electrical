@@ -75,9 +75,6 @@ function InitTable3() {
 // });
 
 function tab3_query_button() {
-
     $("#table3").bootstrapTable('destroy');
-
-
     InitTable3();
 }

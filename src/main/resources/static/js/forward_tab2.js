@@ -83,10 +83,6 @@ function InitTable2(fGzpthwzbm,fGzpmc,fCxdl,fZccx,fZyzrdw) {
 
 function  tab2_query_button(fGzpthwzbm,fGzpmc,fCxdl,fZccx,fZyzrdw) {
 
-  /*  var search= document.getElementById("search1");
-    search.style.borderBottom="none";
-    search.style.borderRight="none";
-    search.style.borderLeft="none";*/
     $("#table2").bootstrapTable('destroy');
     InitTable2(fGzpthwzbm,fGzpmc,fCxdl,fZccx,fZyzrdw);
 }
