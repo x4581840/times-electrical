@@ -12,23 +12,23 @@
     <sql id="getLoadingConfigurationsSql">
         SELECT
         <!--<include refid="com.timeselectrical.mapper.LoadingConfigurationMapper.Base_Column_List"></include>-->
-        SQN AS sqn,
-        LOC AS loc,
-        SQN_CHILD AS sqnChild,
-        ITEMNUM AS itemnum,
-        LOCDESC AS locdesc,
-        LOC_CHILD AS locChild,
-        CMODEL AS cmodel,
-        CARNO AS carno,
-        CARRIAGENUM AS carriagenum,
-        OWNERCUSTOMER AS ownercustomer,
-        REPAIRPROCESS AS repairprocess,
-        MAKER AS maker,
-        ONLINETIME AS onlinetime,
-        RELEASEDATE AS releasedate,
-        UPDATETIME AS updatetime,
-        SUM(COUNT_SCGZ) AS countScgz,
-        SUM(COUNT_XCGZ) AS countXcgz
+            SQN AS sqn,
+            LOC AS loc,
+            SQN_CHILD AS sqnChild,
+            ITEMNUM AS itemnum,
+            LOCDESC AS locdesc,
+            LOC_CHILD AS locChild,
+            CMODEL AS cmodel,
+            CARNO AS carno,
+            CARRIAGENUM AS carriagenum,
+            OWNERCUSTOMER AS ownercustomer,
+            REPAIRPROCESS AS repairprocess,
+            MAKER AS maker,
+            ONLINETIME AS onlinetime,
+            RELEASEDATE AS releasedate,
+            UPDATETIME AS updatetime,
+            SUM(COUNT_SCGZ) AS countScgz,
+            SUM(COUNT_XCGZ) AS countXcgz
         FROM
         loading_configuration
         /*"_SYS_BIC"."com.CRRC.POC/CV_ZCPZ_V"*/
@@ -48,21 +48,21 @@
             </if>
         </where>
         GROUP BY
-        SQN,
-        LOC,
-        SQN_CHILD,
-        ITEMNUM,
-        LOCDESC,
-        LOC_CHILD,
-        CMODEL,
-        CARNO,
-        CARRIAGENUM,
-        OWNERCUSTOMER,
-        REPAIRPROCESS,
-        MAKER,
-        ONLINETIME,
-        RELEASEDATE,
-        UPDATETIME
+            SQN,
+            LOC,
+            SQN_CHILD,
+            ITEMNUM,
+            LOCDESC,
+            LOC_CHILD,
+            CMODEL,
+            CARNO,
+            CARRIAGENUM,
+            OWNERCUSTOMER,
+            REPAIRPROCESS,
+            MAKER,
+            ONLINETIME,
+            RELEASEDATE,
+            UPDATETIME
     </sql>
     <select id="getLocChildsByCond" resultType="java.lang.String">
         SELECT
@@ -80,17 +80,6 @@
             </if>
         </where>
     </select>
-
-    <!--<resultMap id="partLCResultMap" type="com.timeselectrical.dto.PartLoadingConfigurationDTO">
-        <result column="ID" property="id"></result>
-        <result column="ID_CHILD" property="idChild"></result>
-        <result column="ITEMNUM" property="itemnum"></result>
-        <result column="SQN" property="sqn"></result>
-        <result column="SQN_CHILD" property="sqnChild"></result>
-        <result column="LOC" property="loc"></result>
-        <result column="LOC_CHILD" property="locChild"></result>
-        <result column="LOCDESC" property="locdesc"></result>
-    </resultMap>-->
 
     <select id="getPartColumnLoadingConfigurationsBySqn" resultType="com.timeselectrical.dto.PartLoadingConfigurationDTO">
         SELECT

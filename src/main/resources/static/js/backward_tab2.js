@@ -48,7 +48,13 @@ function InitTable2 (sqn) {
             {field: 'lotId', title: '订单号', /*sortable: true, */halign: 'center'},
             {field: 'defectType', title: '缺陷类型', /*sortable: true, */halign: 'center'},
             {field: 'defectCode', title: '缺陷代码', /*sortable: true, */halign: 'center'},
-            {field: 'defectComment', title: '现象描述', /*sortable: true, */halign: 'center'},
+            {field: 'defectComment', title: '现象描述', /*sortable: true, */halign: 'center',class:'colStyle',formatter: function(value, row, index){
+                    if(value.length>5){
+                        return "<span title='"+value+"'>"+value.substring(0,5)+"..."+"</span>";
+                    }else{
+                        return "<span title='"+value+"'>"+value.substring(0,value.length)+"</span>";
+                    }
+                }},
             {field: 'bomMatId', title: '缺陷物料编号', /*sortable: true, */halign: 'center'},
             {field: 'locationNum', title: '缺陷物料位置', /*sortable: true, */halign: 'center'},
             {field: 'matCmf1', title: '缺陷物料分类组', /*sortable: true, */halign: 'center'},

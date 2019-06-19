@@ -41,8 +41,8 @@
             ZSXBB AS zsxbb,
             ZSXJG AS zsxjg
         FROM
-            /*production_defect_record*/
-            "_SYS_BIC"."com.CRRC.POC/CV_SCQXJL_V"
+            production_defect_record
+            /*"_SYS_BIC"."com.CRRC.POC/CV_SCQXJL_V"*/
         <where>
             1=1
             <if test="cond != null and cond.sqn != null and cond.sqn != ''">
