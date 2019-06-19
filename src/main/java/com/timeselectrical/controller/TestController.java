@@ -147,6 +147,6 @@ public class TestController {
         student = new StudentImpl(11, 11, "K", "11", "11", new Date().getTime());
         result.add(student);
 
-        return ResponseEntity.ok(new PageWrapper<>(result));
+        return ResponseEntity.ok(new PageWrapper<>(result,0));
     }
 }
