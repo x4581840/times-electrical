@@ -30,8 +30,8 @@
         SUM(COUNT_SCGZ) AS countScgz,
         SUM(COUNT_XCGZ) AS countXcgz
         FROM
-        /*loading_configuration*/
-        "_SYS_BIC"."com.CRRC.POC/CV_ZCPZ_V"
+        loading_configuration
+        /*"_SYS_BIC"."com.CRRC.POC/CV_ZCPZ_V"*/
         <where>
             1 = 1
             <if test="cond != null and cond.sqn != null and cond.sqn != ''">
@@ -68,8 +68,8 @@
         SELECT
           loc_child
         FROM
-          /*loading_configuration*/
-        "_SYS_BIC"."com.CRRC.POC/CV_ZCPZ_V"
+          loading_configuration
+        /*"_SYS_BIC"."com.CRRC.POC/CV_ZCPZ_V"*/
         <where>
             1 = 1
             <if test="cond != null and cond.sqn != null and cond.sqn != ''">
@@ -103,8 +103,8 @@
             LOC_CHILD AS locChild,
             LOCDESC AS locdesc
         FROM
-            /*loading_configuration*/
-            "_SYS_BIC"."com.CRRC.POC/CV_ZCPZ_V"
+            loading_configuration
+            /*"_SYS_BIC"."com.CRRC.POC/CV_ZCPZ_V"*/
         WHERE
             SQN = #{sqn}
     </select>
@@ -120,8 +120,8 @@
             LOC_CHILD AS locChild,
             LOCDESC AS locdesc
         FROM
-            /*loading_configuration*/
-            "_SYS_BIC"."com.CRRC.POC/CV_ZCPZ_V"
+            loading_configuration
+            /*"_SYS_BIC"."com.CRRC.POC/CV_ZCPZ_V"*/
         WHERE
             ID = #{id}
     </select>

@@ -1,21 +1,15 @@
 package com.timeselectrical.controller;
 
 
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import com.timeselectrical.component.PageWrapper;
 import com.timeselectrical.model.SceneFaultLabel;
-import com.timeselectrical.model.SceneFaultLabelExample;
-import com.timeselectrical.model.Student;
 import com.timeselectrical.model.copySceneFaultLabel;
 import com.timeselectrical.service.ISceneFaultLabelService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 

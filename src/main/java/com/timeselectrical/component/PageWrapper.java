@@ -2,7 +2,6 @@ package com.timeselectrical.component;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.github.pagehelper.Page;
 
 import java.util.Collections;
 import java.util.List;
@@ -24,14 +23,14 @@ public class PageWrapper<T>{
         this.total = total;
     }
 
-    public PageWrapper(List<T> list) {
+    /*public PageWrapper(List<T> list) {
         rows = Collections.unmodifiableList(list);
         if (list instanceof Page) {
             total = ((Page) list).getTotal();
         } else {
             total = rows.size();
         }
-    }
+    }*/
 
     public List<T> getRows() {
         return rows;

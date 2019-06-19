@@ -60,39 +60,74 @@
     </script>
 </head>
 
-<body>
-<div style="margin-left: 20px;margin-top: 20px;">
+<body style="background-color:#f5f5f5;">
+
+<!--<div style="margin-left: 20px;margin-top: 20px;">
     <h5><a href="/">首页</a></h5>
+</div>-->
+
+<div style="width:1105px;margin:0 auto;margin-top:26px;">
+    <div style="width:500px;">
+        <a th:title="中车株洲电力机车研究所有限公司" href="/">
+            <img th:src="@{/static/img/zhongchezhuzhou.jpg}" alt="中车株洲电力机车研究所有限公司" style="border-width:0px;">
+        </a>
+    </div>
 </div>
-<div align="center">
-    <h1>逆向查询页面</h1>
-</div>
+
+<hr style="height:10px;border:none;border-top:10px groove skyblue;"/>
+
 <div style="margin: 20px;">
     <div>
         <label th:id="inputSeqNo">请输入序列号：</label><input th:type="text" th:name="seqName" th:id="seqNo">
-        <input th:id="dependOn" th:class="grade" th:type="button" th:value="按层级展开" th:onclick="initTreeView()">
+        <!--data-toggle="modal" data-target="#myModal"-->
+        <input th:id="dependOn" th:class="grade" th:type="button" th:value="按层级展开" th:onclick="initTreeView()" ></input>
     </div>
+</div>
 
-    <div id="treeViewDiv" th:class="total" style="display:none">
-        <div align="right">
-            <input th:class="confirm" th:type="button" th:onclick="confirm()" th:value="确认">
-        </div>
-        <div>
-            <div style="width: 50px; display:inline"></div>
-            <div style="display:inline" align="right">
-                <label style="width:100px">序列号</label>
-                <label style="width:100px">物料号</label>
-                <label style="width:300px">组件位置描述</label>
-                <label style="width:200px">位置号</label>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 1500px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
             </div>
-        </div>
-        <div id="treeview1">
+            <div class="modal-body">
+                <div align="right">
+                    <input th:class="confirm" th:type="button" th:onclick="confirm()" th:value="确认">
+                </div>
+                <div id="treeViewDiv" th:class="total">
 
-        </div>
-        <div>
-            <input th:id="hiddenSeqNo" th:type="hidden" />
-        </div>
-    </div>
+                    <div>
+                        <div style="width: 50px; display:inline"></div>
+                        <div style="display:inline" align="right">
+                            <label style="width:100px">序列号</label>
+                            <label style="width:300px">物料号</label>
+                            <label style="width:360px">组件位置描述</label>
+                            <label style="width:300px">位置号</label>
+                        </div>
+                    </div>
+                    <div id="treeview1">
+
+                    </div>
+                    <div>
+                        <input th:id="hiddenSeqNo" th:type="hidden" />
+                    </div>
+                </div>
+            </div>
+            <!--<div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+                <button type="button" class="btn btn-primary">
+                    提交更改
+                </button>
+            </div>-->
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+
+<div style="margin: 20px;">
 
     <!-- tab标签 -->
     <ul id="myTab" class="nav nav-tabs">
