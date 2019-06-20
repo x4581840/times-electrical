@@ -38,8 +38,8 @@
             F_XMH AS fXmh,
             F_ZYZRDW AS fZyzrdw
         FROM
-        scene_fault_label
-     /*   "_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"*/
+        /*scene_fault_label*/
+       "_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"
         <where>
             1=1
             <if test="cond != null and cond.sqn != null and cond.sqn != ''">
