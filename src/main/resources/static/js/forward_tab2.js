@@ -18,9 +18,9 @@ function InitTable2(fGzpthwzbm,fGzpmc,fCxdl,fZccx,fZyzrdw) {
         //sortOrder: "asc",                   //排序方式
         sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
         pageNumber: 1,                      //初始化加载第一页，默认第一页,并记录
-        pageSize: 10,                     //每页的记录行数（*）
+        pageSize: 100,                     //每页的记录行数（*）
         smartDisplay:false,
-        pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
+        pageList: [100, 200, 500, 1000],        //可供选择的每页的行数（*）
         search: false,                      //是否显示表格搜索
         strictSearch: true,
         //showColumns: true,                  //是否显示所有的列（选择显示的列）
