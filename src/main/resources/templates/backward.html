@@ -80,7 +80,7 @@
     <div>
         <label th:id="inputSeqNo">请输入序列号：</label><input th:type="text" th:name="seqName" th:id="seqNo">
         <!--data-toggle="modal" data-target="#myModal"-->
-        <input th:id="dependOn" th:class="grade" th:type="button" th:value="按层级展开" th:onclick="initTreeView()" ></input>
+        <button th:id="dependOn" th:class="grade" th:onclick="initTreeView()" >按层级展开</button>
     </div>
 </div>
 
@@ -94,7 +94,7 @@
             </div>
             <div class="modal-body">
                 <div align="right">
-                    <input th:class="confirm" th:type="button" th:onclick="confirm()" th:value="确认">
+                    <button th:class="confirm" th:onclick="confirm()">确认</button>
                 </div>
                 <div id="treeViewDiv" th:class="total">
 
@@ -154,7 +154,7 @@
                 <select th:id="componentLocSelect" class="js-example-templating js-states form-control" multiple="multiple">
 
                 </select>
-                <input th:type="button" th:value="查询" th:class="tab1_query" th:onclick="backward_tab1_query_button()">
+                <button th:class="tab1_query" th:onclick="backward_tab1_query_button()">查询</button>
             </div>
             <div>
                 <table id="table1">
@@ -164,7 +164,7 @@
         </div>
         <div class="tab-pane fade" id="tab2">
             <div align="right">
-                <input th:type="button" th:value="查询" th:class="tab2_query" th:onclick="backward_tab2_query_button()">
+                <button th:class="tab2_query" th:onclick="backward_tab2_query_button()">查询</button>
             </div>
             <div>
                 <table id="table2">
@@ -174,7 +174,7 @@
         </div>
         <div class="tab-pane fade" id="tab3">
             <div align="right">
-                <input th:type="button" th:value="查询" th:class="tab3_query" th:onclick="backward_tab3_query_button()">
+                <button th:class="tab3_query" th:onclick="backward_tab3_query_button()">查询</button>
             </div>
             <div>
                 <table id="table3">
