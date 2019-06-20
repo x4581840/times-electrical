@@ -55,18 +55,19 @@ function InitTable2(fGzpthwzbm,fGzpmc,fCxdl,fZccx,fZyzrdw) {
             console.log("test=="+$("#dependOn").val());
             return temp;
         },
-            columns: [{field: 'fBdbh', title: '表单编号', sortable: true, halign: 'center',align: 'center'},
-                {field: 'fXmmc', title: '项目名称', sortable: true, halign: 'center',align: 'center'},
-                {field: 'fXmh', title: '项目号', sortable: true, halign: 'center',valign: 'middle',align: 'center'
+            columns: [{field: 'fBdbh', title: '表单编号', sortable: false, halign: 'center',align: 'center'},
+                {field: 'fXmmc', title: '项目名称', sortable: false, halign: 'center',align: 'center'},
+                {field: 'fXmh', title: '项目号', sortable: false, halign: 'center',valign: 'middle',align: 'center'
                 },
+                {field: 'fZcch', title: '车号', sortable: false, halign: 'center',align: 'center'},
                 {field: 'fSsyjlbj', title: '所属一级零部件', sortable: true, halign: 'center',align: 'center'},
-                {field: 'fScdw', title: '生产单位', sortable: true, halign: 'center',align: 'center'
+                {field: 'fScdw', title: '生产单位', sortable: false, halign: 'center',align: 'center'
                 },
-                {field: 'fGzmc', title: '故障名称', sortable: true, halign: 'center',align: 'center'},
-                {field: 'fGzdm', title: '故障代码', sortable: true, halign: 'center',align: 'center'},
-                {field: 'fGzhg', title: '故障后果', sortable: true, halign: 'center',align: 'center'},
-                {field: 'fGzdj', title: '故障等级', sortable: true, halign: 'center',align: 'center'},
-                {field: 'fGzfssj', title: '故障发生时间', sortable: true, halign: 'center',align: 'center'}
+                {field: 'fGzmc', title: '故障名称', sortable: false, halign: 'center',align: 'center'},
+                {field: 'fGzdm', title: '故障代码', sortable: false, halign: 'center',align: 'center'},
+                {field: 'fGzhg', title: '故障后果', sortable: false, halign: 'center',align: 'center'},
+                {field: 'fGzdj', title: '故障等级', sortable: false, halign: 'center',align: 'center'},
+                {field: 'fGzfssj', title: '故障发生时间', sortable: false, halign: 'center',align: 'center'}
                   ],
         onLoadSuccess: function () {
 

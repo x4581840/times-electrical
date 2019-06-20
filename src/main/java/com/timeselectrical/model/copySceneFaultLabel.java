@@ -93,9 +93,13 @@ public class copySceneFaultLabel {
     /**
      * 数量
      */
-
-
     private Integer count;
+
+    /**
+     *  车号
+     * @return
+     */
+    private String fZcch;
 
     public String getfGzpxh() {
         return fGzpxh;
@@ -239,5 +243,13 @@ public class copySceneFaultLabel {
 
     public void setCount(Integer count) {
         this.count = count;
+    }
+
+    public String getfZcch() {
+        return fZcch;
+    }
+
+    public void setfZcch(String fZcch) {
+        this.fZcch = fZcch;
     }
 }

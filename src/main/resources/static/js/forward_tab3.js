@@ -13,8 +13,6 @@ function InitTable3() {
         pagination: true,                   //是否显示分页（*）
         //sortable: true,                     //是否启用排序
         //sortOrder: "asc",                   //排序方式
-
-
         sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
         pageNumber: 1,                      //初始化加载第一页，默认第一页,并记录
         pageSize: 100,                     //每页的记录行数（*）
@@ -45,7 +43,7 @@ function InitTable3() {
             console.log("test=="+$("#dependOn").val());
             return temp;
         },
-            columns: [{field: 'fGzpthwzbm', title: '物料编码', sortable: true, halign: 'left',align: 'left',cellStyle:function(value,row,index){
+            columns: [{field: 'fGzpthwzbm', title: '物料编码', sortable: false, halign: 'left',align: 'left',cellStyle:function(value,row,index){
                     return {css:{"width":"150px"}}
                 },formatter: function(value, row, index) {
                     var actions = [];
@@ -54,7 +52,7 @@ function InitTable3() {
                     return actions.join('');
                 }
                 },
-                {field: 'fGzpmc', title: '故障物料名称', sortable: true, halign: 'left', cellStyle: function(value, row, index) {
+                {field: 'fGzpmc', title: '故障物料名称', sortable: false, halign: 'left', cellStyle: function(value, row, index) {
 
                         return {css:{"width":"150px"}}
                     }},

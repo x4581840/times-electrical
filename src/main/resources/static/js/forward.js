@@ -32,10 +32,20 @@ function InitTable1 () {
         //得到查询的参数
         queryParams : function (params) {
             //这里的键的名字和控制器的变量名必须一致，这边改动，控制器也需要改成一样的
+            var from="";
+            var to="";
             var serach = $("#serach").val();
-            var  from=$("#from").val();
-            var  to=$("#to").val();
             var  fGzpmc= $("#hiddenValue").val();
+            from=$("#from").val();
+            to=$("#to").val();
+           /* if (from !== null || from !== undefined || from !== ''){
+                from = from.replace('-', "");//替换掉时间中的-
+                from=from.replace(/\s*!/g,"");   //清楚空格
+            }
+            if (to !== null || to !== undefined || to !== ''){
+                to = to.replace('-', "");//替换掉时间中的-
+                to=to.replace(/\s*!/g,"");   //清楚空格
+            }*/
             var temp = {
                 pageSize: params.limit,                         //页面大小
                 pageNo: (params.offset / params.limit) + 1,  //页码
