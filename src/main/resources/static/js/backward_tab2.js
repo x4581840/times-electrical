@@ -87,5 +87,8 @@ function InitTable2 (sqn) {
 function backward_tab2_query_button(sqn) {
     //再次点击查询时把table对象信息销毁
     $("#table2").bootstrapTable('destroy');
+    if(sqn == undefined || sqn == null || sqn == "" || $.trim(sqn) == null) {
+        var sqn = $("#seqNo").val();
+    }
     InitTable2(sqn);
 }
