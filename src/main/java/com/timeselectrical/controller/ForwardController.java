@@ -90,6 +90,7 @@ public class ForwardController {
          return ResponseEntity.ok(new PageWrapper<>(list,count));
      }catch (Exception ex){
          ex.printStackTrace();
+         LOGGER.info(ex.getMessage());
      }
         return null;
     }
@@ -124,6 +125,7 @@ public class ForwardController {
 
         }catch (Exception ex){
             ex.printStackTrace();
+            LOGGER.info(ex.getMessage());
         }
         return null;
     }
@@ -139,7 +141,7 @@ public class ForwardController {
                                        @RequestParam(defaultValue = "10", required = false) Integer pageSize,
                                        @RequestParam String fGzpthwzbm,@RequestParam String fGzpmc,@RequestParam String fCxdl,@RequestParam String fZccx,
                                        @RequestParam String fZyzrdw,@RequestParam String fromDate,@RequestParam String toDate) {
-
+        System.out.print(fGzpmc+"-----------");
         try {
       /*      PageHelper.startPage(pageNo, pageSize);*/
             List<copySceneFaultLabel> list=new ArrayList<copySceneFaultLabel>();
@@ -153,6 +155,7 @@ public class ForwardController {
 
         }catch (Exception ex){
             ex.printStackTrace();
+            LOGGER.info(ex.getMessage());
         }
         return null;
     }

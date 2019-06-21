@@ -68,13 +68,16 @@ function InitTable1 () {
                 {field: 'fZyzrdw', title: '责任单位', sortable: false, halign: 'center',align: 'center'},
                 {field: 'count', title: '物料发生故障频次', sortable: false, halign: 'center',align: 'center',
                     formatter: function(value, row, index) {
+
                        var fGzpthwzbm=row.fGzpthwzbm;
                        var fGzpmc=row.fGzpmc;
+                       fGzpmc=fGzpmc.replace(/\\/g, "\\\\");
+
                        var fCxdl=row.fCxdl;
                        var fZccx=row.fZccx;
                        var fZyzrdw=row.fZyzrdw;
                        var actions = [];
-                        /* actions.push('<input type="checkbox" name="inlineCheckbox1" style="width: 40px;" value="'+value+'" onclick="chooseOne(this)">'+'<span>'+value+'</span>');*/
+                       /* actions.push('<input type="checkbox" name="inlineCheckbox1" style="width: 40px;" value="'+value+'" onclick="chooseOne(this)">'+'<span>'+value+'</span>');*/
                         actions.push('<a href="#" onclick="tab2_query_button(\''+fGzpthwzbm+'\',\''+fGzpmc+'\',\''+fCxdl+'\',\''+fZccx+'\',\''+fZyzrdw+'\')" data-toggle="modal" data-target="#myModal1">'+value+'</a>')
                         return actions.join('');
                     }

@@ -76,8 +76,9 @@
             F_ZYZRDW as fZyzrdw,
             sum(COUNT_) as count
         from
-       /*scene_fault_label*/
+        /*scene_fault_label*/
       "_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"
+
         where F_GZPTHWZBM=#{fGzpthwzbm}
         <if test='fGzpthwzbm =="" or fGzpthwzbm ==null'>
             and   1=2
@@ -108,8 +109,8 @@
         F_ZYZRDW as fZyzrdw
         ,sum(COUNT_) as count
         from
-        /*scene_fault_label*/
-       "_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"
+       /* scene_fault_label*/
+      "_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"
         where F_GZPTHWZBM=#{fGzpthwzbm}
         <if test='fGzpthwzbm =="" or fGzpthwzbm ==null'>
             and   1=2
@@ -182,7 +183,7 @@
         F_GZPXH  as fGzpxh,
         F_ZCCH as  fZcch
         from
-       /*scene_fault_label*/
+        /*scene_fault_label*/
       "_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"
         where F_GZPTHWZBM=#{fGzpthwzbm}
         and F_GZPMC =#{fGzpmc}
@@ -220,8 +221,9 @@
         F_GZPXH  as fGzpxh,
         F_ZCCH as  fZcch
         from
-          /*scene_fault_label*/
+        /*scene_fault_label*/
       "_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"
+
         where F_GZPTHWZBM=#{fGzpthwzbm}
         and F_GZPMC =#{fGzpmc}
         and F_CXDL =#{fCxdl}
