@@ -47,20 +47,20 @@ function initTreeView() {
                     //console.log("被选中");
                 },
                 onNodeChecked: function(event, data) {
-                    console.log("被勾选checked");
+                    console.log("被勾选checked=nodeId_temp=="+nodeId_temp);
                     //debugger
                     //单选思路：利用临时变量。首次选择记录节点id。选择其他节点，unchecked此id节点；
                     if (nodeId_temp != null) {
                         console.log("有临时变量");
-                        $('#treeview1').treeview('uncheckNode', [nodeId_temp, {slient: true}]);
+                        $('#treeview1').treeview('uncheckNode', [nodeId_temp, {slient: false}]);
                     }
                     nodeId_temp = data.nodeId;
                     //把选中的节点的text写进hidden中
                     $("#hiddenSeqNo").val(data.text);
                 },
                 onNodeUnchecked: function (event, data) {
-                    console.log("取消checked");
-                    nodeId_temp == null;
+                    console.log("取消checked=nodeId_temp="+nodeId_temp);
+                    nodeId_temp = null;
                     $("#hiddenSeqNo").val("");
                 }
             });

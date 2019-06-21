@@ -51,7 +51,7 @@ function InitTable1 (sqn, selectValueArray) {
             {field: 'loc', title: '父项位置号', /*sortable: true,*/ halign: 'center'},
             {field: 'sqnChild', title: '组件产品序列号', /*sortable: true,*/ halign: 'center'},
             {field: 'itemnum', title: '组件物料编码', /*sortable: true,*/ halign: 'center'},
-            {field: 'locdesc', title: '组件位置描述', /*sortable: true,*/ halign: 'center'},
+            {field: 'locdesc', title: '物料描述', /*sortable: true,*/ halign: 'center'},
             {field: 'locChild', title: '组件位置号', /*sortable: true,*/ halign: 'center'},
             {field: 'cmodel', title: '车型编号', /*sortable: true,*/ halign: 'center'},
             {field: 'carno', title: '车号', /*sortable: true,*/ halign: 'center'},
@@ -161,7 +161,7 @@ $(function () {
         },
         language: 'zh-CN',
         width: '20%',
-        placeholder: '组件位置号查询',
+        placeholder: '物料描述查询',
         minimumInputLength: 1, //至少要输入一个字符才能去查询
         maximumSelectionLength: 10,  //最多能够选择的个数
         allowClear: true,

@@ -38,10 +38,10 @@
                 AND sqn = #{cond.sqn}
             </if>
             <if test="cond != null and cond.locChildLike != null and cond.locChildLike != ''">
-                AND loc_child like LIKE CONCAT('%', #{con.locChildLike}, '%')
+                AND locdesc like LIKE CONCAT('%', #{con.locChildLike}, '%')
             </if>
             <if test="cond != null and cond.locChildList != null and cond.locChildList.size() != 0">
-                AND loc_child IN
+                AND locdesc IN
                 <foreach collection="cond.locChildList" item="locChild" open="(" close=")" separator=",">
                     #{locChild}
                 </foreach>
@@ -63,10 +63,13 @@
             ONLINETIME,
             RELEASEDATE,
             UPDATETIME
+        ORDER BY
+            countScgz DESC,
+            countXcgz DESC
     </sql>
     <select id="getLocChildsByCond" resultType="java.lang.String">
         SELECT
-          loc_child
+          locdesc
         FROM
           /*loading_configuration*/
         "_SYS_BIC"."com.CRRC.POC/CV_ZCPZ_V"
@@ -76,7 +79,7 @@
                 AND sqn = #{cond.sqn}
             </if>
             <if test="cond != null and cond.locChildLike != null and cond.locChildLike != ''">
-                AND loc_child LIKE CONCAT('%', #{cond.locChildLike}) || '%'
+                AND locdesc LIKE CONCAT('%', #{cond.locChildLike}) || '%'
             </if>
         </where>
     </select>
