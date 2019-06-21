@@ -44,11 +44,11 @@ function InitTable2 (sqn) {
             console.log("test=="+$("#dependOn").val());
             return temp;
         },
-        columns: [{field: 'sublotId', title: '产品序列号', /*sortable: true, */halign: 'center'},
+        columns: [{field: 'sublotId', title: '<span class="wryh">产品序列号</span>', /*sortable: true, */halign: 'center'},
             {field: 'lotId', title: '订单号', /*sortable: true, */halign: 'center'},
             {field: 'defectType', title: '缺陷类型', /*sortable: true, */halign: 'center'},
             {field: 'defectCode', title: '缺陷代码', /*sortable: true, */halign: 'center'},
-            {field: 'defectComment', title: '现象描述', /*sortable: true, */halign: 'center',class:'colStyle',formatter: function(value, row, index){
+            {field: 'defectComment', title: '现象描述', /*sortable: true, */halign: 'center', class:'colStyle',formatter: function(value, row, index){
                     if(value.length>5){
                         return "<span title='"+value+"'>"+value.substring(0,5)+"..."+"</span>";
                     }else{

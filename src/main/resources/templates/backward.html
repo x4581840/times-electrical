@@ -35,7 +35,6 @@
     <script th:src="@{/static/js/select2.min.js}"></script>
 
     <link th:href="@{/static/css/spop.css}" rel="stylesheet" type="text/css">
-    <link th:href="@{/static/css/backward.css}" rel="stylesheet" type="text/css">
     <link th:href="@{/static/css/bootstrap-treeview.css}" rel="stylesheet" type="text/css">
 
     <script th:src="@{/static/js/bootstrap-treeview.js}"></script>
@@ -45,7 +44,7 @@
     <script th:src="@{/static/js/backward_tab3.js}"></script>
     <script th:src="@{/static/js/spop.js}"></script>
 
-
+    <link th:href="@{/static/css/backward.css}" rel="stylesheet" type="text/css">
 
     <base target="_self">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -76,11 +75,11 @@
 
 <hr style="height:10px;border:none;border-top:10px groove skyblue;"/>
 
-<div style="margin: 20px;">
+<div style="margin-left: 20px;margin-right: 20px;">
     <div>
-        <label th:id="inputSeqNo">请输入序列号：</label><input th:type="text" th:name="seqName" th:id="seqNo">
+        <label th:id="inputSeqNo" style="font-family: 'Microsoft YaHei'; font-size: 20px;">请输入序列号：</label><input th:type="text" style="height: 30px;" th:name="seqName" th:id="seqNo">
         <!--data-toggle="modal" data-target="#myModal"-->
-        <button th:id="dependOn" th:class="grade" th:onclick="initTreeView()" >按层级展开</button>
+        <button th:id="dependOn" style="height: 30px;font-weight: 700;" th:class="grade" th:onclick="initTreeView()" >按层级展开</button>
     </div>
 </div>
 
@@ -88,23 +87,24 @@
     <div class="modal-dialog" style="width: 1500px;">
         <div class="modal-content">
             <div class="modal-header">
+                <label style="font-weight: 900;">请选择</label>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                     &times;
                 </button>
             </div>
             <div class="modal-body">
                 <div align="right">
-                    <button th:class="confirm" th:onclick="confirm()">确认</button>
+                    <button th:class="confirm" th:onclick="confirm()" style="font-family: 'Microsoft YaHei';height: 30px;font-weight: 700;">确认</button>
                 </div>
                 <div id="treeViewDiv" th:class="total">
 
                     <div>
                         <div style="width: 50px; display:inline"></div>
                         <div style="display:inline" align="right">
-                            <label style="width:100px">序列号</label>
-                            <label style="width:300px">物料号</label>
-                            <label style="width:360px">组件位置描述</label>
-                            <label style="width:300px">位置号</label>
+                            <label style="width:100px;font-family: 'Microsoft YaHei';font-weight: 700;">序列号</label>
+                            <label style="width:300px;font-family: 'Microsoft YaHei';font-weight: 700;">物料号</label>
+                            <label style="width:360px;font-family: 'Microsoft YaHei';font-weight: 700;">组件位置描述</label>
+                            <label style="width:400px;font-family: 'Microsoft YaHei';font-weight: 700;">位置号</label>
                         </div>
                     </div>
                     <div id="treeview1">
@@ -133,16 +133,16 @@
     <ul id="myTab" class="nav nav-tabs">
         <li id="tab_1" class="active">
             <a href="#tab1" data-toggle="tab">
-                装车配置
+                <font style="font-family: 'Microsoft YaHei';font-weight: 700;">装车配置</font>
             </a>
         </li>
         <li id="tab_2">
-            <a href="#tab2" data-toggle="tab">
+            <a href="#tab2" data-toggle="tab" style="font-family: 'Microsoft YaHei';font-weight: 700;">
                 生产缺陷记录
             </a>
         </li>
         <li id="tab_3">
-            <a href="#tab3" data-toggle="tab">
+            <a href="#tab3" data-toggle="tab" style="font-family: 'Microsoft YaHei';font-weight: 700;">
                 现场故障标签
             </a>
         </li>
@@ -154,7 +154,7 @@
                 <select th:id="componentLocSelect" class="js-example-templating js-states form-control" multiple="multiple">
 
                 </select>
-                <button th:class="tab1_query" th:onclick="backward_tab1_query_button()">查询</button>
+                <button th:class="tab1_query" th:onclick="backward_tab1_query_button()" style="height: 30px;font-weight: 700;">查询</button>
             </div>
             <div>
                 <table id="table1">
@@ -164,7 +164,7 @@
         </div>
         <div class="tab-pane fade" id="tab2">
             <div align="right">
-                <button th:class="tab2_query" th:onclick="backward_tab2_query_button()">查询</button>
+                <button th:class="tab2_query" th:onclick="backward_tab2_query_button()" style="height: 30px;font-weight: 700;">查询</button>
             </div>
             <div>
                 <table id="table2">
@@ -174,7 +174,7 @@
         </div>
         <div class="tab-pane fade" id="tab3">
             <div align="right">
-                <button th:class="tab3_query" th:onclick="backward_tab3_query_button()">查询</button>
+                <button th:class="tab3_query" th:onclick="backward_tab3_query_button()" style="height: 30px;font-weight: 700;">查询</button>
             </div>
             <div>
                 <table id="table3">

@@ -161,7 +161,7 @@ $(function () {
         },
         language: 'zh-CN',
         width: '20%',
-        placeholder: '请输入选择',
+        placeholder: '组件位置号查询',
         minimumInputLength: 1, //至少要输入一个字符才能去查询
         maximumSelectionLength: 10,  //最多能够选择的个数
         allowClear: true,

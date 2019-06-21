@@ -70,3 +70,28 @@ a:visited {
     overflow: hidden;
     white-space: nowrap;
 }
+
+/*#treeview1 .badge{*/
+    /*margin-left: 220px;*/
+/*}*/
+
+/*#treeview1 ul li span:nth-child(6){*/
+    /*margin-left: 220px;*/
+/*}*/
+
+/*#treeview1 ul li span:nth-child(7){*/
+    /*margin-left: 210px;*/
+/*}*/
+
+/*
+#treeview1 .badge:nth-child(2){
+    margin-left: 220px;
+}*/
+
+#treeview1 .badge{
+    margin-right: 220px;
+}
+
+.wryh {
+    font-family: "Microsoft YaHei";
+}
