@@ -7,12 +7,12 @@
 <body style="background-color:#f5f5f5;">
 
 <div style="width:1105px;margin-top:26px;">
-    <div style="margin-left: 280px;">
+    <div style="margin-left: 50px;">
         <img th:src="@{/static/img/zhongchezhuzhou.jpg}" alt="中车株洲电力机车研究所有限公司" style="border-width:0px;" />
-        <img th:src="@{/static/img/zlzsxt.jpg}" style="border-width:0px;" />
+        <img th:src="@{/static/img/zlzsxt_1.png}" style="border-width:0px;" />
     </div>
 </div>
-
+<!--
 <div style="margin-left: 280px;margin-top: 69px;">
     <table>
         <tr>
@@ -42,20 +42,43 @@
             </td>
         </tr>
     </table>
-</div>
+</div>-->
 
 <!--<div>
     <img th:src="@{/static/img/zhongchezhuzhou.jpg}" alt="中车株洲电力机车研究所有限公司" style="border-width:0px;" />
     <img th:src="@{/static/img/zlzsxt.jpg}" style="border-width:0px;" />
 </div>-->
-<!--<div>
-    <div align="center">
-        <a href="/forward/getLinkForwardPage"><h3>正向追溯页面</h3></a>
-    </div>
-    <div align="center">
-        <a href="/backward/backwardTab"><h3>逆向追溯页面</h3></a>
-    </div>
-</div>-->
+
+<div align="center" style="margin-top: 69px;">
+    <table>
+        <tr>
+            <td>
+                <div style="margin-right: 200px;">
+                    <div>
+                        <a href="/backward/backwardTab">
+                            <img th:src="@{/static/img/nixiang.png}" th:alt="逆向查询" style="border-width:0px;">
+                        </a>
+                    </div>
+                    <div style="margin-left: 33px;">
+                        <a href="/backward/backwardTab" style="font-weight: 700;text-decoration: none">逆向查询</a>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div>
+                    <div>
+                        <a href="/forward/getLinkForwardPage">
+                            <img th:src="@{/static/img/zhengxiang.png}" th:alt="正向查询" style="border-width:0px;">
+                        </a>
+                    </div>
+                    <div style="margin-left: 33px;">
+                        <a href="/forward/getLinkForwardPage" style="font-weight: 700;text-decoration: none">正向查询</a>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
 
 </body>
 </html>
