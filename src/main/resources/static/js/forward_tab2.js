@@ -60,9 +60,10 @@ function InitTable2(fGzpthwzbm,fGzpmc,fCxdl,fZccx,fZyzrdw) {
                 {field: 'fXmh', title: '项目号', sortable: false, halign: 'center',valign: 'middle',align: 'center'
                 },
                 {field: 'fZcch', title: '车号', sortable: false, halign: 'center',align: 'center'},
-                {field: 'fSsyjlbj', title: '所属一级零部件', sortable: true, halign: 'center',align: 'center'},
+                {field: 'fSsyjlbj', title: '所属一级零部件', sortable: false, halign: 'center',align: 'center'},
                 {field: 'fScdw', title: '生产单位', sortable: false, halign: 'center',align: 'center'
                 },
+                {field: 'fGzpxh', title: '故障品序号', sortable: false, halign: 'center',align: 'center'},
                 {field: 'fGzmc', title: '故障名称', sortable: false, halign: 'center',align: 'center'},
                 {field: 'fGzdm', title: '故障代码', sortable: false, halign: 'center',align: 'center'},
                 {field: 'fGzhg', title: '故障后果', sortable: false, halign: 'center',align: 'center'},
@@ -73,7 +74,13 @@ function InitTable2(fGzpthwzbm,fGzpmc,fCxdl,fZccx,fZyzrdw) {
 
         },
         onLoadError: function () {
-            showTips("数据加载失败！");
+            //showTips("数据加载失败！");
+            spop({
+                template: '数据加载失败!',
+                position  : 'top-center',
+                style: 'error',
+                autoclose: 3000
+            });
         }
     });
 };

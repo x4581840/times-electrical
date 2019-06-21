@@ -158,7 +158,7 @@ public class ForwardController {
     }
     @RequestMapping("/test")
     public String getChildList(){
-        return "1";
+        return "test";
     }
 
 }

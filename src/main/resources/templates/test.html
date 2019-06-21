@@ -1,10 +1,107 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+    <script th:src="@{/static/js/jquery-2.2.4.js}"></script>
+    <link th:href="@{/static/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
+    <script th:src="@{/static/js/bootstrap.js}"></script>
+    <!--    <script src="../jquery-3.2.1.min.js"></script>-->
+    <!--    <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">-->
+    <!-- <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>-->
+    <!-- jquery-ui-->
+    <link th:href="@{/static/css/jquery-ui.min.css}" rel="stylesheet" type="text/css">
+    <script th:src="@{/static/js/jquery-ui.min.js}"></script>
+    <!--forward_tab2-->
+    <script th:src="@{/static/js/forward.js}"></script>
+    <script th:src="@{/static/js/forward_tab2.js}"></script>
+    <script th:src="@{/static/js/forward_tab3.js}"></script>
+    <!-- bootstrap table -->
+    <link th:href="@{/static/css/bootstrap-table.min.css}" rel="stylesheet" type="text/css">
+    <script th:src="@{/static/js/bootstrap-table.min.js}"></script>
+    <script th:src="@{/static/js/bootstrap-table-zh-CN.min.js}"></script>
+
+    <link th:href="@{/static/css/backward.css}" rel="stylesheet" type="text/css">
+
+    <script th:src="@{/static/js/spop.js}"></script>
+
+    <link th:href="@{/static/css/spop.css}" rel="stylesheet" type="text/css">
+    <style>
+        #sidebar{
+            width: 200px;
+            position: absolute;
+            z-index: 1;
+        }
+        #main{
+            margin-left: 210px;
+            margin-right: 10px;
+            width: 1200px;
+            margin-top: 74px;
+        }
+    </style>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body>
-    <font style="font-family: 微软雅黑">龙建勇</font>
+
+    <span style="font-weight: 900">龙建勇</span>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-header">
+        <a href="#" class="navbar-brand">后台管理</a>
+    </div>
+    <ul class="nav navbar-nav" style="margin-right: 20px">
+        <li><a href="#">&nbsp;注销</span></a></li>
+    </ul>
+</div>
+<!--侧边栏-->
+<div class="navbar-default navbar-collapse" id="sidebar">
+    <ul class="nav">
+        <li>
+            <a href="#sub1" data-toggle="collapse">系统功能<span class="glyphicon glyphicon-chevron-down pull-right"></span></a>
+            <ul id="sub1" class="nav collapse">
+                <li><a href="">&nbsp;&nbsp;&nbsp;系统信息</a></li>
+                <li><a href="">&nbsp;&nbsp;&nbsp;管理员</a></li>
+                <li><a href="">&nbsp;&nbsp;&nbsp;日志</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#sub2" data-toggle="collapse">系统功能<span class="glyphicon glyphicon-chevron-down pull-right"></span></a>
+            <ul id="sub2" class="nav collapse">
+                <li><a href="">&nbsp;&nbsp;&nbsp;系统信息</a></li>
+                <li><a href="">&nbsp;&nbsp;&nbsp;管理员</a></li>
+                <li><a href="">&nbsp;&nbsp;&nbsp;日志</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<!--主页面-->
+<div id="main">
+    <!--面包导航-->
+    <ol class="breadcrumb">
+        <li><a href="#">新闻</a></li>
+        <li><a href="#">国内新闻</a></li>
+        <li><a href="#">体育新闻</a></li>
+    </ol>
+    <!-- 第一行-->
+    <div class="row">
+        <div class="col-sm-12">
+            <!--表格-->
+            <div class="panel panel-default">
+                <div class="panel-heading">测试</div>
+                <div class="panel-body">
+                    <table class="table table-striped table-bordered">
+                        <thead><tr><th>编号</th><th>商品</th><th>数量</th></tr></thead>
+                        <tbody>
+                        <tr><td>1</td><td>苹果</td><td>3</td></tr>
+                        <tr><td>2</td><td>西瓜</td><td>5</td></tr>
+                        <tr><td>3</td><td>香蕉</td><td>1</td></tr>
+                        </tbody>
+                        <tfoot><tr><td colspan="2">合计</td><td>9</td></tr></tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div><!-- 第一行-->
+</div>
+
 </body>
 </html>

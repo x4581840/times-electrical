@@ -63,7 +63,13 @@ function InitTable3() {
 
         },
         onLoadError: function () {
-            showTips("数据加载失败！");
+            //showTips("数据加载失败！");
+            spop({
+                template: '数据加载失败!',
+                position  : 'top-center',
+                style: 'error',
+                autoclose: 3000
+            });
         }
     });
 };
