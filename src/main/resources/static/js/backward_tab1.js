@@ -69,13 +69,13 @@ function InitTable1 (sqn, selectValueArray) {
                     return changeDateFormat(value);
                 }*/},
             {field: 'countScgz', title: '生产故障次数', /*sortable: true,*/ halign: 'center',formatter: function (value, row, index) {
-                    var sqn = row.sqn;
+                    var sqnChild = row.sqnChild;
                     // 在方法内要传的值的前后加上&quot;，否则会报Uncaught ReferenceError: xxx is not defined
-                    return '<a onclick="productDefectNumClick(&quot;'+sqn+'&quot;)">'+value+'</a>';
+                    return '<a onclick="productDefectNumClick(&quot;'+sqnChild+'&quot;)">'+value+'</a>';
                 }}, //超链接
             {field: 'countXcgz', title: '现场故障记录', /*sortable: true,*/ halign: 'center',formatter: function (value, row, index) {
-                    var sqn = row.sqn;
-                    return '<a onclick="sceneFaultNumClick(&quot;'+sqn+'&quot;)">'+value+'</a>';
+                    var sqnChild = row.sqnChild;
+                    return '<a onclick="sceneFaultNumClick(&quot;'+sqnChild+'&quot;)">'+value+'</a>';
                 }}, //超链接
         ],
         onLoadSuccess: function () {
@@ -89,25 +89,25 @@ function InitTable1 (sqn, selectValueArray) {
 };
 
 //点击"生产故障次数"字段的值 触发的函数，跳到"生产缺陷记录"的tab
-function productDefectNumClick(sqn) {
+function productDefectNumClick(sqnChild) {
     $("#tab_1").removeClass("active");
     $("#tab1").removeClass("in").removeClass("active");
     $("#tab_2").addClass("active");
     $("#tab2").addClass("in").addClass("active");
 
-    backward_tab2_query_button(sqn);
+    backward_tab2_query_button(sqnChild, 1);
 }
 
 //点击"现场故障记录"字段的值触发的函数，跳到"现场故障标签"的tab
-function sceneFaultNumClick(sqn) {
-    console.log("sqn==="+sqn);
+function sceneFaultNumClick(sqnChild) {
+    console.log("sqnChild==="+sqnChild);
     // debugger;
     $("#tab_1").removeClass("active");
     $("#tab1").removeClass("in").removeClass("active");
     $("#tab_3").addClass("active");
     $("#tab3").addClass("in").addClass("active");
 
-    backward_tab3_query_button(sqn);
+    backward_tab3_query_button(sqnChild, 1);
 }
 
 // $(function(){

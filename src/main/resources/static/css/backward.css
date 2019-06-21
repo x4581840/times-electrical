@@ -89,7 +89,11 @@ a:visited {
 }*/
 
 #treeview1 .badge{
-    margin-right: 220px;
+    /*margin-right: 220px;*/
+    width: 29%;
+    color: #312e2e;
+    background-color: #dedbdb;
+    
 }
 
 /*.wryh {*/

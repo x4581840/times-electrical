@@ -1,11 +1,14 @@
 
 var $table2;
 //初始化bootstrap-table的内容
-function InitTable2 (sqn) {
+function InitTable2 (sqn, sqnChild) {
     //记录页面bootstrap-table全局变量$table，方便应用
     var queryUrl = '/backward/getProductDefectRecordList?rnd=' + Math.random();
     if(sqn != null && sqn != undefined && sqn != "" && $.trim(sqn) != "") {
         queryUrl = queryUrl + "&sqn=" + sqn;
+    }
+    if(sqnChild != null && sqnChild != undefined && sqnChild != "" && $.trim(sqnChild) != "") {
+        queryUrl = queryUrl + "&sqnChild=" + sqnChild;
     }
     console.log("queryUrl=="+queryUrl);
     $table2 = $('#table2').bootstrapTable({
@@ -84,11 +87,13 @@ function InitTable2 (sqn) {
     });
 };
 
-function backward_tab2_query_button(sqn) {
+function backward_tab2_query_button(sqnChild, flag) {
     //再次点击查询时把table对象信息销毁
     $("#table2").bootstrapTable('destroy');
-    if(sqn == undefined || sqn == null || sqn == "" || $.trim(sqn) == null) {
-        var sqn = $("#seqNo").val();
+    var sqn;
+    // 等于1，说明是tab1跳转过来的
+    if(flag != 1) {
+        sqn = $("#seqNo").val();
     }
-    InitTable2(sqn);
+    InitTable2(sqn, sqnChild);
 }

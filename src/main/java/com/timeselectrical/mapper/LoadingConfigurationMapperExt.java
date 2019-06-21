@@ -19,7 +19,7 @@ public interface LoadingConfigurationMapperExt extends LoadingConfigurationMappe
 
     List<PartLoadingConfigurationDTO> getPartColumnLoadingConfigurationsBySqn(@Param("sqn") String sqn);
 
-    PartLoadingConfigurationDTO getPartColumnLoadingConfigurationsById(@Param("id") String id);
+    List<PartLoadingConfigurationDTO> getPartColumnLoadingConfigurationsById(@Param("id") String id);
 
     Integer getLoadingConfigurationsCount(@Param("cond") LoadingConfigurationCondDTO cond);
 }

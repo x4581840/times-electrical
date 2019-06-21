@@ -103,26 +103,33 @@ public class LoadingConfigurationServiceImpl implements ILoadingConfigurationSer
     private void buildChildData(List<PartLoadingConfigurationDTO> res, Map<String, Object> map){
         List<Map<String, Object>> subNodes = new ArrayList<>();
         for(PartLoadingConfigurationDTO plc : res) {
-            Map<String, Object> map1 = new HashMap();
-            map1.put("id", plc.getIdChild());
-            map1.put("text", plc.getSqnChild());
-            List<String> tags = new ArrayList<>();
-            tags.add(StringUtils.isEmpty(plc.getLocChild()) ? " 无 " : plc.getLocChild());
-            tags.add(StringUtils.isEmpty(plc.getLocdesc()) ? " 无 " : plc.getLocdesc());
-            tags.add(StringUtils.isEmpty(plc.getItemnum()) ? " 无 " : plc.getItemnum());
-            map1.put("tags", tags);
             if(!StringUtils.isEmpty(plc.getIdChild())) {
-                PartLoadingConfigurationDTO child = loadingConfigurationMapperExt.getPartColumnLoadingConfigurationsById(plc.getIdChild());
-                if(child != null) {
-                    List<PartLoadingConfigurationDTO> subChild = loadingConfigurationMapperExt.getPartColumnLoadingConfigurationsBySqn(child.getSqn());
-                    if(!CollectionUtils.isEmpty(subChild)) {
-                        buildChildData(subChild, map1);
+                Map<String, Object> map1 = new HashMap();
+                map1.put("id", plc.getIdChild());
+                map1.put("text", plc.getSqnChild());
+                List<String> tags = new ArrayList<>();
+                tags.add(StringUtils.isEmpty(plc.getLocChild()) ? " 无 " : plc.getLocChild());
+                tags.add(StringUtils.isEmpty(plc.getLocdesc()) ? " 无 " : plc.getLocdesc());
+                tags.add(StringUtils.isEmpty(plc.getItemnum()) ? " 无 " : plc.getItemnum());
+                map1.put("tags", tags);
+                if(!StringUtils.isEmpty(plc.getIdChild())) {
+                    List<PartLoadingConfigurationDTO> childList = loadingConfigurationMapperExt.getPartColumnLoadingConfigurationsById(plc.getIdChild());
+                    if(!CollectionUtils.isEmpty(childList)) {
+                        buildChildData(childList, map1);
+                    /*for(PartLoadingConfigurationDTO child : childList) {
+                        List<PartLoadingConfigurationDTO> subChild = loadingConfigurationMapperExt.getPartColumnLoadingConfigurationsBySqn(child.getSqn());
+                        if(!CollectionUtils.isEmpty(subChild)) {
+                            buildChildData(subChild, map1);
+                        }
+                    }*/
                     }
                 }
+                subNodes.add(map1);
             }
-            subNodes.add(map1);
         }
-        map.put("nodes", subNodes);
+        if(!CollectionUtils.isEmpty(subNodes)) {
+            map.put("nodes", subNodes);
+        }
     }
 
 }

@@ -36,8 +36,8 @@
             MBLNR AS mblnr,
             ZSFSX AS zsfsx,
             ZSXDW AS zsxdw,
-            ZSXRQ AS zsxrq,
-            ZSXSJ AS zsxsj,
+            /*ZSXRQ AS zsxrq,
+            ZSXSJ AS zsxsj,*/
             ZSXBB AS zsxbb,
             ZSXJG AS zsxjg
         FROM
@@ -47,6 +47,9 @@
             1=1
             <if test="cond != null and cond.sqn != null and cond.sqn != ''">
                 AND sublot_id = #{cond.sqn}
+            </if>
+            <if test="cond != null and cond.sqnChild != null and cond.sqnChild != ''">
+                AND sublot_id = #{cond.sqnChild}
             </if>
         </where>
         GROUP BY
@@ -65,8 +68,8 @@
             MBLNR,
             ZSFSX,
             ZSXDW,
-            ZSXRQ,
-            ZSXSJ,
+           /* ZSXRQ,
+            ZSXSJ,*/
             ZSXBB,
             ZSXJG
     </sql>

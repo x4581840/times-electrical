@@ -11,7 +11,6 @@ import com.timeselectrical.service.IProductionDefectRecordService;
 import com.timeselectrical.service.ISceneFaultLabelService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -90,8 +89,8 @@ public class BackwardController {
 //                    lc.setReleasedate_long(lc.getReleasedate() != null ? lc.getReleasedate().getTime() : 0);
 //                    lc.setUpdatetime_long(lc.getUpdatetime() != null ? lc.getUpdatetime().getTime() : 0);
 //                    lc.setfGzfssj_long(lc.getfGzfssj() != null ? lc.getfGzfssj().getTime() : 0);
-                    lc.setCountScgz(lc.getCountXcgz() == null ? 0 : lc.getCountXcgz());
-                    lc.setCountXcgz(lc.getCountScgz() == null ? 0 : lc.getCountScgz());
+                    lc.setCountXcgz(lc.getCountXcgz() == null ? 0 : lc.getCountXcgz());
+                    lc.setCountScgz(lc.getCountScgz() == null ? 0 : lc.getCountScgz());
                 }
             }
             return ResponseEntity.ok(new PageWrapper<>(lcList, total));
@@ -108,10 +107,12 @@ public class BackwardController {
     @RequestMapping("/getProductDefectRecordList")
     public ResponseEntity getProductDefectRecordList(@RequestParam(defaultValue = "1", required = false) Integer pageNo,
                                                      @RequestParam(defaultValue = "10", required = false) Integer pageSize,
-                                                     @RequestParam(name = "sqn", required = false) String sqn) {
+                                                     @RequestParam(name = "sqn", required = false) String sqn,
+                                                     @RequestParam(name = "sqnChild", required = false) String sqnChild) {
         //PageHelper.startPage(pageNo, pageSize, true);
         ProductionDefectRecordCondDTO cond = new ProductionDefectRecordCondDTO();
         cond.setSqn(sqn);
+        cond.setSqnChild(sqnChild);
         Integer total = productionDefectRecordService.getProductiondefectRecordsCount(cond);
         LOGGER.info("total:{},pageNo:{},pageSize:{}",total,pageNo,pageSize);
         if(total > 0) {
@@ -143,10 +144,12 @@ public class BackwardController {
     @RequestMapping("/getSceneFaultLabelList")
     public ResponseEntity getSceneFaultLabelList(@RequestParam(defaultValue = "1", required = false) Integer pageNo,
                                                  @RequestParam(defaultValue = "10", required = false) Integer pageSize,
-                                                 @RequestParam(name = "sqn", required = false) String sqn) {
+                                                 @RequestParam(name = "sqn", required = false) String sqn,
+                                                 @RequestParam(name = "sqnChild", required = false) String sqnChild) {
         //PageHelper.startPage(pageNo, pageSize, true);
         SceneFaultLabelCondDTO cond = new SceneFaultLabelCondDTO();
         cond.setSqn(sqn);
+        cond.setSqnChild(sqnChild);
         Integer total = sceneFaultLabelService.getSceneFaultLabelsCount(cond);
         LOGGER.info("total:{},pageNo:{},pageSize:{}",total,pageNo,pageSize);
         if(total != null && total > 0) {

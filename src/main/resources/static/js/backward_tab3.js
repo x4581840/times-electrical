@@ -1,11 +1,14 @@
 
 var $table3;
 //初始化bootstrap-table的内容
-function InitTable3 (sqn) {
+function InitTable3 (sqn, sqnChild) {
     //记录页面bootstrap-table全局变量$table，方便应用
     var queryUrl = '/backward/getSceneFaultLabelList?rnd=' + Math.random();
     if(sqn != null && sqn != undefined && sqn != "" && $.trim(sqn) != "") {
         queryUrl = queryUrl + "&sqn=" + sqn;
+    }
+    if(sqnChild != null && sqnChild != undefined && sqnChild != "" && $.trim(sqnChild) != "") {
+        queryUrl = queryUrl + "&sqnChild=" + sqnChild;
     }
     $table3 = $('#table3').bootstrapTable({
         url: queryUrl,                      //请求后台的URL（*）
@@ -78,11 +81,13 @@ function InitTable3 (sqn) {
 //     InitMainTable();
 // });
 
-function backward_tab3_query_button(sqn) {
+function backward_tab3_query_button(sqnChild, flag) {
     //再次点击查询时把table对象信息销毁
     $("#table3").bootstrapTable('destroy');
-    if(sqn == undefined || sqn == null || sqn == "" || $.trim(sqn) == null) {
-        var sqn = $("#seqNo").val();
+    var sqn;
+    // 等于1，说明是tab1跳转过来的
+    if(flag != 1) {
+        sqn = $("#seqNo").val();
     }
-    InitTable3(sqn);
+    InitTable3(sqn, sqnChild);
 }

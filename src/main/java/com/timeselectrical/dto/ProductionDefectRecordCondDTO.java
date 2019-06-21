@@ -11,6 +11,8 @@ public class ProductionDefectRecordCondDTO {
 
     //父项产品序列号
     private String sqn;
+    //组件序列号
+    private String sqnChild;
 
     public String getSqn() {
         return sqn;
@@ -18,5 +20,13 @@ public class ProductionDefectRecordCondDTO {
 
     public void setSqn(String sqn) {
         this.sqn = sqn;
+    }
+
+    public String getSqnChild() {
+        return sqnChild;
+    }
+
+    public void setSqnChild(String sqnChild) {
+        this.sqnChild = sqnChild;
     }
 }

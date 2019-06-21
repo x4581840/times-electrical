@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <title>首页</title>
 </head>
-<body style="background-color:#f5f5f5;">
+<body style="background-color:#f5f5f5;background-image: url('/static/img/bg-img_02.jpg');background-size: 100%;">
 
-<div style="margin-top:10px;">
+<div style="margin-top:20px;">
     <div style="margin-left: 30px;">
         <img th:src="@{/static/img/zhongchezhuzhou.jpg}" alt="中车株洲电力机车研究所有限公司" style="border-width:0px;" />
     </div>
-    <div align="center">
-        <img th:src="@{/static/img/zlzsxt_1.png}" style="border-width:0px;" />
+    <div align="center" style="position: absolute;left: 32%;top: 22px;">
+        <img th:src="@{/static/img/zlzsxt_3.png}" style="border-width:0px;" />
     </div>
 </div>
 <!--
@@ -51,18 +51,18 @@
     <img th:src="@{/static/img/zlzsxt.jpg}" style="border-width:0px;" />
 </div>-->
 
-<div align="center" style="margin-top: 200px;">
+<div align="center" style="margin-top: 170px;">
     <table>
         <tr>
             <td>
                 <div style="margin-right: 200px;">
                     <div>
                         <a href="/backward/backwardTab">
-                            <img th:src="@{/static/img/nixiang.png}" th:alt="逆向查询" style="border-width:0px;">
+                            <img th:src="@{/static/img/nixiang.png}" th:alt="逆向查询" title="逆向查询" style="border-width:0px;">
                         </a>
                     </div>
-                    <div style="margin-left: 33px;">
-                        <a href="/backward/backwardTab" style="font-weight: 700;text-decoration: none">逆向查询</a>
+                    <div style="margin-left: 15px;">
+                        <a href="/backward/backwardTab" style="font-weight: 700;text-decoration: none;font-size: 23px;color: #57ACDE;">逆向查询</a>
                     </div>
                 </div>
             </td>
@@ -70,11 +70,11 @@
                 <div>
                     <div>
                         <a href="/forward/getLinkForwardPage">
-                            <img th:src="@{/static/img/zhengxiang.png}" th:alt="正向查询" style="border-width:0px;">
+                            <img th:src="@{/static/img/zhengxiang.png}" th:alt="正向查询" title="正向查询" style="border-width:0px;">
                         </a>
                     </div>
-                    <div style="margin-left: 33px;">
-                        <a href="/forward/getLinkForwardPage" style="font-weight: 700;text-decoration: none">正向查询</a>
+                    <div style="margin-left: 15px;">
+                        <a href="/forward/getLinkForwardPage" style="font-weight: 700;text-decoration: none;font-size: 23px;color: #57ACDE;">正向查询</a>
                     </div>
                 </div>
             </td>
