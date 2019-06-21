@@ -92,6 +92,12 @@ a:visited {
     margin-right: 220px;
 }
 
-.wryh {
+/*.wryh {*/
+    /*font-family: "Microsoft YaHei";*/
+/*}*/
+
+/*设置表头样式*/
+#myTabContent .th-inner {
     font-family: "Microsoft YaHei";
+    background-color: #C4E3F7;/* #DAE8F1;*/
 }

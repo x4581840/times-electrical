@@ -65,12 +65,12 @@ function InitTable2 (sqn) {
             {field: 'mblnr', title: '物料凭证编号', /*sortable: true, */halign: 'center'},
             {field: 'zsfsx', title: '是否筛选', /*sortable: true, */halign: 'center'},
             {field: 'zsxdw', title: '筛选单位', /*sortable: true, */halign: 'center'},
-            {field: 'zsxrq', title: '筛选日期', /*sortable: true, */halign: 'center'/*,formatter: function (value, row, index) {
+            /*{field: 'zsxrq', title: '筛选日期', /!*sortable: true, *!/halign: 'center'/!*,formatter: function (value, row, index) {
                     return changeDateFormat(value)
-                }*/},
-            {field: 'zsxsj', title: '筛选时间', /*sortable: true, */halign: 'center'/*,formatter: function (value, row, index) {
+                }*!/},*/
+            /*{field: 'zsxsj', title: '筛选时间', /!*sortable: true, *!/halign: 'center'/!*,formatter: function (value, row, index) {
                     return changeDateFormat(value)
-                }*/},
+                }*!/},*/
             {field: 'zsxbb', title: '采用筛选方案版本', /*sortable: true, */halign: 'center'},
             {field: 'zsxjg', title: '筛选结果', /*sortable: true, */halign: 'center'},
         ],
