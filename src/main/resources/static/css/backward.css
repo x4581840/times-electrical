@@ -96,12 +96,22 @@ a:visited {
     
 }
 
+#treeview1 .node-selected {
+    background-color: #f5f2f2;
+    color: #000;
+}
+
 /*.wryh {*/
     /*font-family: "Microsoft YaHei";*/
 /*}*/
 
 /*设置表头样式*/
 #myTabContent .th-inner {
+    font-family: "Microsoft YaHei";
+    background-color: #C4E3F7;/* #DAE8F1;*/
+}
+
+.tab-content .th-inner {
     font-family: "Microsoft YaHei";
     background-color: #C4E3F7;/* #DAE8F1;*/
 }

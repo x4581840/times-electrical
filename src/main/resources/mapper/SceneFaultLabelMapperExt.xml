@@ -109,7 +109,7 @@
         F_ZYZRDW as fZyzrdw
         ,sum(COUNT_) as count
         from
-       /* scene_fault_label*/
+       /*scene_fault_label*/
       "_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"
         where F_GZPTHWZBM=#{fGzpthwzbm}
         <if test='fGzpthwzbm =="" or fGzpthwzbm ==null'>
