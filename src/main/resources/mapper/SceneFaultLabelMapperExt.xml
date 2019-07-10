@@ -38,8 +38,8 @@
             F_XMH AS fXmh,
             F_ZYZRDW AS fZyzrdw
         FROM
-        /*scene_fault_label*/
-       "_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"
+        scene_fault_label
+       /*"_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"*/
         <where>
             1=1
             <if test="cond != null and cond.sqn != null and cond.sqn != ''">
@@ -76,8 +76,8 @@
             F_ZYZRDW as fZyzrdw,
             sum(COUNT_) as count
         from
-        /*scene_fault_label*/
-      "_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"
+        scene_fault_label
+      /*"_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"*/
 
         where F_GZPTHWZBM=#{fGzpthwzbm}
         <if test='fGzpthwzbm =="" or fGzpthwzbm ==null'>
@@ -109,8 +109,8 @@
         F_ZYZRDW as fZyzrdw
         ,sum(COUNT_) as count
         from
-       /*scene_fault_label*/
-      "_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"
+       scene_fault_label
+      /*"_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"*/
         where F_GZPTHWZBM=#{fGzpthwzbm}
         <if test='fGzpthwzbm =="" or fGzpthwzbm ==null'>
             and   1=2
@@ -139,8 +139,8 @@
     <select id="childSelect" resultType="com.timeselectrical.model.SceneFaultLabel" >
 
         select F_GZPTHWZBM as fGzpthwzbm,F_GZPMC as fGzpmc from
-        /*scene_fault_label*/
-        "_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"
+        scene_fault_label
+        /*"_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"*/
        where
         F_GZPTHWZBM like concat('%', #{fGzpthwzbm}) || '%'
         <if test='fGzpthwzbm =="" or fGzpthwzbm ==null'>
@@ -156,8 +156,8 @@
         (select F_GZPTHWZBM as fGzpthwzbm,
         F_GZPMC as fGzpmc
         from
-        /*scene_fault_label*/
-        "_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"
+        scene_fault_label
+        /*"_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"*/
        where
         F_GZPTHWZBM like concat('%', #{fGzpthwzbm}) || '%'
         <if test='fGzpthwzbm =="" or fGzpthwzbm ==null'>
@@ -183,8 +183,8 @@
         F_GZPXH  as fGzpxh,
         F_ZCCH as  fZcch
         from
-        /*scene_fault_label*/
-      "_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"
+        scene_fault_label
+      /*"_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"*/
         where F_GZPTHWZBM=#{fGzpthwzbm}
         and F_GZPMC =#{fGzpmc}
         and F_CXDL =#{fCxdl}
@@ -221,8 +221,8 @@
         F_GZPXH  as fGzpxh,
         F_ZCCH as  fZcch
         from
-        /*scene_fault_label*/
-      "_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"
+        scene_fault_label
+      /*"_SYS_BIC"."com.CRRC.POC/CV_XCGZ_V"*/
 
         where F_GZPTHWZBM=#{fGzpthwzbm}
         and F_GZPMC =#{fGzpmc}
